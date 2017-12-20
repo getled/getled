@@ -1,0 +1,91 @@
+.comment-navigation,
+.posts-navigation,
+.post-navigation,
+.paging-navigation {
+    
+        padding:2em 0;
+        font-family:$font__sans;
+        
+    
+        a {
+            
+            width:100%;
+            text-decoration: none;
+            padding:1em;
+            border: 1px solid $color__border-button;
+            display:block;
+            color: $color__link; 
+            
+             text-transform: uppercase;
+            font-size: 70%;
+            
+       
+            
+            &:hover,
+            &:focus {
+             color: $color__text-on-top;
+             background:$color__background-button;
+            }
+        }
+
+	.site-main & {
+		margin: 0;
+		overflow: hidden;
+	}
+
+	.nav-previous {
+		float: left;
+                text-align: left;
+		width: 100%;
+                margin-bottom: 0.5em;
+                
+	}
+
+	.nav-next {
+		float: right;
+		text-align: right;
+		width: 100%; 
+                
+                
+                
+                
+	}
+        
+        .nextarrow {
+            background-image: url(images/right.svg);
+            margin-left: 0.8em;
+            
+        }
+        
+         .previousarrow {
+            background-image: url(images/left.svg);
+            margin-right: 0.8em;
+            
+        }
+        
+        .nextarrow, .previousarrow {
+            background-repeat:no-repeat;
+            background-size: 14px 25px;
+            content: '';
+            display: inline-block;
+            height: 25px;
+            vertical-align: middle;
+            width: 14px;
+            overflow: hidden;
+        }
+        
+       
+        
+        .meta-nav {
+           
+           
+        }
+        
+        @media (min-width: $query__small) {
+            .nav-previous, .nav-next {
+		width: 49.5%;
+                margin-bottom: 0em;
+                
+	}
+        } 
+}

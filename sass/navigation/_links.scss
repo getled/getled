@@ -1,0 +1,36 @@
+a {
+	color: $color__link;
+
+	&:visited {
+		color: $color__link-visited;
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		color: $color__link-hover;
+	}
+	&:focus {
+		outline: thin dotted;
+	}
+	&:hover,
+	&:active {
+		outline: 0;
+	}
+}
+
+.page-content,
+.entry-content,
+.entry-summary,
+.comment-content {
+    
+    a {
+        text-decoration: none; 
+        
+        &:focus,
+            &:hover {
+            color: $color__link-hover;
+        }
+    }
+    
+    
+}

@@ -1,0 +1,226 @@
+/* Header Menu */
+/* Start style code for getled menu */
+
+header#masthead {
+padding-top: 15px;
+margin-top: 0;
+}
+ul#primary-menu {
+padding-left: 0;
+}
+
+#primary-menu {
+    padding-top: 73px;
+}
+
+ul.sub-menu.active {
+padding-left: 0;
+}
+
+#getled-navigation {
+	height: 100vh;
+	left: 0;
+	overflow-y: hidden;
+	position: fixed;
+	top: 0;
+	-webkit-transform: translateX(-100%);
+	        transform: translateX(-100%);
+	transition: -webkit-transform 0.6s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+	transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+	transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1) 0s, -webkit-transform 0.6s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+	width: 100%;
+	z-index: 170;
+}
+
+#getled-navigation.active {
+	-webkit-transform: translateX(0px);
+	        transform: translateX(0px);
+}
+
+#primary-menu {
+	overflow-y: auto;
+	padding-bottom: 60px;
+	padding-top: 103px;
+	width: 318px;
+	height: 100vh;
+}
+
+ul#primary-menu li {
+    display: block;
+    min-height: 40px;
+    position: relative;
+    border-bottom: 1px solid #fff;
+}
+
+ul#primary-menu li a{
+	font-family:  "Oswald", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+        color: #000000; 
+        line-height: 30px;
+        padding-left: 10px;
+}
+
+#masthead {
+	position: relative;
+	z-index: 175;
+}
+
+ul#primary-menu .sub-menu {
+	display: block;
+        height: 100%;
+        left: 0;
+        margin-left: 0;
+        overflow-y: auto;
+        padding-left: 0;
+        padding-top: 78px;
+        position: fixed;
+        top: 0;
+        transform: translateX(0%);
+        transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s, -webkit-transform 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s;
+        width: 302px;
+        z-index: -1
+}
+
+ul#primary-menu, ul#primary-menu ul {
+	background: #fff;
+}
+
+ul#primary-menu li.fa::before {
+	font-size: 18px;
+	line-height: 17px;
+	position: absolute;
+	right: 20px;
+	top: 10px;
+}
+
+ul#primary-menu li.active {
+	background: #fff;
+}
+
+ul#primary-menu li > .sub-menu{
+    padding-top:103px;
+}
+
+ul#primary-menu li.active > .sub-menu {
+	height: 100vh;
+	width: 308px;
+        padding-top: 103px;
+	-webkit-transform: translateX(308px);
+	        transform: translateX(308px);
+}
+
+
+ul#primary-menu li.menuthum {
+	background: #ffffff none repeat scroll 0 0;
+	padding: 20px;
+	text-align: center;
+}
+
+ul#primary-menu li.menuthum img {
+	max-width: 308px;
+	width: 93%;
+}
+
+#primary-menu ul.sub-menu li a {
+    text-indent:10px; 
+}
+.boddycover.active {
+	background: rgba(0, 0, 0, 0.67) none repeat scroll 0 0;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+
+body.active {
+	overflow-y: hidden;
+}
+
+.site-branding-text {
+	margin: 0 auto;
+}
+
+nav .menu-headermenu-container,
+#getled-navigation > div{
+	z-index: 0;
+	position: relative;
+}
+
+/* 3rd leval submenu */
+
+ul#primary-menu .sub-menu .sub-menu{
+ -webkit-transform: translateX(0px) !important;
+      transform: translateX(0px) !important;
+}
+
+
+ul#primary-menu .sub-menu.active .sub-menu.active{
+ -webkit-transform: translateX(308px) !important;
+      transform: translateX(308px) !important;
+}
+
+ul#primary-menu .sub-menu{
+ overflow-x:hidden;
+ display: inline-table;
+}
+
+
+/* Start style code for getled menu */
+@media screen and (max-width: 924px){
+		/* for responsive menu */
+                
+        ul#primary-menu .sub-menu.active .sub-menu.active {
+            -webkit-transform: translateX(0) !important;
+            transform: translateX(0) !important; 
+        }        
+        ul#primary-menu li.menuthum{
+            display: none;
+        }
+        #getled-navigation{
+            z-index:999;    
+        }    
+        #getled-navigation .close{
+                position: absolute;
+                top: 52px; 
+                right: 12px;
+                z-index: 99999;
+                cursor: pointer;
+                font-size: 30px;
+        }
+	#primary-menu, #primary-menu ul.sub-menu {
+		padding-left: 0;
+		margin-left: 0;
+		width: 100% !important;
+	}
+	#primary-menu li:first-child ul.sub-menu li:first-child{
+		left:-15px;
+	}
+
+	#primary-menu ul.sub-menu{
+		text-indent: 15px;
+	}
+
+	ul#primary-menu li.active > .sub-menu{
+		transform: translateX(0px) !important;
+		padding: 0;
+		position: static;
+		z-index: 1;
+		height: 100% !important;
+		display: block;
+	}
+        
+	ul#primary-menu li > ul.sub-menu{
+		transform: translateX(0px) !important;
+		display: none;
+                padding-top:0px !important;
+	}
+        
+	ul#primary-menu > li{
+		text-indent: 10px;
+	}
+        
+	/**/
+}
+
+
+

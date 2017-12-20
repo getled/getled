@@ -1,0 +1,22 @@
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	padding: .3em 1em;
+	font-size: 85%;
+        color: $color__link;
+        background: none;
+	line-height: 1.3em;
+	text-decoration: none;
+	border: 1px solid $color__border-button;
+        text-transform: uppercase;
+        letter-spacing:0.2em;
+
+	&:hover,
+	&:focus {
+	color: $color__text-on-top;
+        background:$color__background-button;
+        border-color: $color__link-hover;
+	}
+}
+

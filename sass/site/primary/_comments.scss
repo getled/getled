@@ -1,0 +1,209 @@
+.comments-area {
+	width: 100%;
+	margin: 3em 0;
+	padding: 1.5em 0;
+	border-top: 1px solid $color__border-button;
+}
+
+.comments-title {
+	margin-bottom: 2em;
+	font-size: 1em;
+	font-weight: 400;
+}
+
+.comment-list {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	
+	ol {
+		list-style-type: none;
+	}
+}
+
+.comment-body {
+	border-bottom: 1px solid $color__border-button;
+	margin-bottom: 3em;
+}
+
+.comment-meta {
+	position: relative;
+	margin-left: 70px;
+	font-family: $font__sans;
+	font-size: 80%;
+}
+
+.comment-meta,
+.comment-form {
+	a {
+		text-decoration: none;
+		border: none;
+		
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}	
+	}
+}
+
+.comment {
+
+	.avatar {
+		position: absolute;
+		top: -5px;
+		left: -70px;
+		width: 50px;
+		height: 50px;
+		border-radius: 0px;
+	}
+
+} 
+
+.children {
+	margin-left: 1em;
+	padding-left: 0;
+	
+	@media screen and (min-width: $query__medium) {
+		margin-left: 2em;
+	}
+}
+
+.comment-metadata {
+    margin-top: .2em;
+	padding-bottom: .5em;
+	font-size: .8em;
+	line-height: 1em;
+	
+	a {
+		color: $color__link;
+                
+
+		&:hover,
+		&:focus {
+			border-color: $color__border-button;
+                        
+		}
+	}
+}
+
+.comment-author {
+	font-size: 1.2em;
+	line-height: 1.3em;
+      
+        
+}
+
+
+.says {
+	font-size: 80%;
+}
+
+.reply {
+	margin-bottom: 1.5em;
+	text-align: right;
+	
+	a {
+		display: inline-block;
+		padding: .3em 1em;
+		font-family: $font__sans;
+		font-size: 85%;
+		color: $color__link;
+		line-height: 1.3em;
+		text-decoration: none;
+		border: 1px solid $color__border-button;
+                text-transform: uppercase;
+                letter-spacing:0.2em;
+		
+		&:hover,
+		&:focus {
+			color: $color__text-on-top;
+                        background:$color__background-button;
+			border-color: $color__link-hover;
+		}
+	}
+}
+
+
+.comment-content {
+
+	ol {
+		list-style-type: decimal;
+	}
+	
+	a {
+		word-wrap: break-word;
+	}
+	
+} 
+
+
+/* Comment Form */
+
+
+.comment-reply-title {
+	margin-bottom: 1em;
+}
+
+.comment-list .comment-reply-title {
+	text-align: left;
+}
+
+.comment-form {
+	font-family: $font__sans;
+	line-height: 1.3em;
+	
+	a {
+		font-weight: 500;
+	}
+	
+	.form-submit {
+		text-align: right;
+	}
+	
+	.form-submit input {
+		padding: .3em 1em;
+		font-size: 85%;
+		color: $color__link;
+                background: none;
+		line-height: 1.3em;
+		text-decoration: none;
+		border: 1px solid $color__border-button;
+                text-transform: uppercase;
+                letter-spacing:0.2em;
+		
+		&:hover,
+		&:focus {
+			color: $color__text-on-top;
+                        background:$color__background-button;
+			border-color: $color__link-hover;
+			
+		}
+	}
+	
+	label {
+		width: 33%;
+		display: block;
+		font-style: italic;
+		padding-bottom: .4em;
+	}
+	
+	.required {
+		color: #D54E21;
+	}
+}
+
+.pingback {
+	font-family: $font__sans;
+	
+	.comment-body {
+		padding: 1em 0;
+	}
+	
+	a {
+		font-style: italic;
+		text-decoration: none;
+	}
+}
+
+
+

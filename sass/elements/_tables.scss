@@ -1,0 +1,40 @@
+table {
+	border-collapse: collapse;
+	width: 100%;
+        font-weight: 300;
+        
+    
+       
+}
+
+thead th { 
+    
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    text-transform: uppercase;
+    padding: 1.387em;
+    vertical-align: middle;
+    letter-spacing: 0.09em;
+    font-weight: 400;
+  
+
+}
+
+td,
+th {
+    vertical-align: top;
+    padding: 1.387em;
+    font-weight: 300;
+}
+
+th {
+    
+    text-align: left;
+}
+
+tr, 
+td {
+    border: 1px solid #e8e8e8;
+    
+
+}
