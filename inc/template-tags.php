@@ -135,4 +135,27 @@ function getled_post_navigation() {
 	) );
 }
 
-
+/**
+ * Display Header Cart
+ */
+function getled_header_cart() {
+	if ( class_exists( 'WooCommerce' ) ) {
+		if ( is_cart() ) {
+			$class = 'current-menu-item';
+		} else {
+			$class = '';
+		}
+		?>
+		<ul id="site-header-cart" class="site-header-cart menu">
+			<li class="<?php echo esc_attr( $class ); ?>">
+				<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'storefront' ); ?>">
+					<span class="amount"><?php echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span> <span class="count"><?php echo wp_kses_data( sprintf( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'storefront' ), WC()->cart->get_cart_contents_count() ) );?></span>
+				</a>
+			</li>
+			<li>
+				<?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
+			</li>
+		</ul>
+		<?php
+	}
+}

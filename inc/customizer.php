@@ -563,4 +563,123 @@ function getled_add_colors_top_three() {
 add_action ('wp_head' , 'getled_add_colors_top_three');
 
 
+/* customier option */
+add_action( 'customize_register' , 'my_theme_options' );
+function my_theme_options( $wp_customize ) {
+	$wp_customize->add_section(
+		'getled_menu_options',
+		array(
+			'title'       => __( 'Main Menu Settings', 'getled' ),
+			'priority'    => 100,
+			'capability'  => 'edit_theme_options',
+			'description' => __('Change menu options here.', 'getled'),
+		)
+	);
 
+	$wp_customize->add_setting( 'getled_menu_color',
+		array(
+			'default' => 'f1f1f1'
+		)
+	);
+
+	$wp_customize->add_setting( 'getled_menu_bg_color',
+		array(
+			'default' => 'f1f1f1'
+		)
+	);
+
+	$wp_customize->add_setting( 'getled_menu_bg_color_hover',
+		array(
+			'default' => 'f1f1f1'
+		)
+	);
+
+	$wp_customize->add_setting('getled_menu_title_setting',
+		array(
+			'default' => 'Menu'
+		)
+	);
+
+	$wp_customize->add_setting('getled_menu_title_iconclass_setting',
+		array(
+			'default' => 'fa fa-bars'
+		)
+	);
+
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'getled_menu_color_control',
+		array(
+			'label'    => __( 'Menu Text Color', 'getled' ),
+			'section'  => 'getled_menu_options',
+			'settings' => 'getled_menu_color',
+			'priority' => 10,
+		)
+	));
+
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'getled_menu_bg_color_control',
+		array(
+			'label'    => __( 'Menu Background Color', 'getled' ),
+			'section'  => 'getled_menu_options',
+			'settings' => 'getled_menu_bg_color',
+			'priority' => 10,
+		)
+	));
+
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'getled_menu_bg_color_hover_control',
+		array(
+			'label'    => __( 'Menu Background Color on Hover', 'getled' ),
+			'section'  => 'getled_menu_options',
+			'settings' => 'getled_menu_bg_color_hover',
+			'priority' => 10,
+		)
+	));
+
+	$wp_customize->add_control(
+		'your_control_id',
+		array(
+			'label'    => __( 'Menu Button Text', 'getled' ),
+			'section'  => 'getled_menu_options',
+			'settings' => 'getled_menu_title_setting',
+			'type'     => 'text',
+		));
+
+	$wp_customize->add_control(
+		'getled_menu_title_icon_control',
+		array(
+			'label'    => __( 'Menu Icon (Fontawesome Class)', 'getled' ),
+			'section'  => 'getled_menu_options',
+			'settings' => 'getled_menu_title_iconclass_setting',
+			'type'     => 'text',
+		));
+	// Sections, settings and controls will be added here
+}
+
+
+add_action( 'wp_head' , 'my_dynamic_css' );
+function my_dynamic_css() {
+	?>
+	<style type='text/css'>
+		@media screen and (max-width: 600px){
+			/* for responsive menu */
+			ul#primary-menu, ul#primary-menu ul{
+				background:<?php echo get_theme_mod('getled_menu_bg_color'); ?> ;
+			}
+		}
+
+		ul#primary-menu li, ul#primary-menu li a {
+			color:<?php echo get_theme_mod('getled_menu_color') ?> ;
+		}
+		ul#primary-menu li{
+			background:<?php echo get_theme_mod('getled_menu_bg_color'); ?> ;
+		}
+		ul#primary-menu li.menu-item:hover{
+			background:<?php echo get_theme_mod('getled_menu_bg_color_hover'); ?>
+		}
+	</style>
+	<?php
+}
