@@ -1,0 +1,26 @@
+#site-header-search {
+	position: relative;
+	margin: auto 1em;
+	.search-field {
+		border: none;
+		border-bottom: 1px solid;
+		border-radius: 0;
+		font-weight: 300;
+		letter-spacing: 1px;
+		width: 120px;
+		padding: 2px 25px 2px 2px;
+		&:focus {
+			box-shadow: none;
+			outline: none;
+		}
+	}
+	.search-submit {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		border: none;
+		background: none;
+		padding: 7px 2px 7px 3px;
+	}
+}

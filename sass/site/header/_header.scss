@@ -33,7 +33,6 @@
 }
 
 .site-branding {
-     min-height:55px;
      flex: 1;
      margin: auto;
      text-align: center;
@@ -128,5 +127,8 @@
 /* Header Menu */ 
 
 @import "header-menu";
+
+/* Header search */
+@import "header-search";
 
 

@@ -59,7 +59,6 @@
 	width: 25em;
 	right: -9999px;
 	left: auto;
-	background: #fff;
 	border: 1px solid #dbdbdb;
 }
 
@@ -112,7 +111,6 @@
 
 /* Cart Subtotal */
 .site-header-cart .widget_shopping_cart .total {
-	background: #fff;
 	border-bottom: 0;
 	margin-top: 0px;
 	padding: 30px 0;
@@ -136,7 +134,6 @@
 
 /* Cart Buttons */
 .site-header-cart .widget_shopping_cart .widget_shopping_cart_content .buttons {
-	background: #fff;
 	padding: 10px;
 	padding-top: 0px;
 }
@@ -209,7 +206,6 @@
 	width: 350px;
 	right: -9999px;
 	left:auto;
-	background: #fff;
 	border: 1px solid #dbdbdb;
 	padding: 0;
 }
@@ -233,7 +229,7 @@
 .site-header .widget_shopping_cart .mini_cart_item {
 	margin: 0;
 	padding: 10px !important;
-	border-bottom: 1px solid #ececec;
+	border-bottom: 1px solid rgba(70,70,70,.2);
 }
 
 .site-header .widget_shopping_cart .mini_cart_item:last-child {
@@ -291,11 +287,10 @@
 
 /* Cart Subtotal */
 .site-header-cart .widget_shopping_cart .total {
-	background: #fff;
 	border-bottom: 0;
 	margin: 0px;
 	padding: 30px 20px;
-	border-top: 2px solid rgba(0, 0, 0, 0.05);
+	border-top: 1px solid rgba(70,70,70,0.2);
 	font-family: "Source Sans Pro",HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
 }
 .total strong {
@@ -315,7 +310,6 @@
 
 /* Cart Buttons */
 .site-header-cart .widget_shopping_cart .widget_shopping_cart_content .buttons {
-	background: #fff;
 	padding: 10px;
 	padding-top: 0px;
 	margin: 0;
