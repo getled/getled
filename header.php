@@ -53,7 +53,6 @@
 
 		<?php getled_header_search(); ?>
 		<?php getled_header_cart(); ?>
-		<div class="nextmenu"> next menu</div>
 
 	</header><!-- #masthead -->
 
