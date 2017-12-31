@@ -1402,7 +1402,8 @@ ul#primary-menu .sub-menu {
   position: relative;
   margin: auto;
   flex: 0 0 180px;
-  padding: 2px 0 7px; }
+  padding: 2px 0 7px;
+  margin-right: 1em; }
 
 #site-header-cart .widget_shopping_cart {
   position: absolute;
