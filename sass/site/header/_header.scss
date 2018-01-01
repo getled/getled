@@ -123,4 +123,26 @@
 /* Header search */
 @import "header-search";
 
+@media screen and (max-width:$query__small) and (max-width:$query__medium) {
 
+	#site-header-search,
+	#site-header-cart li:first-of-type .amount {
+		display: none;
+	}
+
+	.displaymenu {
+		width: auto;
+	}
+
+	.site-branding {
+		text-align: left;
+		padding: 0 4em 0 1.2em;
+	}
+
+	#site-header-cart {
+		position: absolute;
+		right: -.3em;
+		top: 0;
+	}
+
+}
