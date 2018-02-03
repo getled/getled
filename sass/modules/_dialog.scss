@@ -1,0 +1,24 @@
+.getled-dialog {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	border: 1px solid #aaa;
+	padding: 1em;
+	transform: translate(-50%, -50%);
+	background: #fff;
+	p {
+		margin: 0 0 1.6em;
+	}
+	.getled-dialog-buttons {
+		display: flex;
+		justify-content: stretch;
+		.button {
+			flex: 1;
+			margin: 0 0 0 1em;
+			text-align: center;
+			&:first-of-type {
+				margin: 0;
+			}
+		}
+	}
+}

@@ -146,3 +146,13 @@
 	}
 
 }
+
+/* Remove black rectangle from cart in firefox */
+.site-header-cart .cart-contents .count {
+	width: 18px;
+}
+
+/* Remove Paypal button from cart */
+.widget_shopping_cart_content #woo_pp_ec_button {
+	display: none;
+}
