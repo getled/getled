@@ -270,6 +270,11 @@ require get_template_directory() . '/inc/jetpack.php';
  *  */
 require get_template_directory(). '/inc/getledmenu.php';
 
+/*
+ * Getled menu functions file
+ *  */
+require get_template_directory(). '/inc/woocommerce.php';
+
 // getled hooks 
 // getled_under_header 
 
