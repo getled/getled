@@ -166,7 +166,8 @@ function getled_header_cart() {
 		<ul id="site-header-cart" class="site-header-cart menu">
 			<li class="<?php echo esc_attr( $class ); ?>">
 				<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'storefront' ); ?>">
-					<span class="amount"><?php echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span> <span class="count"><?php echo wp_kses_data( sprintf( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'storefront' ), WC()->cart->get_cart_contents_count() ) );?></span>
+					<span class="amount" id="getled-header-cart-amount"><?php echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span>
+					<span class="count" id="getled-header-cart-count"><?php echo wp_kses_data( WC()->cart->get_cart_contents_count() );?></span>
 				</a>
 			</li>
 			<li>
