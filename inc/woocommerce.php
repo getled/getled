@@ -28,8 +28,11 @@ class Getled_WooCommerce {
 		add_action( 'woocommerce_product_tabs', array( $this, 'product_tabs' ), 25 );
 
 		// Related Products
+		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
+
+		add_action( 'woocommerce_single_product_summary', 'woocommerce_output_product_data_tabs', 16 );
 		add_action( 'woocommerce_after_single_product_summary', [ $this, 'related_products_tabs' ], 16 );
 
 	}
