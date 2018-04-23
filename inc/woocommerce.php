@@ -12,8 +12,8 @@ class Getled_WooCommerce {
 		add_action( 'wp_footer', [ $this, 'remove_cart_item_confirm_dialog' ] );
 
 		// Templates filter
-		add_action( 'woocommerce_locate_template', array( $this, 'wc_locate_template' ), 999, 2 );
-		add_action( 'woocommerce_product_tabs', array( $this, 'product_tabs' ), 25 );
+		add_filter( 'woocommerce_locate_template', array( $this, 'wc_locate_template' ), 999, 2 );
+		add_filter( 'woocommerce_product_tabs', array( $this, 'product_tabs' ), 25 );
 
 		// Related Products
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
@@ -90,6 +90,7 @@ class Getled_WooCommerce {
 	public function product_tabs( $tabs = array() ) {
 		global $product;
 
+
 		$delivery_info = get_theme_mod( 'getled_product_delivery_info' );
 		$returns_info  = get_theme_mod( 'getled_product_returns_info' );
 
@@ -111,6 +112,7 @@ class Getled_WooCommerce {
 
 		$tabs['description']['title'] = 'PRODUCT DETAILS';
 		unset( $tabs['reviews'] );
+		unset( $tabs['additional_information'] );
 
 		return $tabs;
 	}
