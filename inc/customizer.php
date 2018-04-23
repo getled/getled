@@ -641,6 +641,10 @@ add_action ('wp_head' , 'getled_add_colors_top_three');
 
 /* customier option */
 add_action( 'customize_register' , 'my_theme_options' );
+
+/**
+ * @param WP_Customize_Manager $wp_customize
+ */
 function my_theme_options( $wp_customize ) {
 	$wp_customize->add_section(
 		'getled_menu_options',
@@ -732,6 +736,66 @@ function my_theme_options( $wp_customize ) {
 			'settings' => 'getled_menu_title_iconclass_setting',
 			'type'     => 'text',
 		));
+
+	// region WooCommerce settings
+
+	$wp_customize->add_section(
+		'getled_woocommerce',
+		array(
+			'title'    => __( 'Getled', 'getled' ),
+			'priority' => 10,
+			'panel'    => 'woocommerce',
+		)
+	);
+
+	$wp_customize->add_setting( 'getled_product_delivery_info' );
+	$wp_customize->add_control(
+		'getled_product_delivery_info',
+		array(
+			'label'       => __( 'Delivery info', 'getled' ),
+			'description' => __( 'Displayed on product details page', 'woocommerce' ),
+			'section'     => 'getled_woocommerce',
+			'settings'    => 'getled_product_delivery_info',
+			'type'        => 'textarea',
+		)
+	);
+
+	$wp_customize->add_setting( 'getled_product_delivery_label', [ 'default' => 'DELIVERY' ] );
+	$wp_customize->add_control(
+		'getled_product_delivery_label',
+		array(
+			'label'       => __( 'Delivery info label', 'getled' ),
+			'section'     => 'getled_woocommerce',
+			'settings'    => 'getled_product_delivery_label',
+			'type'        => 'text',
+		)
+	);
+
+	$wp_customize->add_setting( 'getled_product_returns_info' );
+	$wp_customize->add_control(
+		'getled_product_returns_info',
+		array(
+			'label'       => __( 'Returns info', 'getled' ),
+			'description' => __( 'Displayed on product details page', 'woocommerce' ),
+			'section'     => 'getled_woocommerce',
+			'settings'    => 'getled_product_returns_info',
+			'type'        => 'textarea',
+		)
+	);
+
+	$wp_customize->add_setting( 'getled_product_returns_label', [ 'default' => 'RETURNS' ] );
+	$wp_customize->add_control(
+		'getled_product_returns_label',
+		array(
+			'label'       => __( 'Returns info label', 'getled' ),
+			'section'     => 'getled_woocommerce',
+			'settings'    => 'getled_product_returns_label',
+			'type'        => 'text',
+		)
+	);
+
+	// endregion
+
 	// Sections, settings and controls will be added here
 }
 
