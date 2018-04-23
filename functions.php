@@ -80,7 +80,11 @@ function getled_setup() {
             'flex-width' => true,
         ));
         
-        }
+    
+    add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-slider' );
+}
 endif;
 add_action( 'after_setup_theme', 'getled_setup' );
 
