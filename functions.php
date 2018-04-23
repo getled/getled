@@ -281,14 +281,19 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /*
- * Getled menu functions file 
- *  */
+ * Getled menu functions file
+ */
 require get_template_directory() . '/inc/getledmenu.php';
 
 /*
  * Getled menu functions file
- *  */
+ */
 require get_template_directory() . '/inc/woocommerce.php';
+
+/*
+ * Getled menu functions file
+ */
+require get_template_directory() . '/ext/variant-swatches/variant-swatches.php';
 
 // getled hooks 
 // getled_under_header 
