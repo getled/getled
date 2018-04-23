@@ -7,7 +7,7 @@
  * @package getled
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+if (  ! is_active_sidebar( 'sidebar-1' ) || ( function_exists( 'is_product' ) && is_product() ) ) {
 	return;
 }
 ?>
