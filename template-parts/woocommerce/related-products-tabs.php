@@ -2,22 +2,24 @@
 $tabs = [];
 
 ob_start();
-woocommerce_upsell_display();
-$upsell = ob_get_clean();
-if ( $upsell ) {
-	$tabs['upsells'] = [
-		'title' => __( 'You may also like', 'getled' ),
-		'content' => $upsell
-	];
-}
-
-ob_start();
 woocommerce_output_related_products();
 $related = ob_get_clean();
 if ( $related ) {
 	$tabs['related'] = [
 		'title' => __( 'Style this with', 'getled' ),
-		'content' => $related
+		'content' => $related,
+		'prioritty' => 25,
+	];
+}
+
+ob_start();
+woocommerce_upsell_display();
+$upsell = ob_get_clean();
+if ( $upsell ) {
+	$tabs['upsells'] = [
+		'title' => __( 'You may also like', 'getled' ),
+		'content' => $upsell,
+		'prioritty' => 50,
 	];
 }
 
