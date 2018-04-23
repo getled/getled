@@ -4,18 +4,6 @@ class Getled_WooCommerce {
 	/** @var self Instance */
 	private static $_instance;
 
-	/**
-	 * Returns instance of current calss
-	 * @return self Instance
-	 */
-	public static function instance() {
-		if ( ! self::$_instance ) {
-			self::$_instance = new self();
-		}
-
-		return self::$_instance;
-	}
-
 	public function __construct() {
 
 		// Cart actions
@@ -38,14 +26,27 @@ class Getled_WooCommerce {
 
 	}
 
+	/**
+	 * Returns instance of current calss
+	 * @return self Instance
+	 */
+	public static function instance() {
+		if ( ! self::$_instance ) {
+			self::$_instance = new self();
+		}
+
+		return self::$_instance;
+	}
+
 	function before_mini_cart_contents() {
 		$cart = WC()->cart;
 		?>
-		<div id="getled-min-cart-info" data-amount="<?php echo strip_tags( $cart->get_cart_total() ) ?>" data-count="<?php echo array_sum( $cart->get_cart_item_quantities() ) ?>"></div>
+		<div id="getled-min-cart-info" data-amount="<?php echo strip_tags( $cart->get_cart_total() ) ?>"
+				 data-count="<?php echo array_sum( $cart->get_cart_item_quantities() ) ?>"></div>
 		<?php
 		if ( ! $cart->is_empty() ) {
 			if ( 2 < count( $cart->cart_contents ) ) {
-				add_action( 'woocommerce_mini_cart_contents', function() {
+				add_action( 'woocommerce_mini_cart_contents', function () {
 					echo '<i class="fa fa-caret-down scroll"></i>';
 				}, 99 );
 
@@ -90,7 +91,7 @@ class Getled_WooCommerce {
 		global $product;
 
 		$delivery_info = get_theme_mod( 'getled_product_delivery_info' );
-		$returns_info = get_theme_mod( 'getled_product_returns_info' );
+		$returns_info  = get_theme_mod( 'getled_product_returns_info' );
 
 		if ( $delivery_info ) {
 			$tabs['delivery_info'] = array(
@@ -129,12 +130,13 @@ class Getled_WooCommerce {
 				position: absolute;
 				top: 0;
 				left: 0;
-				width: calc( 25% - 10px );
+				width: calc(25% - 10px);
 				text-align: center;
-				margin: 0!important;
+				margin: 0 !important;
 				cursor: pointer;
 			}
-			.woocommerce .product .gallery-nav-next{
+
+			.woocommerce .product .gallery-nav-next {
 				top: auto;
 				bottom: 0;
 			}
@@ -147,16 +149,16 @@ class Getled_WooCommerce {
 						.after( '<div class="getled-gallery-nav gallery-nav-prev"><i class="fa fa-chevron-up"></i></div>' )
 						.after( '<div class="getled-gallery-nav gallery-nav-next"><i class="fa fa-chevron-down"></i></div>' )
 					$thumbsWrap.siblings( '.getled-gallery-nav' ).on( 'click', function () {
-							var
-								$t = $( this ),
-								scroll = $thumbsWrap.find( 'li' ).outerHeight() + 20;
-							if ( $t.attr( 'class' ).indexOf( 'prev' ) > - 1 ) {
-								scroll = '-=' + scroll;
-							} else {
-								scroll = '+=' + scroll;
-							}
+						var
+							$t = $( this ),
+							scroll = $thumbsWrap.find( 'li' ).outerHeight() + 20;
+						if ( $t.attr( 'class' ).indexOf( 'prev' ) > - 1 ) {
+							scroll = '-=' + scroll;
+						} else {
+							scroll = '+=' + scroll;
+						}
 						$thumbsWrap.animate( {scrollTop: scroll}, 'fast' );
-						} );
+					} );
 				}, 250 );
 			} );
 		</script>
