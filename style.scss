@@ -103,7 +103,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 # WooCommerce
 --------------------------------------------------------------*/
-@import "sass/modules/woocommerce";
+@import "sass/modules/woocommerce/woocommerce";
+@import "sass/modules/woocommerce/single-product";
 
 /*--------------------------------------------------------------
 # Dialog
