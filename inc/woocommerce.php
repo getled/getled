@@ -147,6 +147,7 @@ class Getled_WooCommerce {
 			jQuery( function ( $ ) {
 				setTimeout( function () {
 					var $thumbsWrap = $( '.flex-control-nav.flex-control-thumbs' );
+					if ( $thumbsWrap.find( 'li' ).length < 3 ) return;
 					$thumbsWrap
 						.after( '<div class="getled-gallery-nav gallery-nav-prev"><i class="fa fa-chevron-up"></i></div>' )
 						.after( '<div class="getled-gallery-nav gallery-nav-next"><i class="fa fa-chevron-down"></i></div>' )
