@@ -2,7 +2,26 @@
 $tabs = [];
 
 ob_start();
-woocommerce_output_related_products();
+
+$crosssells = get_post_meta( get_the_ID(), '_crosssell_ids',true);
+$args = array(
+	'post_type' => 'product',
+	'posts_per_page' => -1,
+	'post__in' => $crosssells
+);
+$products = new WP_Query( $args );
+if( $products->have_posts() ) :
+	echo '<div class="cross-sells"><h2>Cross-Sells Products</h2>';
+	woocommerce_product_loop_start();
+	while ( $products->have_posts() ) : $products->the_post();
+		wc_get_template_part( 'content', 'product' );
+	endwhile; // end of the loop.
+	woocommerce_product_loop_end();
+	echo '</div>';
+endif;
+wp_reset_query();
+
+
 $related = ob_get_clean();
 if ( $related ) {
 	$tabs['related'] = [
