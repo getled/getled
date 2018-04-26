@@ -413,7 +413,6 @@ Roboto Include
 	#tab-title-upsells {
 		float: right;
 	}
-
 	/***************************************************
 	WC Product Tabs - Active
 	****************************************************/
@@ -471,12 +470,16 @@ Roboto Include
 		margin-bottom: 0;
 	}
 
-	/* Hide Mobile Cart on far right */
+}
 
-	.widget.woocommerce.widget_shopping_cart {
-		display: none;
+/* Hide Mobile Cart on far right */
+.widget.woocommerce.widget_shopping_cart {
+	display: none;
+	ul:hover & {
+		display: block;
 	}
 }
+
 /***************************************************
             MOBILE STYLES
 ****************************************************/
@@ -605,6 +608,10 @@ Roboto Include
 			max-height: 500px;
 			overflow: auto;
 			-webkit-overflow-scrolling: touch;
+		}
+		.woocommerce-product-gallery .gallery-nav-next,
+		.woocommerce-product-gallery .gallery-nav-prev {
+			display:none;
 		}
 	}
 }
