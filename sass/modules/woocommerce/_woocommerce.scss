@@ -269,6 +269,8 @@
 
 .widget_shopping_cart {
 	.widget_shopping_cart_content .product_list_widget .mini_cart_item {
+		font-size: 18px;
+		line-height: 1.1;
 		img {
 			width: 100px !important;
 			float: left;
@@ -278,6 +280,7 @@
 		a {
 			padding: 0;
 			border-bottom: 0;
+			margin-bottom: .5em;
 		}
 	}
 	.product_list_widget .mini_cart_item {
@@ -288,21 +291,45 @@
 			font-family: "Source Sans Pro",HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
 			line-height: 1.5em;
 		}
+
+		.variation + .quantity {
+			margin-top: 0.7em;
+		}
+
 		.quantity {
 			color: #444;
 			font-weight: 400;
 			font-size: 14px;
 			font-family: "Source Sans Pro",HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
 			line-height: 1em;
+			display: block;
+			margin-top: 2.5em;
 		}
 	}
 }
 
-/* Item Title */
-
-/* Item Quantity */
-
-/* Item Remove */
+#site-header-cart li {
+	.variation {
+		line-height: 1;
+	}
+	dl {
+		* {
+			clear: none;
+			font-size: 14px;
+			font-weight: 300;
+			line-height: 1;
+			margin: 0;
+			display: inline;
+			float: none;
+		}
+		dt {
+			margin: 0 .3em 0 0;
+		}
+		&::after {
+			display: none;
+		}
+	}
+}
 
 #site-header-cart .product_list_widget .mini_cart_item {
 	a.remove.remove_from_cart_button {
