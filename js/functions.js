@@ -51,6 +51,18 @@ jQuery( function ( $ ) {
 		$( this ).closest( '.getled-dialog' ).fadeOut( 'fast' );
 	} );
 
+	var
+		$title = $( 'h1.product_title.entry-title' ),
+		productTitle = $title.text();
+
+	$b.find( 'table.variations' ).find( 'tr:first-of-type' ).find( 'select' ).change( function () {
+		var val = this.value;
+		if ( val ) {
+			val = $( this ).find( 'option[value="' + val + '"]' ).text();
+			$title.text( productTitle + ' - ' + val );
+		}
+	} ).change();
+
 	$( document.body )
 		.on( 'added_to_cart removed_from_cart', function( ev, a ) {
 			var $html = $( a['div.widget_shopping_cart_content'] );

@@ -108,6 +108,9 @@ Roboto Include
 			.product_meta {
 				order: 7;
 			}
+			.woocommerce-variation-availability {
+				display: none;
+			}
 		}
 	}
 
@@ -125,7 +128,6 @@ Roboto Include
 		font-size: 28px;
 		font-family: 'Roboto', sans-serif;
 		text-align: center;
-		text-transform: lowercase;
 		letter-spacing: 0.5px;
 		font-weight: 600;
 	}
@@ -326,6 +328,10 @@ Roboto Include
 		}
 	}
 
+	.woocommerce-variation-price {
+		text-align: center;
+	}
+
 	.product_meta {
 		text-align: center;
 		a, .sku_wrapper, .posted_in {
@@ -469,7 +475,6 @@ Roboto Include
 	.woocommerce-page ul.products li.product {
 		margin-bottom: 0;
 	}
-
 }
 
 /* Hide Mobile Cart on far right */
