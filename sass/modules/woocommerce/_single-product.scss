@@ -4,14 +4,6 @@ Roboto Include
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 
 .getled {
-	/***************************************************
-	Site Width
-	****************************************************/
-
-	#content {
-		max-width: 1200px;
-		margin: auto;
-	}
 
 	/***************************************************
 	Breadcrumbs
@@ -65,7 +57,7 @@ Roboto Include
 
 	/* Items */
 
-	&.woocommerce .product .images .flex-control-nav.flex-control-thumbs li {
+	&.single-product .product .images .flex-control-nav.flex-control-thumbs li {
 		width: 100%;
 		margin-bottom: 20px;
 	}
@@ -83,7 +75,7 @@ Roboto Include
 	Summary (Product Details Column)
 	****************************************************/
 
-	&.woocommerce {
+	&.single-product {
 		.summary {
 			margin-top: 20px;
 		}
@@ -136,7 +128,7 @@ Roboto Include
 	Hide Reviews & Rating
 	****************************************************/
 
-	&.woocommerce .summary .woocommerce-product-rating {
+	&.single-product .summary .woocommerce-product-rating {
 		display: none;
 	}
 
@@ -153,7 +145,7 @@ Roboto Include
 
 	/* Old price */
 
-	&.woocommerce .product .summary .price del {
+	&.single-product .product .summary .price del {
 		opacity: 1;
 		color: #555555;
 		font-size: 16px;
@@ -230,7 +222,7 @@ Roboto Include
 		}
 	}
 
-	&.woocommerce {
+	&.single-product {
 		.summary .cart {
 				margin-bottom: 10px;
 			.variations tbody tr {
@@ -306,11 +298,11 @@ Roboto Include
 		}
 	}
 
-	&.woocommerce .quantity .qty {
+	&.single-product .quantity .qty {
 		display: none !important;
 	}
 
-	&.woocommerce .single_add_to_cart_button.button.alt {
+	&.single-product .single_add_to_cart_button.button.alt {
 		color: #d0d0d0;
 		font-size: 18px;
 		font-weight: 300;
@@ -390,7 +382,7 @@ Roboto Include
 	WC Product Tabs Wrapper
 	****************************************************/
 
-	&.woocommerce .product .wc-tabs-wrapper {
+	&.single-product .product .wc-tabs-wrapper {
 		background: #f1f1f1;
 		&.woocommerce-tabs .wc-tabs {
 			padding: 0;
@@ -423,7 +415,7 @@ Roboto Include
 	WC Product Tabs - Active
 	****************************************************/
 
-	&.woocommerce {
+	&.single-product {
 		.product .wc-tabs-wrapper {
 			.wc-tabs {
 				.upsells_tab.active, .related_tab.active {
@@ -490,7 +482,7 @@ Roboto Include
 ****************************************************/
 @media only screen and (max-width: 768px) {
 	.getled {
-		&.woocommerce ul.products[class*=columns-] li.product, .woocommerce-page ul.products[class*=columns-] li.product {
+		&.single-product ul.products[class*=columns-] li.product, .woocommerce-page ul.products[class*=columns-] li.product {
 			width:200px;
 		}
 		/***************************************************
@@ -502,7 +494,7 @@ Roboto Include
 		/***************************************************
 		Product Image Gallery
 		****************************************************/
-		&.woocommerce .product .woocommerce-product-gallery {
+		&.single-product .product .woocommerce-product-gallery {
 			position: relative;
 			margin-bottom: 10px !important;
 		}
@@ -519,7 +511,7 @@ Roboto Include
 		/***************************************************
 		Summary (Product Details Column)
 		****************************************************/
-		&.woocommerce .product .summary {
+		&.single-product .product .summary {
 			padding: 0 20px 20px 20px;
 			margin-top: 0;
 			margin-bottom: 0 !important;
@@ -552,7 +544,7 @@ Roboto Include
 		/***************************************************
 		Price
 		****************************************************/
-		&.woocommerce .product .summary .price {
+		&.single-product .product .summary .price {
 			margin-bottom: 0;
 			del {
 				font-size: 14px;
@@ -566,7 +558,7 @@ Roboto Include
 		/***************************************************
 		Variations - Labels & Value
 		****************************************************/
-		&.woocommerce {
+		&.single-product {
 			div.product form.cart .variations tbody tr td {
 				&.label {
 					font-family: "Roboto";

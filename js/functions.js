@@ -1,10 +1,10 @@
 jQuery( function ( $ ) {
 	var $b = $( 'body' );
-	getled = {
+	Getled = {
 		removeMiniCartItem: function ( tis ) {
-			if ( getled.$removeMiniCartItem ) {
-				getled.$removeMiniCartItem.click();
-				getled.$removeMiniCartItem = null;
+			if ( Getled.$removeMiniCartItem ) {
+				Getled.$removeMiniCartItem.click();
+				Getled.$removeMiniCartItem = null;
 			}
 			$( tis ).closest( '.getled-dialog' ).fadeOut( 'fast' );
 		}
@@ -64,10 +64,18 @@ jQuery( function ( $ ) {
 	} ).change();
 
 	$( document.body )
-		.on( 'added_to_cart removed_from_cart', function( ev, a ) {
+		.on( 'added_to_cart removed_from_cart', function ( ev, a ) {
 			var $html = $( a['div.widget_shopping_cart_content'] );
-			$('#getled-header-cart-amount').html( $html.find( '#getled-min-cart-info' ).data( 'amount' ) )
-			$('#getled-header-cart-count').html( $html.find( '#getled-min-cart-info' ).data( 'count' ) )
+			$( '#getled-header-cart-amount' ).html( $html.find( '#getled-min-cart-info' ).data( 'amount' ) )
+			$( '#getled-header-cart-count' ).html( $html.find( '#getled-min-cart-info' ).data( 'count' ) )
 		} );
-} );
 
+	if ( getled.infiniteScroll ) {
+		$( '.site-main' ).jscroll( {
+			loadingHtml: '<div class="getled-loading"></div><h4 class="getled-loading-text">' + getled.i18n.loading + '...</h4>',
+			nextSelector: 'a.next',
+			contentSelector: '.scroll-wrap',
+			callback: function () {}
+		} );
+	}
+} );

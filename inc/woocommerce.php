@@ -20,6 +20,12 @@ class Getled_WooCommerce {
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 
+		remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
+		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
+
+		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+
 		add_action( 'woocommerce_single_product_summary', 'woocommerce_output_product_data_tabs', 16 );
 		add_action( 'woocommerce_after_single_product_summary', [ $this, 'related_products_tabs' ], 16 );
 		add_action( 'woocommerce_before_single_product_summary', [ $this, 'gallery_thumbs_nav_js' ], 25 );
@@ -68,7 +74,7 @@ class Getled_WooCommerce {
 			<p><?php _e( 'Are you sure you would like to remove this item from the shopping bag?', 'getled' ) ?></p>
 			<div class="getled-dialog-buttons">
 				<a class="button alt close">Cancel</a>
-				<a class="button" onclick="getled.removeMiniCartItem( this )">Okay</a>
+				<a class="button" onclick="Getled.removeMiniCartItem( this )">Okay</a>
 			</div>
 		</div>
 		<?php
