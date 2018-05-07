@@ -254,21 +254,21 @@ function getled_customize_register( $wp_customize ) {
 
 	// Background color 1,2,3
 
-	$topcolors[] = array(
+	$color_controls[] = array(
 		'slug'     => 'top_one_bg_color',
 		'default'  => '#C6F0ED',
 		'label'    => __( 'Promo 1  - Background Color', 'getledcustomizer' ),
 		'priority' => 40
 	);
 
-	$topcolors[] = array(
+	$color_controls[] = array(
 		'slug'     => 'top_two_bg_color',
 		'default'  => '#F3D0D2',
 		'label'    => __( 'Promo 2  - Background Color', 'getledcustomizer' ),
 		'priority' => 100
 	);
 
-	$topcolors [] = array(
+	$color_controls [] = array(
 		'slug'     => 'top_three_bg_color',
 		'default'  => '#FFFFFF',
 		'label'    => __( 'Promo 3  - Background Color', 'getledcustomizer' ),
@@ -277,21 +277,21 @@ function getled_customize_register( $wp_customize ) {
 
 	// Header colors 1,2,3
 
-	$topcolors[] = array(
+	$color_controls[] = array(
 		'slug'     => 'top_one_header_color',
 		'default'  => '#000000',
 		'label'    => __( 'Promo 1 - Header Text Color', 'getledcustomizer' ),
 		'priority' => 50
 	);
 
-	$topcolors[] = array(
+	$color_controls[] = array(
 		'slug'     => 'top_two_header_color',
 		'default'  => '#000000',
 		'label'    => __( 'Promo 2 - Header Text Color', 'getledcustomizer' ),
 		'priority' => 110
 	);
 
-	$topcolors[] = array(
+	$color_controls[] = array(
 		'slug'     => 'top_three_header_color',
 		'default'  => '#000000',
 		'label'    => __( 'Promo 3 - Header Text Color', 'getledcustomizer' ),
@@ -300,103 +300,83 @@ function getled_customize_register( $wp_customize ) {
 
 	// Text color 1,2,3
 
-	$topcolors[] = array(
+	$color_controls[] = array(
 		'slug'     => 'top_one_text_color',
 		'default'  => '#000000',
 		'label'    => __( 'Promo 1 - Paragraph Text Color', 'getledcustomizer' ),
 		'priority' => 60
 	);
 
-	$topcolors[] = array(
+	$color_controls[] = array(
 		'slug'     => 'top_two_text_color',
 		'default'  => '#000000',
 		'label'    => __( 'Promo 2 - Paragraph Text Color', 'getledcustomizer' ),
 		'priority' => 120
 	);
 
-	$topcolors[] = array(
+	$color_controls[] = array(
 		'slug'     => 'top_three_text_color',
 		'default'  => '#000000',
 		'label'    => __( 'Promo 3 - Paragraph Text Color', 'getledcustomizer' ),
 		'priority' => 180
 	);
 
-	// add settings and controls for each color
+	$color_controls[] = array(
+		'slug'     => 'product_category_description_bg',
+		'default'  => '#ffe7f4',
+		'section'  => 'getled_woocommerce',
+		'label'    => __( 'Product category description background', 'getledcustomizer' ),
+	);
 
-	foreach ( $topcolors as $topcolor ) {
+	$color_controls[] = array(
+		'slug'     => 'product_category_description_color',
+		'default'  => '#322',
+		'section'  => 'getled_woocommerce',
+		'label'    => __( 'Product category description font color', 'getledcustomizer' ),
+	);
 
-		// settings
-
-		$wp_customize->add_setting(
-			$topcolor['slug'], array(
-				'default' => $topcolor ['default'],
-				'type'    => 'option'
-			)
-		);
-
-		//controls
-
-		$wp_customize->add_control(
-			new WP_Customize_Color_Control(
-				$wp_customize,
-				$topcolor ['slug'],
-				array(
-					'label'    => $topcolor ['label'],
-					'section'  => 'top_promotions',
-					'settings' => $topcolor['slug'],
-					'priority' => $topcolor ['priority']
-				)
-			) );
-
-	}
-
-	$shopping_cart[] = array(
+	$color_controls[] = array(
 		'slug'     => 'cart_text_color',
 		'default'  => '#000000',
 		'label'    => __( 'Cart text color', 'getledcustomizer' ),
+		'section'  => 'shopping_cart',
 		'priority' => 120
 	);
 
-	$shopping_cart[] = array(
+	$color_controls[] = array(
 		'slug'     => 'cart_dd_text_color',
 		'default'  => '#000000',
 		'label'    => __( 'Drop down text color', 'getledcustomizer' ),
+		'section'  => 'shopping_cart',
 		'priority' => 120
 	);
 
-	$shopping_cart[] = array(
+	$color_controls[] = array(
 		'slug'     => 'cart_dd_bg_color',
 		'default'  => '',
 		'label'    => __( 'Drop down background color', 'getledcustomizer' ),
+		'section'  => 'shopping_cart',
 		'priority' => 180
 	);
 
 	// add settings and controls for each color
 
-	foreach ( $shopping_cart as $topcolor ) {
+	foreach ( $color_controls as $control ) {
 
 		// settings
 
 		$wp_customize->add_setting(
-			$topcolor['slug'], array(
-				'default' => $topcolor ['default'],
+			$control['slug'], array(
+				'default' => $control ['default'],
 				'type'    => 'option'
 			)
 		);
 
 		//controls
-
-		$wp_customize->add_control(
-			new WP_Customize_Color_Control(
-				$wp_customize,
-				$topcolor ['slug'],
-				array(
-					'label'    => $topcolor ['label'],
-					'section'  => 'shopping_cart',
-					'settings' => $topcolor['slug'],
-					'priority' => $topcolor ['priority']
-				)
-			) );
+		if ( empty( $control['section'] ) ) {
+			$control['section'] = 'top_promotions';
+		}
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $control ['slug'], $control ) );
 
 	}
 
@@ -553,91 +533,6 @@ function getled_top_three_promo() {
 
 
 add_action( 'getled_under_header', 'getled_top_three_promo' );
-
-
-function getled_add_colors_top_three() {
-
-	//define background colors
-	$colortop_bg1 = get_option( 'top_one_bg_color' );
-	$colortop_bg2 = get_option( 'top_two_bg_color' );
-	$colortop_bg3 = get_option( 'top_three_bg_color' );
-	//define header text colors
-	$colortop_header1 = get_option( 'top_one_header_color' );
-	$colortop_header2 = get_option( 'top_two_header_color' );
-	$colortop_header3 = get_option( 'top_three_header_color' );
-	//define p text settings
-	$colortop_text1 = get_option( 'top_one_text_color' );
-	$colortop_text2 = get_option( 'top_two_text_color' );
-	$colortop_text3 = get_option( 'top_three_text_color' );
-
-	$cart_text_color    = get_option( 'cart_text_color', '' );
-	$cart_dd_text_color = get_option( 'cart_dd_text_color', '' );
-	$cart_dd_bg_color   = get_option( 'cart_dd_bg_color', '' );
-
-	//add classes
-
-	?>
-
-	<style>
-		.topthree .first {
-			background-color: <?php echo $colortop_bg1; ?>;
-		}
-
-		.topthree .second {
-			background-color: <?php echo $colortop_bg2; ?>;
-		}
-
-		.topthree .third {
-			background-color: <?php echo $colortop_bg3; ?>;
-		}
-
-		.topthree h3.top-promotion1 {
-			color: <?php echo $colortop_header1; ?>;
-		}
-
-		.topthree h3.top-promotion2 {
-			color: <?php echo $colortop_header2; ?>;
-		}
-
-		.topthree h3.top-promotion3 {
-			color: <?php echo $colortop_header3; ?>;
-		}
-
-		p.top-promo1-text {
-			color: <?php echo $colortop_text1; ?>;
-		}
-
-		p.top-promo2-text {
-			color: <?php echo $colortop_text2; ?>;
-		}
-
-		p.top-promo3-text {
-			color: <?php echo $colortop_text3; ?>;
-		}
-
-		a.cart-contents, .site-header-cart .cart-contents:after {
-			color: <?php echo $cart_text_color; ?>;
-		}
-
-		.site-header-cart .cart-contents .count {
-			background-color: <?php echo $cart_text_color; ?>;
-		}
-
-		#site-header-cart .total *, #site-header-cart .product_list_widget * {
-			color: <?php echo $cart_dd_text_color; ?>;
-		}
-
-		#site-header-cart .widget_shopping_cart {
-			background: <?php echo $cart_dd_bg_color; ?>;
-		}
-	</style>
-
-	<?php
-
-}
-
-add_action( 'wp_head', 'getled_add_colors_top_three' );
-
 
 /* customier option */
 add_action( 'customize_register', 'my_theme_options' );
@@ -822,6 +717,66 @@ function my_dynamic_css() {
 		ul#primary-menu li.menu-item:hover {
 			background: <?php echo get_theme_mod('getled_menu_bg_color_hover'); ?>
 		}
+		<?php getled_custom_colors(); ?>
 	</style>
 	<?php
+}
+
+
+function getled_custom_colors() {
+
+	//define background colors
+	$colortop_bg1 = get_option( 'top_one_bg_color' );
+	$colortop_bg2 = get_option( 'top_two_bg_color' );
+	$colortop_bg3 = get_option( 'top_three_bg_color' );
+	//define header text colors
+	$colortop_header1 = get_option( 'top_one_header_color' );
+	$colortop_header2 = get_option( 'top_two_header_color' );
+	$colortop_header3 = get_option( 'top_three_header_color' );
+	//define p text settings
+	$colortop_text1 = get_option( 'top_one_text_color' );
+	$colortop_text2 = get_option( 'top_two_text_color' );
+	$colortop_text3 = get_option( 'top_three_text_color' );
+
+	$cart_text_color    = get_option( 'cart_text_color', '' );
+	$cart_dd_text_color = get_option( 'cart_dd_text_color', '' );
+	$cart_dd_bg_color   = get_option( 'cart_dd_bg_color', '' );
+
+	//add classes
+
+	$prod_cat_desc_bg = get_option( 'product_category_description_bg', '#ffe7f4' );
+	$prod_cat_desc_color = get_option( 'product_category_description_color', '#322' );
+	?>
+	.topthree .first { background-color: <?php echo $colortop_bg1; ?> }
+
+	.topthree .second { background-color: <?php echo $colortop_bg2; ?> }
+
+	.topthree .third { background-color: <?php echo $colortop_bg3; ?> }
+
+	.topthree h3.top-promotion1 { color: <?php echo $colortop_header1; ?> }
+
+	.topthree h3.top-promotion2 { color: <?php echo $colortop_header2; ?> }
+
+	.topthree h3.top-promotion3 { color: <?php echo $colortop_header3; ?> }
+
+	p.top-promo1-text { color: <?php echo $colortop_text1; ?> }
+
+	p.top-promo2-text { color: <?php echo $colortop_text2; ?> }
+
+	p.top-promo3-text { color: <?php echo $colortop_text3; ?> }
+
+	a.cart-contents, .site-header-cart .cart-contents:after { color: <?php echo $cart_text_color; ?> }
+
+	.site-header-cart .cart-contents .count { background-color: <?php echo $cart_text_color; ?> }
+
+	#site-header-cart .total *, #site-header-cart .product_list_widget * { color: <?php echo $cart_dd_text_color; ?> }
+
+	#site-header-cart .widget_shopping_cart { background: <?php echo $cart_dd_bg_color; ?> }
+
+	.woocommerce-products-header {
+	background-color:<?php echo $prod_cat_desc_bg ?>;
+	color:<?php echo $prod_cat_desc_color ?>;
+	}
+	<?php
+
 }
