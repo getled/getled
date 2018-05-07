@@ -233,11 +233,27 @@ function getled_scripts() {
 
 	wp_enqueue_script( 'getled-functions', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20170505', true );
 
+	$getled_settings = [
+		'i18n' => [
+			'loading' => __( 'Loading', 'getled' ),
+		],
+	];
+
 	wp_enqueue_script( 'getled-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	if ( is_product_taxonomy() || is_shop() ) {
+		add_action( 'woocommerce_before_shop_loop', function () { echo '<div class="scroll-wrap">'; }, 7 );
+		add_action( 'woocommerce_after_shop_loop', function () { echo '</div>'; }, 7 );
+		wp_enqueue_script( 'jscroll', get_template_directory_uri() . '/js/jscroll.min.js', array( 'jquery' ) );
+		$getled_settings['infiniteScroll'] = 1;
+	}
+
+	wp_localize_script( 'getled-functions', 'getled', $getled_settings );
+
 }
 
 add_action( 'wp_enqueue_scripts', 'getled_scripts' );
