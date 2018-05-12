@@ -302,14 +302,15 @@ require get_template_directory() . '/inc/jetpack.php';
 require get_template_directory() . '/inc/getledmenu.php';
 
 /*
- * Getled menu functions file
+ * WooCommerce customizations file
  */
 require get_template_directory() . '/inc/woocommerce.php';
 
 /*
- * Getled menu functions file
+ * Variant swatches
  */
 require get_template_directory() . '/ext/variant-swatches/variant-swatches.php';
+
 
 // getled hooks 
 // getled_under_header 

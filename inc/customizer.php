@@ -773,7 +773,9 @@ function getled_custom_colors() {
 
 	#site-header-cart .widget_shopping_cart { background: <?php echo $cart_dd_bg_color; ?> }
 
-	.woocommerce-products-header {
+	#getled-filter-price .widget_price_filter .ui-slider .ui-slider-range,
+	.tax-product_cat .woocommerce-products-header,
+	a.getled-filter-link.active {
 	background-color:<?php echo $prod_cat_desc_bg ?>;
 	color:<?php echo $prod_cat_desc_color ?>;
 	}

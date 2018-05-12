@@ -4,6 +4,57 @@ class Getled_WooCommerce {
 	/** @var self Instance */
 	private static $_instance;
 
+	/**
+	 * Returns instance of current calss
+	 * @return self Instance
+	 */
+	public static function instance() {
+		if ( ! self::$_instance ) {
+			self::$_instance = new self();
+		}
+
+		return self::$_instance;
+	}
+
+	public static function filter( $label, $qry_param, $inner_elements ) {
+		?>
+			<div class="getled-filter" id="getled-filter-<?php echo $qry_param ?>">
+				<a href="#" class="label"><?php echo $label ?></a>
+				<div class="getled-filter-content">
+						<?php
+						if ( is_array( $inner_elements ) ) {
+							echo '<ul class="wpf_links wpf_column_horizontal">';
+							foreach ( $inner_elements as $val => $lbl ) {
+								Getled_WooCommerce::filter_item( $lbl, $qry_param, $val );
+							}
+							echo '</ul>';
+						} else {
+							echo $inner_elements;
+						}
+						?>
+				</div>
+			</div>
+		<?php
+	}
+
+	public static function filter_item( $label, $qry_param, $val = null, $class = '' ) {
+		if ( null === $val ) {
+			$url = $qry_param;
+		} else {
+			if ( filter_input( INPUT_GET, $qry_param ) == $val ) {
+				$class .= ' active';
+			}
+			$url = add_query_arg( $qry_param, $val );
+		}
+		?>
+		<li>
+			<a class="getled-filter-link <?php echo $class ?>" href="<?php echo $url; ?>">
+				<span><?php echo $label ?></span>
+			</a>
+		</li>
+		<?php
+	}
+
 	public function __construct() {
 
 		// Cart actions
@@ -20,27 +71,23 @@ class Getled_WooCommerce {
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 
+		// Shop
 		remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
 		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
-
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 
+		// Single product
 		add_action( 'woocommerce_single_product_summary', 'woocommerce_output_product_data_tabs', 16 );
 		add_action( 'woocommerce_after_single_product_summary', [ $this, 'related_products_tabs' ], 16 );
 		add_action( 'woocommerce_before_single_product_summary', [ $this, 'gallery_thumbs_nav_js' ], 25 );
-	}
 
-	/**
-	 * Returns instance of current calss
-	 * @return self Instance
-	 */
-	public static function instance() {
-		if ( ! self::$_instance ) {
-			self::$_instance = new self();
-		}
+		add_filter( 'woocommerce_product_add_to_cart_text', array( $this, 'add_to_cart_text' ), 10, 2 );
+		add_filter( 'woocommerce_product_single_add_to_cart_text', array( $this, 'add_to_cart_text' ), 10, 2 );
 
-		return self::$_instance;
+		// Product filters
+		add_filter( 'getled_mobile_accordion', [ $this, 'getled_mobile_accordion' ] );
+		add_action( 'woocommerce_product_query', [ $this, 'apply_filters_on_query' ] );
 	}
 
 	function before_mini_cart_contents() {
@@ -171,6 +218,67 @@ class Getled_WooCommerce {
 			} );
 		</script>
 		<?php
+	}
+
+	/**
+	 * @param string $a2c
+	 * @param WC_Product $product
+	 * @return string
+	 */
+	public function add_to_cart_text( $a2c, $product ) {
+		if ( $product->get_type() == 'simple' ) {
+			if ( $product->is_purchasable() && $product->is_in_stock() ) {
+				$a2c = __( 'Add to basket', 'getled' );
+			}
+		}
+
+		return $a2c;
+	}
+
+	/**
+	 * @param WP_Query $qry
+	 */
+	public function apply_filters_on_query( $qry ) {
+		if ( $qry->is_main_query() ) {
+			if ( ! empty( $_GET['pa_color'] ) ) {
+				$tax_query   = $qry->get( 'tax_query' );
+
+				if ( is_array( $tax_query ) )
+				$tax_query[] = [
+					'taxonomy' => 'pa_color',
+					'field'    => 'term_id',
+					'terms'    => [ $_GET['pa_color'] ],
+				];
+				$qry->set( 'tax_query', $tax_query );
+			}
+		}
+	}
+
+	public function getled_mobile_accordion( $sections ) {
+		ob_start();
+		do_action( 'woocommerce_archive_description' );
+		$cat_info = ob_get_clean();
+
+		if ( $cat_info ) {
+			$sections['products-header'] = [
+				'title'   => woocommerce_page_title( false ),
+				'content' => $cat_info,
+			];
+		}
+
+		$sections['products-filter'] = [
+			'title'    => __( 'Product filters' ),
+			'class'    => 'getled-panel-open',
+			'callback' => [ $this, 'product_filters' ],
+		];
+		return $sections;
+	}
+
+	public function product_filters() {
+//		ob_start();
+		wc_get_template( 'archive-product-filters.php' );
+
+//		return ob_get_clean();
 	}
 }
 
