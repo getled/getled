@@ -11,13 +11,13 @@ $args = array(
 );
 $products = new WP_Query( $args );
 if( $products->have_posts() ) :
-	echo '<div class="cross-sells"><h2>Cross-Sells Products</h2>';
+	echo '<section class="related products"><h2>Cross-Sells Products</h2>';
 	woocommerce_product_loop_start();
 	while ( $products->have_posts() ) : $products->the_post();
 		wc_get_template_part( 'content', 'product' );
 	endwhile; // end of the loop.
 	woocommerce_product_loop_end();
-	echo '</div>';
+	echo '</section>';
 endif;
 wp_reset_query();
 
