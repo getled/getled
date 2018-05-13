@@ -121,9 +121,14 @@
 		}
 		&:focus {
 			outline: none;
-			&:after {
+		}
+	}
+	.getled-filter-open {
+		.label:after {
 				content: "\f077";
-			}
+		}
+		.getled-filter-content, .getled-filter-content {
+			display: block;
 		}
 	}
 
@@ -148,9 +153,6 @@
 		padding: 0.3em .7em;
 	}
 
-	.label:focus + .getled-filter-content, .getled-filter-content:hover {
-		display: block;
-	}
 	#getled-filter-price .widget_price_filter {
 		padding: 0;
 		margin: 0;
