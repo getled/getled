@@ -1,0 +1,84 @@
+#getled-filters {
+	.getled-filter {
+		float: left;
+		border: 1px solid #ccc;
+		width: 22.75%;
+		margin: 0 3% 3% 0;
+		position: relative;
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+
+	.getled-filter-content, .label {
+		padding: .5em .7em;
+		display: block;
+		text-decoration: none;
+	}
+
+	.label {
+		line-height: 30px;
+		&:after {
+			font: normal normal normal 14px/30px FontAwesome;
+			font-size: inherit;
+			text-rendering: auto;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			float: right;
+			content: "\f078";
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+	.getled-filter-open {
+		.label:after {
+			content: "\f077";
+		}
+		.getled-filter-content, .getled-filter-content {
+			display: block;
+		}
+	}
+
+	.getled-filter-content {
+		position: absolute;
+		top: calc(100% - 1px);
+		background: #fff;
+		z-index: 7;
+		left: -1px;
+		right: -1px;
+		border: 1px solid #ccc;
+		border-top: none;
+		display: none;
+	}
+
+	.getled-filter-content ul {
+		margin: 0 -.7em -.5em;
+		padding: 0;
+		overflow: auto;
+		max-height: 300px;
+	}
+
+	.getled-filter-link {
+		padding: 0.3em .7em;
+	}
+
+	#getled-filter-price .widget_price_filter {
+		padding: 0;
+		margin: 0;
+		.ui-slider-handle {
+			background: #fff;
+			border: 1px solid #aaa;
+			height: 14px;
+			width: 14px;
+			top: -5px;
+			margin-left: -7px;
+		}
+		.ui-widget-content {
+			height: 4px;
+			background-color: #888;
+			margin: .7em .2em 1em;
+		}
+		.ui-slider-range {}
+	}
+}
