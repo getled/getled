@@ -28,3 +28,15 @@ object {
 ## Galleries
 --------------------------------------------------------------*/
 @import "galleries";
+
+@media (min-width: 769px) {
+	.mobile-only {
+		display: none;
+	}
+}
+
+@media (max-width: 768px) {
+	.desktop-only {
+		display: none;
+	}
+}

@@ -1,0 +1,87 @@
+.getled-accordion,
+.getled-accordions {
+	margin: 0;
+	display: block;
+	clear: both;
+}
+
+.getled-accordions {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+	margin-bottom: 70px;
+	padding: 0;
+}
+
+.getled-accordion > a,
+.getled-accordion-panel {
+	border-top: 1px solid rgba(0, 0, 0, 0.25);
+	padding: 0.7em 1em;
+	margin: 0;
+}
+
+.getled-accordion > a,
+.getled-accordion > a:focus {
+	display: block;
+	line-height: 25px;
+	color: rgba(0, 0, 0, 0.34);
+	outline: none;
+	text-align: center;
+}
+
+.getled-accordion-icon {
+	float: right;
+}
+
+.getled-accordion-minus {
+	display: none;
+	line-height: 0.9;
+}
+
+.getled-accordion-active .getled-accordion-minus {
+	display: block;
+}
+
+.getled-accordion-active .getled-accordion-plus {
+	display: none;
+}
+
+.getled-accordions-wrapper .getled-accordions {
+	margin-bottom: 0;
+	display: flex;
+	flex-flow: column;
+	width: 100%;
+	.description_accordion {
+		order: 1;
+	}
+	.delivery_info_accordion {
+		order: 2;
+	}
+	.returns_info_accordion {
+		order: 3;
+	}
+	.getled-accordion {
+		a {
+			font-size: 14px;
+			padding: 5px 0 2px 5px;
+			font-weight: 500;
+			text-align: left;
+			font-family: "Roboto";
+			span svg {
+				color: #ee78ba;
+				font-size: 18px;
+				position: relative;
+				top: 2px;
+				margin-right: 7px;
+			}
+		}
+	}
+	.getled-accordion-panel {
+		font-size: 14px;
+		padding: 20px 0 17px;
+		font-weight: 400;
+		text-align: left;
+		font-family: "Roboto";
+		h2 {
+			display: none;
+		}
+	}
+}

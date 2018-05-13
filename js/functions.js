@@ -78,4 +78,45 @@ jQuery( function ( $ ) {
 			callback: function () {}
 		} );
 	}
+
+	// region Accordion
+	var
+		$lis = $( 'li.getled-accordion' ),
+		$open = $lis.filter( '.getled-panel-open' );
+	$lis.not( $open ).children( '.getled-accordion-panel' ).hide();
+
+	$lis.children( 'a' ).click( function ( e ) {
+		e.preventDefault();
+		var $t = $( this );
+
+		$t.parent().children( '.getled-accordion-panel' ).slideUp();
+
+		if ( $t.hasClass( 'getled-accordion-active' ) ) {
+			return $t.removeClass( 'getled-accordion-active' );
+		}
+
+		$t.parent().children( 'a.getled-accordion-active' ).removeClass( 'getled-accordion-active' );
+
+		$t.addClass( 'getled-accordion-active' );
+		$t.siblings( '.getled-accordion-panel' ).slideDown();
+	} );
+	$open.children( 'a' ).addClass( 'getled-accordion-active' );
+
+	// Reviews link in product info
+	/*
+	$( '.woocommerce-review-link' ).click( function ( e ) {
+		e.preventDefault();
+		var id = $( this ).attr( 'href' ),
+			$a = $lis.children( 'a[href="' + id + '"]' );
+		$a.click();
+		$( 'html, body' ).animate( {
+			scrollTop: $a.offset().top - 124
+		}, 700 );
+	} );
+	*/
+	// endregion Accordion
+
+	// region Product filters
+
+	// endregion Product filters
 } );

@@ -91,7 +91,7 @@ Roboto Include
 			.woocommerce-product-details__short-description {
 				order: 4;
 			}
-			.wc-accordions-wrapper {
+			.product-tabs.getled-accordions-wrapper {
 				order: 5;
 			}
 			.cart {
@@ -179,48 +179,6 @@ Roboto Include
 	/***************************************************
 	Accordion
 	****************************************************/
-
-	.wc-accordions-wrapper .wc-accordions {
-		margin-bottom: 0;
-		display: flex;
-		flex-flow: column;
-		width: 100%;
-		.description_accordion {
-			order: 1;
-		}
-		.delivery_info_accordion {
-			order: 2;
-		}
-		.returns_info_accordion {
-			order: 3;
-		}
-		.wc-accordion {
-			a {
-				font-size: 14px;
-				padding: 5px 0 2px 5px;
-				font-weight: 500;
-				text-align: left;
-				font-family: "Roboto";
-				span svg {
-					color: #ee78ba;
-					font-size: 18px;
-					position: relative;
-					top: 2px;
-					margin-right: 7px;
-				}
-			}
-			.wc-accordion-panel {
-				font-size: 14px;
-				padding: 20px 0 17px;
-				font-weight: 400;
-				text-align: left;
-				font-family: "Roboto";
-				h2 {
-					display: none;
-				}
-			}
-		}
-	}
 
 	&.single-product {
 		.summary .cart {
@@ -527,7 +485,7 @@ Roboto Include
 			.woocommerce-product-details__short-description {
 				order: 8;
 			}
-			.wc-accordions-wrapper {
+			.getled-accordions-wrapper {
 				order: 5;
 			}
 			.product_meta {

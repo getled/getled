@@ -72,7 +72,8 @@
 	}
 }
 
-.woocommerce-products-header {
+.tax-product_cat .woocommerce-products-header,
+.tax-product_tag .woocommerce-products-header {
 	margin: 1em 0;
 	padding: 1em 5%;
 	text-align: center;
@@ -85,6 +86,114 @@
 		font-weight: 300;
 		&:last-child {
 			margin-bottom: 0;
+		}
+	}
+}
+
+#getled-filters {
+	.getled-filter {
+		float: left;
+		border: 1px solid #ccc;
+		width: 22.75%;
+		margin: 0 3% 3% 0;
+		position: relative;
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+
+	.getled-filter-content, .label {
+		padding: .5em .7em;
+		display: block;
+		text-decoration: none;
+	}
+
+	.label {
+		line-height: 30px;
+		&:after {
+			font: normal normal normal 14px/30px FontAwesome;
+			font-size: inherit;
+			text-rendering: auto;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			float: right;
+			content: "\f078";
+		}
+		&:focus {
+			outline: none;
+			&:after {
+				content: "\f077";
+			}
+		}
+	}
+
+	.getled-filter-content {
+		position: absolute;
+		top: calc(100% - 1px);
+		background: #fff;
+		z-index: 7;
+		left: -1px;
+		right: -1px;
+		border: 1px solid #ccc;
+		border-top: none;
+		display: none;
+	}
+
+	.getled-filter-content ul {
+		padding: 0;
+	}
+
+	.getled-filter-link {
+		margin: 0 -.7em;
+		padding: 0.3em .7em;
+	}
+
+	.label:focus + .getled-filter-content, .getled-filter-content:hover {
+		display: block;
+	}
+	#getled-filter-price .widget_price_filter {
+		padding: 0;
+		margin: 0;
+		.ui-slider-handle {
+			background: #fff;
+			border: 1px solid #aaa;
+			height: 14px;
+			width: 14px;
+			top: -5px;
+			margin-left: -7px;
+		}
+		.ui-widget-content {
+			height: 4px;
+			background-color: #888;
+			margin: .7em .2em 1em;
+		}
+		.ui-slider-range {}
+	}
+}
+
+.getled-accordions-wrapper.product-archive-accordion {
+	margin: 1.6em 0;
+	.getled-accordion a {
+		text-transform: uppercase;
+	}
+	.getled-accordion-panel {
+		padding: 1.6em 1em;
+	}
+	#getled-filters .getled-filter:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
+@media (max-width: 768px) {
+	.woocommerce.archive ul.products li.product {
+		width: 48.5%;
+		&:nth-of-type(2n) {
+			margin-right: 0;
+		}
+	}
+	#getled-filters {
+		.getled-filter {
+			width: 100%;
 		}
 	}
 }
