@@ -266,19 +266,24 @@ class Getled_WooCommerce {
 			];
 		}
 
+		ob_start();
+		wc_get_template( 'archive-product-filters.php' );
+		$filter_html = ob_get_clean();
 		$sections['products-filter'] = [
 			'title'    => __( 'Product filters' ),
-			'class'    => 'getled-panel-open',
-			'callback' => [ $this, 'product_filters' ],
+			'content' => $filter_html,
 		];
+
+		if ( $this->filters_applied() ) {
+			$sections['products-filter']['class'] = 'getled-panel-open';
+		}
 		return $sections;
 	}
 
-	public function product_filters() {
-//		ob_start();
-		wc_get_template( 'archive-product-filters.php' );
-
-//		return ob_get_clean();
+	private function filters_applied() {
+		return
+			isset( $_GET['min_price'] ) || isset( $_GET['orderby'] ) ||
+			isset( $_GET['max_price'] ) || isset( $_GET['pa_color'] );
 	}
 }
 

@@ -102,21 +102,13 @@ jQuery( function ( $ ) {
 	} );
 	$open.children( 'a' ).addClass( 'getled-accordion-active' );
 
-	// Reviews link in product info
-	/*
-	$( '.woocommerce-review-link' ).click( function ( e ) {
-		e.preventDefault();
-		var id = $( this ).attr( 'href' ),
-			$a = $lis.children( 'a[href="' + id + '"]' );
-		$a.click();
-		$( 'html, body' ).animate( {
-			scrollTop: $a.offset().top - 124
-		}, 700 );
-	} );
-	*/
 	// endregion Accordion
 
 	// region Product filters
-
+	var
+		$filters = $( '.getled-filter' );
+	$filters.on( 'click', '.label', function() {
+		$( this ).closest( '.getled-filter' ).toggleClass( 'getled-filter-open' );
+	} )
 	// endregion Product filters
 } );
