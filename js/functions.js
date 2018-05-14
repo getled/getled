@@ -31,7 +31,7 @@ jQuery( function ( $ ) {
 	if ( $headerCart.length ) {
 		$headerCart
 			.on( 'click', '.getled-remove-item', function () {
-				getled.$removeMiniCartItem = $( this ).siblings( '.remove_from_cart_button' );
+				Getled.$removeMiniCartItem = $( this ).siblings( '.remove_from_cart_button' );
 				$( '#remove-mini-cart-item' ).fadeIn( 'fast' );
 			} )
 			.on( 'click', '.scroll', function () {
