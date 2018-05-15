@@ -46,22 +46,6 @@
 		font-size: 30px;
 		line-height: 0.5em;
 	}
-	.count {
-		color: white;
-		font-size: 0;
-		display: inline-block;
-		position: absolute;
-		background: #333333;
-		opacity: 1;
-		left: 6px;
-		bottom: 6px;
-		&:first-letter {
-			font-size: 14px !important;
-			font-weight: 600;
-			line-height: 1em;
-			padding: 0 6px;
-		}
-	}
 	.amount {
 		float: right;
 		margin-left: 10px;
@@ -198,7 +182,7 @@
 	.count {
 		color: white;
 		font-family: "Source Sans Pro",HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-		display: inline-block;
+		display: block;
 		position: absolute;
 		background: #444;
 		opacity: 1;
@@ -206,7 +190,9 @@
 		bottom: 3px;
 		font-size: 14px;
 		font-weight: 600;
-		line-height: 1em;
+		line-height: 1;
+		width: 20px;
+		text-align: center;
 	}
 	.amount {
 		float: right;
