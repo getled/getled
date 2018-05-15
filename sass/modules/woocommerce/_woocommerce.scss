@@ -329,8 +329,11 @@
 		color: #999 !important;
 		font-size: 30px;
 		font-weight: 500;
-		line-height: 25px;
 		padding: 0;
+		line-height: 34px;
+		width: 34px;
+		text-align: center;
+		margin: -7px;
 		&:hover {
 			background: transparent;
 			border-bottom: 0;
