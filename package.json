@@ -1,0 +1,29 @@
+{
+  "name": "getled",
+  "version": "1.0.0",
+  "description": "Hi. I'm getled a theme that was started using the starter theme called `_s`, or `underscores`, if you like.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^8.5.0",
+    "browser-sync": "^2.24.4",
+    "gulp": "^3.9.1",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-sass": "^4.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shramee/getled.git"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/shramee/getled/issues"
+  },
+  "homepage": "https://github.com/shramee/getled#readme"
+}
