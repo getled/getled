@@ -17,7 +17,6 @@ class woocommerce_svi_admin {
 
         add_action('admin_enqueue_scripts', array($this, 'load_admin_scripts'), 150);
         add_filter((is_multisite() ? 'network_admin_' : '') . 'plugin_action_links', array($this, 'plugin_action_links'), 10, 2);
-        include_once( 'admin/admin-init.php' );
         add_filter('attachment_fields_to_edit', array($this, 'woo_svi_field'), 10, 2);
         add_filter('attachment_fields_to_save', array($this, 'woo_svi_field_save'), 10, 2);
 
