@@ -33,7 +33,6 @@ if (!class_exists('woocommerce_svi')) {
             add_action('init', array($this, 'load_plugin_textdomain'));
 
             if ($this->is_woocommerce_active()) {
-                $woosvi_options = get_option('woosvi_options');
                 if (is_admin()) {
                     include_once( 'lib/class-svi-admin.php' );
                 } else {
