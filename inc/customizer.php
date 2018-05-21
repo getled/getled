@@ -701,20 +701,20 @@ function my_dynamic_css() {
 	<style type='text/css'>
 		@media screen and (max-width: 600px) {
 			/* for responsive menu */
-			ul#primary-menu, ul#primary-menu ul {
+			#primary-menu, #primary-menu ul {
 				background: <?php echo get_theme_mod('getled_menu_bg_color'); ?>;
 			}
 		}
 
-		ul#primary-menu li, ul#primary-menu li a {
+		#primary-menu, #primary-menu a {
 			color: <?php echo get_theme_mod('getled_menu_color') ?>;
 		}
 
-		ul#primary-menu li {
+		#primary-menu, #primary-menu > ul {
 			background: <?php echo get_theme_mod('getled_menu_bg_color'); ?>;
 		}
 
-		ul#primary-menu li.menu-item:hover {
+		#primary-menu li:hover {
 			background: <?php echo get_theme_mod('getled_menu_bg_color_hover'); ?>
 		}
 		<?php getled_custom_colors(); ?>

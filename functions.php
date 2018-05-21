@@ -311,6 +311,15 @@ require get_template_directory() . '/inc/woocommerce.php';
  */
 require get_template_directory() . '/ext/variant-swatches/variant-swatches.php';
 
+/*
+ * Smart variation images
+ */
+
+define( 'SVI_URL', get_template_directory_uri() . '/ext/svi/' );
+define( 'SVI_PATH', get_template_directory() . '/ext/svi/' );
+
+require SVI_PATH . 'svi.php';
+
 
 // getled hooks 
 // getled_under_header 

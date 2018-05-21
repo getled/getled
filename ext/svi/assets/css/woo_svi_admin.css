@@ -1,0 +1,8 @@
+li.show_if_variable a#svibulkbtn {
+    background-color: orange;
+    color: #fff;
+}
+li.show_if_variable.active a#svibulkbtn {
+    background-color: transparent;
+    color: inherit;
+}
