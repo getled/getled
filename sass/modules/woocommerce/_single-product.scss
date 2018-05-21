@@ -24,8 +24,6 @@ Roboto Include
 		}
 	}
 
-	/*Links*/
-
 	/***************************************************
 	Remove Sale Badge
 	****************************************************/
@@ -38,7 +36,7 @@ Roboto Include
 	Product Image Gallery
 	****************************************************/
 
-	.woocommerce-product-gallery {
+	#woosvi_strap {
 		position: relative;
 	}
 
@@ -46,9 +44,9 @@ Roboto Include
 	Product Image Gallery - Nav
 	****************************************************/
 
-	ol.flex-control-nav.flex-control-thumbs {
+	#woosvithumbs {
 		width: calc(25% - 10px);
-		overflow: auto;
+		overflow: hidden;
 		position: absolute;
 		top: 35px;
 		left: 0;
@@ -57,7 +55,7 @@ Roboto Include
 
 	/* Items */
 
-	&.single-product .product .images .flex-control-nav.flex-control-thumbs li {
+	#woosvi_strap #woosvithumbs .svithumbnails li {
 		width: 100%;
 		margin-bottom: 20px;
 	}
@@ -66,9 +64,10 @@ Roboto Include
 	Product Image Gallery - Active Image
 	****************************************************/
 
-	.flex-viewport {
+	#woosvimain {
 		width: calc(75% - 10px);
 		margin-left: calc(25% + 10px);
+        margin-bottom: 0;
 	}
 
 	/***************************************************
@@ -452,16 +451,16 @@ Roboto Include
 		/***************************************************
 		Product Image Gallery
 		****************************************************/
-		&.single-product .product .woocommerce-product-gallery {
+		&.single-product .product #woosvi_strap {
 			position: relative;
 			margin-bottom: 10px !important;
 		}
 		/* Product Image Gallery - Hide Nav */
-		ol.flex-control-nav.flex-control-thumbs {
+        #woosvi_strap #woosvithumbs {
 			display: none;
 		}
 		/* Active Image */
-		.flex-viewport {
+		#woosvimain {
 			width: 100%;
 			margin-left: 0;
 			-webkit-overflow-scrolling: touch;
@@ -564,8 +563,8 @@ Roboto Include
 			overflow: auto;
 			-webkit-overflow-scrolling: touch;
 		}
-		.woocommerce-product-gallery .gallery-nav-next,
-		.woocommerce-product-gallery .gallery-nav-prev {
+		#woosvi_strap .gallery-nav-next,
+		#woosvi_strap .gallery-nav-prev {
 			display:none;
 		}
 	}

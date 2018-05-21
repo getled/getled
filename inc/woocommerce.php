@@ -197,24 +197,7 @@ class Getled_WooCommerce {
 		</style>
 		<script>
 			jQuery( function ( $ ) {
-				setTimeout( function () {
-					var $thumbsWrap = $( '.flex-control-nav.flex-control-thumbs' );
-					if ( $thumbsWrap.find( 'li' ).length < 3 ) return;
-					$thumbsWrap
-						.after( '<div class="getled-gallery-nav gallery-nav-prev"><i class="fa fa-chevron-up"></i></div>' )
-						.after( '<div class="getled-gallery-nav gallery-nav-next"><i class="fa fa-chevron-down"></i></div>' )
-					$thumbsWrap.siblings( '.getled-gallery-nav' ).on( 'click', function () {
-						var
-							$t = $( this ),
-							scroll = $thumbsWrap.find( 'li' ).outerHeight() + 20;
-						if ( $t.attr( 'class' ).indexOf( 'prev' ) > - 1 ) {
-							scroll = '-=' + scroll;
-						} else {
-							scroll = '+=' + scroll;
-						}
-						$thumbsWrap.animate( {scrollTop: scroll}, 'fast' );
-					} );
-				}, 250 );
+
 			} );
 		</script>
 		<?php

@@ -5,7 +5,7 @@ header#masthead {
 padding-top: 15px;
 margin-top: 0;
 }
-ul#primary-menu {
+#primary-menu, #primary-menu > ul {
 padding-left: 0;
 }
 
@@ -45,14 +45,14 @@ padding-left: 0;
 	height: 100vh;
 }
 
-ul#primary-menu li {
+#primary-menu li {
     display: block;
     min-height: 40px;
     position: relative;
     border-bottom: 1px solid #fff;
 }
 
-ul#primary-menu li a{
+#primary-menu li a{
 	font-family:  "Oswald", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
         color: #000000; 
         line-height: 30px;
@@ -64,7 +64,7 @@ ul#primary-menu li a{
 	z-index: 175;
 }
 
-ul#primary-menu .sub-menu {
+#primary-menu .sub-menu {
 	display: block;
         height: 100%;
         left: 0;
@@ -80,11 +80,11 @@ ul#primary-menu .sub-menu {
         z-index: -1
 }
 
-ul#primary-menu, ul#primary-menu ul {
+#primary-menu, #primary-menu ul {
 	background: #fff;
 }
 
-ul#primary-menu li.fa::before {
+#primary-menu li.fa::before {
 	font-size: 18px;
 	line-height: 17px;
 	position: absolute;
@@ -92,15 +92,11 @@ ul#primary-menu li.fa::before {
 	top: 10px;
 }
 
-ul#primary-menu li.active {
-	background: #fff;
-}
-
-ul#primary-menu li > .sub-menu{
+#primary-menu li > .sub-menu{
     padding-top:103px;
 }
 
-ul#primary-menu li.active > .sub-menu {
+#primary-menu li.active > .sub-menu {
 	height: 100vh;
 	width: 308px;
         padding-top: 103px;
@@ -109,13 +105,13 @@ ul#primary-menu li.active > .sub-menu {
 }
 
 
-ul#primary-menu li.menuthum {
+#primary-menu li.menuthum {
 	background: #ffffff none repeat scroll 0 0;
 	padding: 20px;
 	text-align: center;
 }
 
-ul#primary-menu li.menuthum img {
+#primary-menu li.menuthum img {
 	max-width: 308px;
 	width: 93%;
 }
@@ -148,18 +144,18 @@ nav .menu-headermenu-container,
 
 /* 3rd leval submenu */
 
-ul#primary-menu .sub-menu .sub-menu{
+#primary-menu .sub-menu .sub-menu{
  -webkit-transform: translateX(0px) !important;
       transform: translateX(0px) !important;
 }
 
 
-ul#primary-menu .sub-menu.active .sub-menu.active{
+#primary-menu .sub-menu.active .sub-menu.active{
  -webkit-transform: translateX(308px) !important;
       transform: translateX(308px) !important;
 }
 
-ul#primary-menu .sub-menu{
+#primary-menu .sub-menu{
  overflow-x:hidden;
  display: inline-table;
 }
@@ -169,11 +165,11 @@ ul#primary-menu .sub-menu{
 @media screen and (max-width: 924px){
 		/* for responsive menu */
                 
-        ul#primary-menu .sub-menu.active .sub-menu.active {
+        #primary-menu .sub-menu.active .sub-menu.active {
             -webkit-transform: translateX(0) !important;
             transform: translateX(0) !important; 
         }        
-        ul#primary-menu li.menuthum{
+        #primary-menu li.menuthum{
             display: none;
         }
         #getled-navigation{
@@ -200,7 +196,7 @@ ul#primary-menu .sub-menu{
 		text-indent: 15px;
 	}
 
-	ul#primary-menu li.active > .sub-menu{
+	#primary-menu li.active > .sub-menu{
 		transform: translateX(0px) !important;
 		padding: 0;
 		position: static;
@@ -209,13 +205,13 @@ ul#primary-menu .sub-menu{
 		display: block;
 	}
         
-	ul#primary-menu li > ul.sub-menu{
+	#primary-menu li > ul.sub-menu{
 		transform: translateX(0px) !important;
 		display: none;
                 padding-top:0px !important;
 	}
         
-	ul#primary-menu > li{
+	#primary-menu > li{
 		text-indent: 10px;
 	}
         
