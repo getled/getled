@@ -123,13 +123,13 @@ WOOSVI.STARTS = function ( $, window, document, undefined ) {
 		setupThumbNavs: function() {
 			setTimeout( function () {
 //					var $thumbsWrap = $( '.flex-control-nav.flex-control-thumbs' );
-				var $thumbsWrap = $( '.svithumbnails' );
+				var $thumbsWrap = $( '#woosvithumbs' );
 				console.log( $thumbsWrap.find( 'li' ), $thumbsWrap.find( 'li' ).length );
 				if ( $thumbsWrap.find( 'li' ).length < 3 ) return;
 				$thumbsWrap
 					.after( '<div class="getled-gallery-nav gallery-nav-prev"><i class="fa fa-chevron-up"></i></div>' )
 					.after( '<div class="getled-gallery-nav gallery-nav-next"><i class="fa fa-chevron-down"></i></div>' )
-				$thumbsWrap.siblings( '.getled-gallery-nav' ).on( 'click', function () {
+				$thumbsWrap.siblings( '.getled-gallery-nav' ).off( 'click' ).on( 'click', function () {
 					var
 						$t = $( this ),
 						scroll = $thumbsWrap.find( 'li' ).outerHeight() + 20;
