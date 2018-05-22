@@ -81,11 +81,7 @@ class woocommerce_svi_frontend {
 
         $mid = get_post_thumbnail_id($post->ID);
 
-        if ($this->version_check())
-            $attachment_ids = $product->get_gallery_image_ids();
-        else
-            $attachment_ids = $product->get_gallery_attachment_ids();
-
+	      $attachment_ids = $product->get_gallery_image_ids();
         $gallery_images = array();
 
         $slug_main = $this->wpml_slug($slugs, $mid, $post->ID);
@@ -151,16 +147,6 @@ class woocommerce_svi_frontend {
         }
 
         return $gallery_images;
-    }
-
-    public static function version_check($version = '3.0') {
-        if (class_exists('WooCommerce')) {
-            global $woocommerce;
-            if (version_compare($woocommerce->version, $version, ">=")) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
