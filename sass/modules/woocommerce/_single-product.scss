@@ -457,12 +457,44 @@ Roboto Include
 		}
 		/* Product Image Gallery - Hide Nav */
         #woosvi_strap #woosvithumbs {
-			display: none;
+			top: 0;
+            width: 100%;
+            position: relative;
 		}
+        /* Product Image Gallery - Hide Nav */
+        #woosvithumbs .svithumbnails {
+            display: flex;
+            flex-flow: column;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            max-height: calc( 200px + 44vw );
+            overflow: auto;
+        }
+
+        #woosvithumbs .svithumbnails li {
+            display: inline-block;
+            margin: .25em;
+            margin-bottom: 0 !important;
+            width: 44% !important;
+            min-width: 200px;
+        }
+
+        #woosvithumbs .svithumbnails li img {
+            padding: 2px;
+        }
+        
+        
+        
+        
+        
+        
+        
+        
 		/* Active Image */
 		#woosvimain {
 			width: 100%;
 			margin-left: 0;
+            display: none;
 			-webkit-overflow-scrolling: touch;
 		}
 		/***************************************************
