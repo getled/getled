@@ -106,6 +106,7 @@ WOOSVI.STARTS = function ( $, window, document, undefined ) {
 			} else {
 				$container.find( 'div#woosvithumbs' ).prepend( '<ul class="svithumbnails' + cols + '"></ul>' );
 			}
+//			$container.append( '<i class="fa fa-close close-mobile-preview"></i>' );
 
 			if ( $hide_thumbs ) {
 				$container.find( 'div#woosvithumbs' ).hide();
@@ -300,6 +301,7 @@ WOOSVI.STARTS = function ( $, window, document, undefined ) {
 
 			$item += '<li data-thumb="' + v.thumb[0] + '" data-src="' + v.full[0] + '" class="' + $classes.join( ' ' ) + '">';
 			$item += '<div class="sviLoader_thumb"></div>';
+			v.thumbimg.src = v.single[0];
 			$item += WOOSVI.STARTS.buildImgTag( v.thumbimg );
 			$item += '</li>';
 
