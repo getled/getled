@@ -298,10 +298,8 @@ WOOSVI.STARTS = function ( $, window, document, undefined ) {
 		},
 		itemBuilder: function ( v, $classes, full ) {
 			var $item = '';
-
 			$item += '<li data-thumb="' + v.thumb[0] + '" data-src="' + v.full[0] + '" class="' + $classes.join( ' ' ) + '">';
 			$item += '<div class="sviLoader_thumb"></div>';
-			v.thumbimg.src = v.single[0];
 			$item += WOOSVI.STARTS.buildImgTag( v.thumbimg );
 			$item += '</li>';
 
