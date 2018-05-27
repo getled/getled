@@ -71,6 +71,9 @@ class Getled_WooCommerce {
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 
+		// Cart
+		remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+
 		// Shop
 		remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
 		remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
@@ -112,7 +115,10 @@ class Getled_WooCommerce {
 	}
 
 	function mini_cart_item_remove( $html ) {
-		return '<a class="getled-remove-item">&times;</a>' . $html;
+		if ( ! is_cart() ) {
+			$html = '<a class="getled-remove-item">&times;</a>' . $html;
+		}
+		return $html;
 	}
 
 	function remove_cart_item_confirm_dialog() {
