@@ -61,6 +61,11 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 @import "sass/elements/elements";
 
 /*--------------------------------------------------------------
+# Grids
+--------------------------------------------------------------*/
+@import "sass/modules/grids";
+
+/*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
 @import "sass/forms/forms";
@@ -112,6 +117,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 @import "sass/modules/woocommerce/product-filters";
 @import "sass/modules/woocommerce/product-archive";
 @import "sass/modules/woocommerce/single-product";
+@import "sass/modules/woocommerce/cart";
+@import "sass/modules/woocommerce/checkout";
 
 /*--------------------------------------------------------------
 # Dialog

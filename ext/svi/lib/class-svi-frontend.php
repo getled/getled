@@ -129,7 +129,7 @@ class woocommerce_svi_frontend {
                         'data-svizoom-image' => $full[0],
                         'title' => $title
                     ))),
-                    'thumbimg' => $this->imgtagger(wp_get_attachment_image($id, apply_filters('single_product_small_thumbnail_size', 'shop_thumbnail'), 0, array(
+                    'thumbimg' => $this->imgtagger(wp_get_attachment_image($id, apply_filters('single_product_small_thumbnail_size', 'shop_catalog'), 0, array(
                         'data-woosvislug' => $woosvi_slug,
                         'data-svikey' => $k,
                         'data-svizoom-image' => $full[0],
