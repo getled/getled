@@ -36,7 +36,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 <form name="checkout" method="post" class="checkout woocommerce-checkout"
 			action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
-	<div id="checkout-main col l9">
+	<div class="checkout-main col l9">
 		<?php if ( $checkout->get_checkout_fields() ) : ?>
 
 			<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
@@ -52,7 +52,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 	</div>
 
 	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
-	<div id="checkout-aside col l3">
+	<div class="checkout-aside col l3">
 		<h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3>
 		<?php
 		WC()->cart->getled_editable = false;
