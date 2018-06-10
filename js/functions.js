@@ -111,4 +111,19 @@ jQuery( function ( $ ) {
 		$( this ).closest( '.getled-filter' ).toggleClass( 'getled-filter-open' );
 	} )
 	// endregion Product filters
+
+	$( 'input, select, textarea' ).each( function() {
+		var $t = $( this );
+		if( $t.val() ) {
+			$t.parent().addClass( 'filled-focussed filled' );
+		}
+	} ).focus( function() {
+		$( this ).addClass( 'filled-focussed focussed' );
+	} ).blur( function() {
+		var $t = $( this );
+		$t.parent().removeClass( 'filled-focussed focussed' ); // Remove focus classes
+		if( $t.val() ) {
+			$t.parent().addClass( 'filled-focussed filled' ); // Add
+		}
+	} );
 } );

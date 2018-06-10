@@ -27,7 +27,6 @@ do_action( 'woocommerce_before_checkout_form', $checkout );
 // If checkout registration is disabled and not logged in, the user cannot checkout
 if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
 	echo apply_filters( 'woocommerce_checkout_must_be_logged_in_message', __( 'You must be logged in to checkout.', 'woocommerce' ) );
-
 	return;
 }
 
@@ -37,8 +36,11 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
 	<div class="checkout-main col l9">
-		<?php if ( $checkout->get_checkout_fields() ) : ?>
-
+		<?php
+		if ( ! is_user_logged_in() ) {
+			wc_get_template( 'checkout/logged-out-user.php' );
+		} elseif ( $checkout->get_checkout_fields() ) {
+			?>
 			<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
 			<div id="customer_details">
@@ -48,7 +50,8 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 			<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
-		<?php endif; ?>
+			<?php
+		} ?>
 	</div>
 
 	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
