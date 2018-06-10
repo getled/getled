@@ -1,7 +1,7 @@
 /******************************************************
 Labels On Fields
 *******************************************************/
-.woocommerce label {
+.woocommerce #customer_details label {
     position: relative;
     display: inline-block !important;
     width: auto;
@@ -13,6 +13,7 @@ Labels On Fields
     left: 20px;
     background: white;
     padding: 0 10px;
+    z-index: 1;
 }
 /* Hide Required Asterisk */
 .woocommerce .required {
@@ -23,14 +24,42 @@ Labels On Fields
 
 
 /******************************************************
-Text Fields
+Text Fields & Text Area
 *******************************************************/
-.woocommerce input[type=text] {
+.woocommerce #customer_details input[type=text],
+.woocommerce #customer_details input[type=tel],
+.woocommerce #customer_details input[type=email]{
     border: 2px solid #d5d5d5;
     height: 50px;
     padding: 20px;
     font-size: 16px;
-}      
+}
+.woocommerce #customer_details textarea{
+    border: 2px solid #d5d5d5;
+    height: 150px;
+    padding: 20px;
+    font-size: 16px;
+}  
+
+
+
+
+/******************************************************
+Drop Down Select Fields
+*******************************************************/
+.woocommerce .woocommerce-input-wrapper .select2-selection {
+    border: 2px solid #d5d5d5;
+    height: 50px;
+    padding: 10px;
+    font-size: 16px;    
+}
+
+/******************************************************
+Drop Down Select Fields > Options Border
+*******************************************************/
+.select2-dropdown--below {
+    border: 2px solid #d5d5d5;
+}
 
 
 
