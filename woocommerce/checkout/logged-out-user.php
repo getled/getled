@@ -21,36 +21,32 @@ wp_enqueue_script( 'jquery-ui-tabs' );
 		</p>
 	</div>
 	<div id="login">
-		<form class="woocommerce-form woocommerce-form-login login" method="post" style="">
+		<p class="form-row form-row-wide">
+			<label for="username"><?php _e( 'Username or email', 'woocommerce' ) ?></label>
+			<input type="text" class="input-text" name="username" id="username">
+		</p>
+		<p class="form-row form-row-wide">
+			<label for="password"><?php _e( 'Password', 'woocommerce' ) ?></label>
+			<input class="input-text" type="password" name="password" id="password">
+		</p>
+		<div class="clear"></div>
 
 
+		<p class="form-row">
+			<input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="d3522b66a3"><input
+				type="hidden" name="_wp_http_referer" value="/11/checkout/">
+			<button type="submit" class="button" name="login" value="Login">Login</button>
+			<input type="hidden" name="redirect" value="http://wp/11/checkout/">
+			<label class="woocommerce-form__label woocommerce-form__label-for-checkbox inline">
+				<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox"
+							 id="rememberme" value="forever"> <span>Remember me</span>
+			</label>
+		</p>
+		<p class="lost_password">
+			<a href="http://wp/11/my-account/lost-password/">Lost your password?</a>
+		</p>
 
-			<p class="form-row form-row-wide">
-				<label for="username"><?php _e( 'Username or email', 'woocommerce' ) ?></label>
-				<input type="text" class="input-text" name="username" id="username">
-			</p>
-			<p class="form-row form-row-wide">
-				<label for="password"><?php _e( 'Password', 'woocommerce' ) ?></label>
-				<input class="input-text" type="password" name="password" id="password">
-			</p>
-			<div class="clear"></div>
-
-
-			<p class="form-row">
-				<input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="d3522b66a3"><input type="hidden" name="_wp_http_referer" value="/11/checkout/">		<button type="submit" class="button" name="login" value="Login">Login</button>
-				<input type="hidden" name="redirect" value="http://wp/11/checkout/">
-				<label class="woocommerce-form__label woocommerce-form__label-for-checkbox inline">
-					<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever"> <span>Remember me</span>
-				</label>
-			</p>
-			<p class="lost_password">
-				<a href="http://wp/11/my-account/lost-password/">Lost your password?</a>
-			</p>
-
-			<div class="clear"></div>
-
-
-		</form>
+		<div class="clear"></div>
 	</div>
 </div>
 
