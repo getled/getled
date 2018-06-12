@@ -1,7 +1,8 @@
 /******************************************************
 Cart Form
 *******************************************************/
-.woocommerce-cart-form .cart-contents {
+.woocommerce-cart-form .cart-contents,
+.woocommerce .checkout-main{
     border: 2px solid #efefef;
     border-radius: 3px;
     padding: 20px;
@@ -131,7 +132,8 @@ Product Actions > Hide Update Cart
 /******************************************************
 Cart Subtotal Sidebar
 *******************************************************/
-.woocommerce .cart-sidebar {
+.woocommerce .cart-sidebar,
+.woocommerce .checkout-aside{
     border: 2px solid #efefef;
     border-radius: 3px;
     padding: 20px;
