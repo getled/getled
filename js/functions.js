@@ -63,7 +63,7 @@ jQuery( function ( $ ) {
 		}
 	} ).change();
 
-	$( document.body )
+	$b
 		.on( 'added_to_cart removed_from_cart', function ( ev, a ) {
 			var $html = $( a['div.widget_shopping_cart_content'] );
 			$( '#getled-header-cart-amount' ).html( $html.find( '#getled-min-cart-info' ).data( 'amount' ) )
@@ -75,7 +75,8 @@ jQuery( function ( $ ) {
 			loadingHtml: '<div class="getled-loading"></div><h4 class="getled-loading-text">' + getled.i18n.loading + '...</h4>',
 			nextSelector: 'a.next',
 			contentSelector: '.scroll-wrap',
-			callback: function () {}
+			callback: function () {
+			}
 		} );
 	}
 
@@ -107,8 +108,30 @@ jQuery( function ( $ ) {
 	// region Product filters
 	var
 		$filters = $( '.getled-filter' );
-	$filters.on( 'click', '.label', function() {
+	$filters.on( 'click', '.label', function () {
 		$( this ).closest( '.getled-filter' ).toggleClass( 'getled-filter-open' );
 	} )
 	// endregion Product filters
+
+	$( 'input, select, textarea' ).each( function () {
+		var $t = $( this );
+		if ( $t.val() ) {
+			$t.closest( '.form-row' ).addClass( 'filled-focussed filled' );
+		}
+	} );
+	$b
+		.on( 'focus', 'input, select, textarea', function () {
+			console.log( this );
+			$( this ).closest( '.form-row' ).addClass( 'filled-focussed focussed' );
+		} )
+		.on( 'blur', 'input, select, textarea', function () {
+			console.log( this );
+			var
+            	$t = $( this ),
+            	$p = $t.closest( '.form-row' );
+			$p.removeClass( 'filled-focussed focussed' ); // Remove focus classes
+			if ( $t.val() ) {
+				$p.addClass( 'filled-focussed filled' ); // Add
+			}
+		} );
 } );

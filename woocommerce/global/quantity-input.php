@@ -42,7 +42,7 @@ if ( $max_value && $min_value === $max_value ) {
 	?>
 	<div class="quantity">
 		<label for="<?php echo $input_id ?>"><?php echo esc_attr_x( 'Qty', 'Product quantity input tooltip', 'woocommerce' ); ?>:</label>
-		<select id="<?php echo $input_id ?>" class="input-text qty text" name="<?php echo $input_name ?>" aria-labelledby="<?php echo $labelledby ?>">
+		<select id="<?php echo $input_id ?>" class="input-text qty text" name="<?php echo $input_name ?>">
 			<?php echo $options; ?>
 		</select>
 	</div>
