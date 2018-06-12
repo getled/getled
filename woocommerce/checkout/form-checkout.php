@@ -44,9 +44,31 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
 			<div id="customer_details">
-				<?php do_action( 'woocommerce_checkout_billing' ); ?>
-				<?php do_action( 'woocommerce_checkout_shipping' ); ?>
+				<?php
+				do_action( 'woocommerce_checkout_billing' );
+				do_action( 'woocommerce_checkout_shipping' );
+				?>
+				<button type="button" class="button" id="payment-button"><?php _e( 'Payment', 'getled' ) ?></button>
 			</div>
+			<div id="payment">
+				<?php woocommerce_checkout_payment(); ?>
+			</div>
+			<script>
+				jQuery( function( $ ) {
+					var
+						$pay = $( '#payment' ),
+						$stepBag = $( '#step-bag' ),
+						$stepDel = $( '#step-delivery' ),
+						$stepPay = $( '#step-payment' );
+					$pay.hide();
+					$( '#payment-button' ).click( function() {
+						$( '#customer_details' ).hide();
+						$pay.show();
+						$stepPay.attr( 'class', $stepDel.attr( 'class' ) );
+						$stepDel.attr( 'class', $stepBag.attr( 'class' ) );
+					} );
+				} );
+			</script>
 
 			<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
@@ -78,6 +100,9 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			<span><?php _e( 'Subtotal', 'woocommerce' ); ?> </span>
 			<span class="cart-subtotal-value"><?php wc_cart_totals_subtotal_html(); ?></span>
 		</div>
+		<?php
+		wc_get_template( 'cart/cart-totals.php' );
+		?>
 	</div>
 
 
