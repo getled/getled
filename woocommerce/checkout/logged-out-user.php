@@ -16,9 +16,10 @@ wp_enqueue_script( 'jquery-ui-tabs' );
 	<div id="new">
 		<h4><?php _e( 'Type in your email address to get started', 'getled' ) ?></h4>
 		<p class="form-row form-row-wide" id="email_field">
-			<label for="email" class=""><?php _e( 'Email address', 'getled' ) ?></label>
-			<input type="email" class="input-text " name="email" id="email" placeholder="email@address.com" value="">
+			<label for="billing_email" class=""><?php _e( 'Email address', 'getled' ) ?></label>
+			<input required type="email" class="input-text " name="billing_email" id="billing_email" placeholder="email@address.com">
 		</p>
+		<button type="submit" class="button" name="continue"><?php _e( 'Continue', 'getled' ) ?></button>
 	</div>
 	<div id="login">
 		<p class="form-row form-row-wide">

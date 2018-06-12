@@ -1,62 +1,9 @@
 <?php
 
 class Getled_WooCommerce {
+	public static $checkout_progress;
 	/** @var self Instance */
 	private static $_instance;
-	public static $checkout_progress;
-
-	/**
-	 * Returns instance of current calss
-	 * @return self Instance
-	 */
-	public static function instance() {
-		if ( ! self::$_instance ) {
-			self::$_instance = new self();
-		}
-
-		return self::$_instance;
-	}
-
-	// region Shop filter rendering methods
-	public static function filter( $label, $qry_param, $inner_elements ) {
-		?>
-			<div class="getled-filter" id="getled-filter-<?php echo $qry_param ?>">
-				<a href="#" class="label"><?php echo $label ?></a>
-				<div class="getled-filter-content">
-						<?php
-						if ( is_array( $inner_elements ) ) {
-							echo '<ul class="wpf_links wpf_column_horizontal">';
-							foreach ( $inner_elements as $val => $lbl ) {
-								Getled_WooCommerce::filter_item( $lbl, $qry_param, $val );
-							}
-							echo '</ul>';
-						} else {
-							echo $inner_elements;
-						}
-						?>
-				</div>
-			</div>
-		<?php
-	}
-
-	public static function filter_item( $label, $qry_param, $val = null, $class = '' ) {
-		if ( null === $val ) {
-			$url = $qry_param;
-		} else {
-			if ( filter_input( INPUT_GET, $qry_param ) == $val ) {
-				$class .= ' active';
-			}
-			$url = add_query_arg( $qry_param, $val );
-		}
-		?>
-		<li>
-			<a class="getled-filter-link <?php echo $class ?>" href="<?php echo $url; ?>">
-				<span><?php echo $label ?></span>
-			</a>
-		</li>
-		<?php
-	}
-	// endregion Shop filter rendering methods
 
 	public function __construct() {
 
@@ -73,10 +20,11 @@ class Getled_WooCommerce {
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
 		remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
 
-		// Cart
+		// Cart/Checkout
 		remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
 		add_action( 'woocommerce_before_cart', array( $this, 'checkout_progress' ) );
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'checkout_progress' ) );
+		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form' );
 
 		// Shop
 		remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
@@ -97,7 +45,63 @@ class Getled_WooCommerce {
 		add_action( 'woocommerce_product_query', [ $this, 'apply_filters_on_query' ] );
 	}
 
+	// region Shop filter rendering methods
+
+	/**
+	 * Returns instance of current calss
+	 * @return self Instance
+	 */
+	public static function instance() {
+		if ( ! self::$_instance ) {
+			self::$_instance = new self();
+		}
+
+		return self::$_instance;
+	}
+
+	public static function filter( $label, $qry_param, $inner_elements ) {
+		?>
+		<div class="getled-filter" id="getled-filter-<?php echo $qry_param ?>">
+			<a href="#" class="label"><?php echo $label ?></a>
+			<div class="getled-filter-content">
+				<?php
+				if ( is_array( $inner_elements ) ) {
+					echo '<ul class="wpf_links wpf_column_horizontal">';
+					foreach ( $inner_elements as $val => $lbl ) {
+						Getled_WooCommerce::filter_item( $lbl, $qry_param, $val );
+					}
+					echo '</ul>';
+				} else {
+					echo $inner_elements;
+				}
+				?>
+			</div>
+		</div>
+		<?php
+	}
+
+	// endregion Shop filter rendering methods
+
+	public static function filter_item( $label, $qry_param, $val = null, $class = '' ) {
+		if ( null === $val ) {
+			$url = $qry_param;
+		} else {
+			if ( filter_input( INPUT_GET, $qry_param ) == $val ) {
+				$class .= ' active';
+			}
+			$url = add_query_arg( $qry_param, $val );
+		}
+		?>
+		<li>
+			<a class="getled-filter-link <?php echo $class ?>" href="<?php echo $url; ?>">
+				<span><?php echo $label ?></span>
+			</a>
+		</li>
+		<?php
+	}
+
 	// region Mini cart
+
 	function before_mini_cart_contents() {
 		$cart = WC()->cart;
 		?>
@@ -123,6 +127,7 @@ class Getled_WooCommerce {
 		if ( ! is_cart() ) {
 			$html = '<a class="getled-remove-item">&times;</a>' . $html;
 		}
+
 		return $html;
 	}
 
@@ -213,6 +218,7 @@ class Getled_WooCommerce {
 	/**
 	 * @param string $a2c
 	 * @param WC_Product $product
+	 *
 	 * @return string
 	 */
 	public function add_to_cart_text( $a2c, $product ) {
@@ -231,14 +237,15 @@ class Getled_WooCommerce {
 	public function apply_filters_on_query( $qry ) {
 		if ( $qry->is_main_query() ) {
 			if ( ! empty( $_GET['pa_color'] ) ) {
-				$tax_query   = $qry->get( 'tax_query' );
+				$tax_query = $qry->get( 'tax_query' );
 
-				if ( is_array( $tax_query ) )
-				$tax_query[] = [
-					'taxonomy' => 'pa_color',
-					'field'    => 'term_id',
-					'terms'    => [ $_GET['pa_color'] ],
-				];
+				if ( is_array( $tax_query ) ) {
+					$tax_query[] = [
+						'taxonomy' => 'pa_color',
+						'field'    => 'term_id',
+						'terms'    => [ $_GET['pa_color'] ],
+					];
+				}
 				$qry->set( 'tax_query', $tax_query );
 			}
 		}
@@ -260,15 +267,16 @@ class Getled_WooCommerce {
 
 		ob_start();
 		wc_get_template( 'archive-product-filters.php' );
-		$filter_html = ob_get_clean();
+		$filter_html                 = ob_get_clean();
 		$sections['products-filter'] = [
-			'title'    => __( 'Product filters' ),
+			'title'   => __( 'Product filters' ),
 			'content' => $filter_html,
 		];
 
 		if ( $this->filters_applied() ) {
 			$sections['products-filter']['class'] = 'getled-panel-open';
 		}
+
 		return $sections;
 	}
 
@@ -285,15 +293,14 @@ class Getled_WooCommerce {
 			Getled_WooCommerce::$checkout_progress = 1;
 		} else if ( is_checkout() ) {
 			if ( filter_input( INPUT_GET, 'step' ) === 'payment' ) {
-			Getled_WooCommerce::$checkout_progress = 3;
+				Getled_WooCommerce::$checkout_progress = 3;
 			} else {
-			Getled_WooCommerce::$checkout_progress = 2;
+				Getled_WooCommerce::$checkout_progress = 2;
 			}
 		}
 		wc_get_template( 'getled-checkout-progress.php' );
 	}
 	// endregion Cart/Checkout
-
 }
 
 Getled_WooCommerce::instance();

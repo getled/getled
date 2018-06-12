@@ -32,12 +32,12 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 ?>
 
-<form name="checkout" method="post" class="checkout woocommerce-checkout"
+<form name="checkout" method="post" class="<?php echo is_user_logged_in() ? 'checkout' : '' ?> woocommerce-checkout"
 			action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
 	<div class="checkout-main col l9">
 		<?php
-		if ( ! is_user_logged_in() ) {
+		if ( ! is_user_logged_in() && empty( $_POST['billing_email'] ) ) {
 			wc_get_template( 'checkout/logged-out-user.php' );
 		} elseif ( $checkout->get_checkout_fields() ) {
 			?>
@@ -49,6 +49,19 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			</div>
 
 			<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
+
+			<script>
+				jQuery( function ( $ ) {
+					var $cb = $( '#ship-to-different-address-checkbox' );
+					$cb.change( function () {
+						if ( this.checked ) {
+							$( '.shipping_address' ).slideDown();
+						} else {
+							$( '.shipping_address' ).slideUp();
+						}
+					} ).change();
+				} );
+			</script>
 
 			<?php
 		} ?>

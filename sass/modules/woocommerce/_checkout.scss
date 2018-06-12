@@ -1,19 +1,35 @@
 /******************************************************
 Labels On Fields
 *******************************************************/
-.woocommerce #customer_details label {
+.getled .form-row {
     position: relative;
-    display: inline-block !important;
-    width: auto;
-    margin: auto;
-    font-size: 12px;
+    padding: 0 !important;
+    margin: 16px 0 !important;
+}
+
+.getled .form-row label {
+    position: absolute;
+    font-size: 16px;
+    height: 16px;
+    line-height: 1 !important;
     letter-spacing: 1px;
-    text-transform: capitalize;
-    top:15px;
-    left: 20px;
+    top: 50%;
+    left: 14px;
+    margin: 0;
     background: white;
-    padding: 0 10px;
+    padding: 0 5px;
     z-index: 1;
+    min-width: calc(100% - 32px);
+    transform-origin: 0 50%;
+    transform: translateY(-50%);
+    transition: transform .25s, top .35s;
+}
+
+.getled .form-row.filled-focussed label {
+    min-width: 0;
+    top: 0;
+    transform: translateY( -44% ) scale(.88);
+    cursor: text;
 }
 /* Hide Required Asterisk */
 .woocommerce .required {
