@@ -1,0 +1,47 @@
+/******************************************************
+Cart Form
+*******************************************************/
+
+/******************************************************
+Background Colors
+*******************************************************/
+
+.woocommerce .checkout-main #payment,
+.woocommerce .checkout-main #payment .payment_box {
+    background:white;
+    margin-bottom: 0;
+}
+
+.woocommerce .checkout-main #payment .payment_box:before,
+#wc-stripe-cc-form label,
+.woocommerce .checkout-main .woocommerce-terms-and-conditions-wrapper{
+    display: none;
+}
+
+#stripe-card-element {
+    border: 2px solid #d5d5d5;
+    padding: 10px;
+    font-size: 16px;
+}
+
+
+
+
+.woocommerce .checkout-main #payment .wc_payment_methods,
+.woocommerce .checkout-main #payment .payment_box {
+    border-bottom: 0;
+    padding: 0;
+}
+
+
+
+
+.woocommerce #payment .place-order button {
+    background: #36a74c;
+    font-size: 18px;
+    padding: 15px 0;
+    display: inline-block;
+    float: none !important;
+    width: 100%;
+    margin: auto;
+}

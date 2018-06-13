@@ -159,7 +159,19 @@ Checkout Logged Out > Tabs Content
     max-width: 400px;
     margin: auto;
     text-align: center;
-    padding-top: 20px; 
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+
+
+
+/******************************************************
+Checkout Logged Out > Form Heading
+*******************************************************/
+.woocommerce #getled-logged-out-user h4 {
+    font-size: 20px;
+    margin-top: 10px;
 }
 
 
@@ -170,7 +182,9 @@ Checkout Logged Out > Button
 *******************************************************/
 .woocommerce #getled-logged-out-user .button {
     color: white;
-    font-weight: 500;
+    font-size: 16px;
+    padding: 18px 0;
+    font-weight: 400;
     background-color: #2db464;
     border-radius: 2px;
     width: 100%;
@@ -184,6 +198,15 @@ Checkout Logged Out > Hide "Remember Me"
 .woocommerce #getled-logged-out-user .woocommerce-form__label-for-checkbox {
     display: none;
 }
+/******************************************************
+Checkout Logged Out > Lost Password Link
+*******************************************************/
+.woocommerce #getled-logged-out-user .lost_password {
+    margin-bottom: 0;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
 
 
 
