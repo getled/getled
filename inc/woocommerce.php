@@ -5,7 +5,27 @@ class Getled_WooCommerce {
 	/** @var self Instance */
 	private static $_instance;
 
+	/**
+	 * Whether or not it's a product archive
+	 * @return bool Whether or not it's a product archive
+	 */
+	public static function product_archive() {
+		return function_exists( 'is_shop' ) && ( is_shop() ||  is_product_taxonomy() || is_product_category() || is_product_tag() );
+	}
+
 	public function __construct() {
+
+		if ( ! function_exists( 'is_shop' ) ) {
+			return;
+		}
+
+		/** Variation swatches */
+		require get_template_directory() . '/ext/variant-swatches/variant-swatches.php';
+
+		/* Smart variation images */
+		define( 'SVI_URL', get_template_directory_uri() . '/ext/svi/' );
+		define( 'SVI_PATH', get_template_directory() . '/ext/svi/' );
+		require SVI_PATH . 'svi.php';
 
 		// Cart actions
 		add_action( 'woocommerce_before_mini_cart', [ $this, 'before_mini_cart_contents' ], 99 );

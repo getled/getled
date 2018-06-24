@@ -34,7 +34,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 		wc_get_template( 'cart/getled-cart-items.php' );
 		do_action( 'woocommerce_cart_contents' );
 		?>
-
+		<script>
+			jQuery( function ( $ ) {
+				$( 'select.qty' ).change( function() {
+					console.log( 'changed' );
+					$( '[name="update_cart"]' ).click();
+				} );
+			} );
+		</script>
 		<button type="submit" class="button" name="update_cart"
 						value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
 	</div>

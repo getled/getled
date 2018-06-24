@@ -40,6 +40,11 @@ foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 
 				<div class="product-attributes"><?php
 					foreach ( $_product->get_attributes() as $attr => $val ) {
+						/** @var WC_Product_Attribute $val */
+						if ( $val instanceof WC_Product_Attribute ) {
+							$val = $val->get_name();
+						}
+						/** @var string $val */
 						$taxonomy = get_taxonomy( $attr )->label;
 						$taxonomy = str_replace( 'Product ', '', $taxonomy );
 						echo "<div class='product-attr-name'>$taxonomy</div> <div class='product-attr-value'>$val</div>";
