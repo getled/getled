@@ -32,8 +32,12 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 ?>
 
-<form name="checkout" method="post" class="<?php echo is_user_logged_in() ? 'checkout' : '' ?> woocommerce-checkout"
-			action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
+<?php if ( is_user_logged_in() ) {
+	?>
+	<form name="checkout" method="post" class="checkout woocommerce-checkout" enctype="multipart/form-data"
+	action="<?php echo esc_url( wc_get_checkout_url() ); ?>">
+	<?php
+} ?>
 
 	<div class="checkout-main col l9">
 		<?php
@@ -108,6 +112,10 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 	<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
 
+<?php if ( is_user_logged_in() ) {
+?>
 </form>
+	<?php
+			} ?>
 
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
