@@ -1,385 +1,259 @@
 /******************************************************
 Cart Form
 *******************************************************/
-.woocommerce-cart-form .cart-contents,
-.woocommerce .checkout-main{
-    border: 2px solid #efefef;
-    border-radius: 3px;
-    padding: 20px;
-    width: 65%;
+
+.woocommerce-cart-form .cart-contents, .woocommerce .checkout-main {
+	border: 2px solid #efefef;
+	border-radius: 3px;
+	padding: 20px;
+	width: 65%;
 }
-
-
-
 
 /******************************************************
 Cart Item Flex
 *******************************************************/
-.cart-contents .cart_item {
-    display: flex;
-    flex-flow: row;
+
+.cart-contents {
+	.cart_item {
+		display: flex;
+		flex-flow: row;
+		.product-thumbnail {
+			width: 160px;
+			margin: 0 20px 15px 0;
+		}
+		.product-info {
+			width: calc(70% - 180px);
+		}
+	}
+	.product-info {
+		.product-name a {
+			color: #868686;
+			font-size: 16px;
+			letter-spacing: 1px;
+		}
+		.product-attributes div {
+			color: #868686;
+			font-size: 16px;
+			letter-spacing: 1px;
+			text-transform: capitalize;
+		}
+	}
+	.cart_item .product-actions {
+		text-align: right;
+		width: 30%;
+	}
+	.product-actions {
+		.product-subtotal {
+			color: #868686 !important;
+			font-size: 18px;
+			letter-spacing: 1px;
+			margin-bottom: 10px;
+		}
+		.product-quantity {
+			label {
+				color: #575757 !important;
+				font-size: 16px;
+				letter-spacing: 1px;
+			}
+			select {
+				color: #575757 !important;
+				font-size: 16px;
+				letter-spacing: 1px;
+				border: 0;
+				width: 40px;
+				margin-bottom: 10px;
+			}
+		}
+		.product-remove a {
+			color: #575757 !important;
+			font-size: 14px;
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			display: inline-block;
+			width: auto;
+			&:hover {
+				background: white;
+			}
+		}
+	}
 }
 
-
-
-
-/******************************************************
-Product Image
-*******************************************************/
-.cart-contents .cart_item .product-thumbnail {
-    width: 160px;
-    margin: 0 20px 15px 0;
+.woocommerce {
+	.cart-contents .button {
+		display: none;
+	}
+	.cart-sidebar, .checkout-aside {
+		border: 2px solid #efefef;
+		border-radius: 3px;
+		padding: 20px;
+		margin-left: 20px;
+		width: calc(35% - 20px);
+	}
 }
-
-
-
-
-/******************************************************
-Product Info
-*******************************************************/
-.cart-contents .cart_item .product-info {
-    width: calc(70% - 180px)
-}
-
-/******************************************************
-Product Info > Title & Variations
-*******************************************************/
-.cart-contents .product-info .product-name a {
-    color: #868686;
-    font-size: 16px;
-    letter-spacing: 1px;
-}
-.cart-contents .product-info .product-attributes div {
-    color: #868686;
-    font-size: 16px;
-    letter-spacing: 1px;
-    text-transform: capitalize;
-}
-
-
-
-
-/******************************************************
-Product Actions
-*******************************************************/
-.cart-contents .cart_item .product-actions {
-    text-align: right;
-    width: 30%;
-}
-
-/******************************************************
-Product Actions > Price
-*******************************************************/
-.cart-contents .product-actions .product-subtotal {
-    color: #868686 !important;
-    font-size: 18px;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-}
-
-/******************************************************
-Product Actions > Quantity Label
-*******************************************************/
-.cart-contents .product-actions .product-quantity label{
-    color: #575757 !important;
-    font-size: 16px;
-    letter-spacing: 1px;
-
-}
-
-/******************************************************
-Product Actions > Quantity Select Field
-*******************************************************/
-
-.cart-contents .product-actions .product-quantity select{
-    color: #575757 !important;
-    font-size: 16px;
-    letter-spacing: 1px;
-    border: 0;
-    width: 40px;
-    margin-bottom: 10px;
-}
-
-/******************************************************
-Product Actions > Remove Button
-*******************************************************/
-.cart-contents .product-actions .product-remove a {
-    color: #575757 !important;
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: inline-block;
-    width: auto;
-}
-
-.cart-contents .product-actions .product-remove a:hover {
-    background: white;
-}
-
-
-
-/******************************************************
-Product Actions > Hide Update Cart
-*******************************************************/
-.woocommerce .cart-contents .button {
-    display: none;    
-}
-
-
-
 
 /******************************************************
 Cart Subtotal Sidebar
 *******************************************************/
-.woocommerce .cart-sidebar,
-.woocommerce .checkout-aside{
-    border: 2px solid #efefef;
-    border-radius: 3px;
-    padding: 20px;
-    margin-left: 20px;
-    width: calc(35% - 20px);
+
+.cart-sidebar {
+	.cart-subtotal span {
+		font-size: 20px;
+		letter-spacing: 0.5px;
+	}
+	span.cart-subtotal-value {
+		float: right;
+	}
+	.woocommerce-coupon-form {
+		text-align: center;
+		label {
+			font-size: 14px;
+			margin-bottom: 20px;
+			letter-spacing: 1px;
+			text-transform: capitalize;
+			display: inline-block;
+		}
+		.coupon-field {
+			width: 200px;
+			margin: 0 auto 50px;
+			text-align: center;
+			display: flex;
+			input {
+				&[type=text] {
+					border: 2px solid #e1e1e1;
+					border-radius: 3px 0 0 3px;
+					width: 150px;
+					height: 35px;
+					font-size: 14px;
+					padding: 0 5px;
+				}
+				&[type=submit] {
+					border-width: 2px 2px 2px 0;
+					border-style: solid;
+					border-color: #e1e1e1;
+					border-radius: 0 3px 3px 0;
+					background: #fff;
+					height: 35px;
+					color: #868686;
+					font-size: 14px;
+					font-weight: 500;
+					letter-spacing: 1px;
+					padding: 0 10px;
+				}
+			}
+		}
+	}
+
+	.cart_totals {
+		text-align: center;
+		font-size: 16px;
+		letter-spacing: 1px;
+		text-transform: capitalize;
+		#shipping_method {
+			text-align: left;
+			font-size: 12px !important;
+			letter-spacing: 1px;
+			text-transform: capitalize;
+			li {
+				border-bottom: 1px solid #e5e5e5;
+				padding: 10px;
+				&:first-child {
+					border-top: 1px solid #e5e5e5;
+					margin-top: 10px;
+				}
+			}
+		}
+		.woocommerce-shipping-calculator {
+			display: none;
+		}
+		.order-total {
+			padding-top: 1em;
+			text-align: left;
+			span {
+				&:first-child {
+					font-size: 24px;
+					color: #555;
+					letter-spacing: 0.5px;
+				}
+				strong {
+					font-weight: 400;
+					float: right;
+				}
+			}
+		}
+
+		.wc-proceed-to-checkout {
+			padding: 1em 0 0;
+		}
+
+		.wc-proceed-to-checkout a {
+			background: #363636;
+			color: #d5d5d5;
+			font-size: 20px;
+			font-weight: 400;
+			letter-spacing: 1px;
+			margin: 0;
+			&:hover {
+				background: #434343;
+				color: #ebebeb;
+			}
+		}
+	}
 }
-
-
-
-
-/******************************************************
-Cart Subtotal Sidebar > Subtotal & Amount
-*******************************************************/
-.cart-sidebar .cart-subtotal span {
-    font-size: 20px;
-    letter-spacing: 0.5px;
-}
-
-.cart-sidebar span.cart-subtotal-value {
-    float: right;
-}
-
-
-
-
-/******************************************************
-Cart Subtotal Sidebar > Coupon
-*******************************************************/
-.cart-sidebar .woocommerce-coupon-form{
-    text-align: center;
-}
-
-/******************************************************
-Cart Subtotal Sidebar > Coupon Label
-*******************************************************/
-.cart-sidebar .woocommerce-coupon-form label {
-    font-size: 14px;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    text-transform: capitalize;
-    display: inline-block;
-}
-
-/******************************************************
-Cart Subtotal Sidebar > Coupon Field & Button
-*******************************************************/
-.cart-sidebar .woocommerce-coupon-form .coupon-field {
-    width: 200px;
-    margin: 0 auto 50px;
-    text-align: center;
-    display: flex;
-}
-
-.cart-sidebar .woocommerce-coupon-form .coupon-field input[type=text] {
-    border: 2px solid #e1e1e1;
-    border-radius: 3px 0 0 3px;
-    width: 150px;
-    height: 35px;
-    font-size: 14px;
-    padding: 0 5px;
-}
-
-.cart-sidebar .woocommerce-coupon-form .coupon-field input[type=submit] {
-    border-width: 2px 2px 2px 0;
-    border-style: solid;
-    border-color: #e1e1e1;
-    border-radius: 0 3px 3px 0;
-    background: #fff;
-    height: 35px;
-    color: #868686;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    padding: 0 10px;
-}
-
-
-
-
-/******************************************************
-Cart Subtotal Sidebar > Shipping Method & Totals
-*******************************************************/
-.cart-sidebar .cart_totals {
-    text-align: center;
-    font-size: 16px;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    text-transform: capitalize;
-}
-
-
-
-
-/******************************************************
-Cart Subtotal Sidebar > Shipping Method Options
-*******************************************************/
-.cart-sidebar .cart_totals #shipping_method {
-    text-align: left;
-    font-size: 12px !important;
-    letter-spacing: 1px;
-    text-transform: capitalize;
-}
-
-.cart-sidebar .cart_totals #shipping_method li {
-    border-bottom: 1px solid #e5e5e5;
-    padding: 10px;
-}
-
-.cart-sidebar .cart_totals #shipping_method li:first-child {
-    border-top: 1px solid #e5e5e5;
-    margin-top: 10px
-}
-
-
-
-
-/******************************************************
-Cart Subtotal Sidebar > Hide "Calculate Shipping"
-*******************************************************/
-
-.cart-sidebar .cart_totals .woocommerce-shipping-calculator {
-    display: none;
-}
-
-
-
-
-/******************************************************
-Cart Subtotal Sidebar > Hide "Calculate Shipping"
-*******************************************************/
-.cart-sidebar .cart_totals .order-total {
-    margin: 20px 0 60px;
-}
-.cart-sidebar .cart_totals .order-total span:first-child {
-    font-size: 24px;
-    color: #555;
-    letter-spacing: 0.5px;
-    float: left;
-}
-
-.cart-sidebar .cart_totals .order-total span strong {
-    font-weight: 400;
-    float: right;
-}
-
-
-
-
-/******************************************************
-Cart Subtotal Sidebar > Checkout Button
-*******************************************************/
-.cart-sidebar .cart_totals .wc-proceed-to-checkout a {
-    background: #363636;
-    color: #d5d5d5;
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: 1px;
-}
-
-/******************************************************
-Cart Subtotal Sidebar > Checkout Button HOVER
-*******************************************************/
-.cart-sidebar .cart_totals .wc-proceed-to-checkout a:hover {
-    background: #434343;
-    color: #ebebeb;
-}
-
-
-
-
-
 
 /***************************************************
 ****************************************************
             MOBILE STYLES
 ****************************************************
 ****************************************************/
-
 @media only screen and (max-width: 600px) {
-
-    /******************************************************
-    Cart Form
-    *******************************************************/
-    .woocommerce-cart-form .cart-contents {
-        border: 0px;
-        border-radius: 3px;
-        padding: 5px;
-        width: 100%;
-    }
-    /******************************************************
-    Cart Item Flex
-    *******************************************************/
-    .cart-contents .cart_item {
-        display: flex;
-        flex-flow: row;
-        flex-wrap: wrap;
-    }
-
-    /******************************************************
-    Product Image
-    *******************************************************/
-    .cart-contents .cart_item .product-thumbnail {
-        width: calc(50% - 10px);
-        margin: 0 10px 5px 0;
-    }
-
-    /******************************************************
-    Product Info
-    *******************************************************/
-    .cart-contents .cart_item .product-info {
-        width: 50%;
-    }
-
-    /******************************************************
-    Product Actions
-    *******************************************************/
-    .cart-contents .cart_item .product-actions {
-        display: flex;
-        flex-flow: wrap;
-        margin-left: auto;
-        margin-bottom: -55px;
-        width: 50%;
-        position: relative;
-        bottom: 70px;
-        text-align: left;
-
-    }
-    
-    .cart-contents .product-actions .product-subtotal {
-        width: 100%;
-        margin-bottom: 0;
-    }
-
-    .cart-contents .product-actions .product-subtotal,
-    .cart-contents .product-actions .product-quantity
-    .cart-contents .product-actions .product-remove {
-    }
-
-    /******************************************************
-    Cart Subtotal Sidebar
-    *******************************************************/
-    .woocommerce .cart-sidebar {
-        border-width: 2px 0 0 0;
-        padding: 10px;
-        margin: 0;
-        width: 100%;
-    }
-   
+	/******************************************************
+	Cart Form
+	*******************************************************/
+	.woocommerce-cart-form .cart-contents {
+		border: 0px;
+		border-radius: 3px;
+		padding: 5px;
+		width: 100%;
+	}
+	/******************************************************
+	Cart Item Flex
+	*******************************************************/
+	.cart-contents {
+		.cart_item {
+			display: flex;
+			flex-flow: row;
+			flex-wrap: wrap;
+			.product-thumbnail {
+				width: calc(50% - 10px);
+				margin: 0 10px 5px 0;
+			}
+			.product-info {
+				width: 50%;
+			}
+			.product-actions {
+				display: flex;
+				flex-flow: wrap;
+				margin-left: auto;
+				margin-bottom: -55px;
+				width: 50%;
+				position: relative;
+				bottom: 70px;
+				text-align: left;
+			}
+		}
+		.product-actions .product-subtotal {
+			width: 100%;
+			margin-bottom: 0;
+		}
+	}
+	/******************************************************
+	Cart Subtotal Sidebar
+	*******************************************************/
+	.woocommerce .cart-sidebar {
+		border-width: 2px 0 0 0;
+		padding: 10px;
+		margin: 0;
+		width: 100%;
+	}
 }

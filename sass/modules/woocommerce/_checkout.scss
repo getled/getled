@@ -1,6 +1,7 @@
 /******************************************************
 Checkout Progress
 *******************************************************/
+
 #getled-checkout-progress {
 	display: flex;
 	justify-content: space-between;
@@ -12,6 +13,7 @@ Checkout Progress
 /******************************************************
 Checkout Progress > Steps
 *******************************************************/
+
 #step-bag, #step-delivery, #step-payment {
 	width: 80px;
 	text-align: center;
@@ -20,6 +22,7 @@ Checkout Progress > Steps
 /******************************************************
 Checkout Progress > Steps > Number
 *******************************************************/
+
 #step-bag .step-number, #step-delivery .step-number, #step-payment .step-number {
 	font-size: 14px;
 	color: #a7a7a7;
@@ -35,6 +38,7 @@ Checkout Progress > Steps > Number
 /******************************************************
 Checkout Progress > Steps > Label
 *******************************************************/
+
 #step-bag .label, #step-delivery .label, #step-payment .label {
 	font-size: 14px;
 	color: #a7a7a7;
@@ -45,6 +49,7 @@ Checkout Progress > Steps > Label
 /******************************************************
 Checkout Progress > Steps > Active Step Number
 *******************************************************/
+
 #step-bag.active .step-number, #step-delivery.active .step-number, #step-payment.active .step-number {
 	color: #404040;
 }
@@ -52,6 +57,7 @@ Checkout Progress > Steps > Active Step Number
 /******************************************************
 Checkout Progress > Steps > Active Step Label
 *******************************************************/
+
 #step-bag.active .label, #step-delivery.active .label, #step-payment.active .label {
 	color: #404040;
 	text-decoration: underline;
@@ -60,6 +66,7 @@ Checkout Progress > Steps > Active Step Label
 /******************************************************
 Checkout Progress > Steps > Done Step Number
 *******************************************************/
+
 #step-bag.done .step-number, #step-delivery.done .step-number, #step-payment.done .step-number {
 	color: #404040;
 	font-size: 0;
@@ -77,6 +84,7 @@ Checkout Progress > Steps > Done Step Number
 /******************************************************
 Checkout Progress > Steps > Done Step Label
 *******************************************************/
+
 #step-bag.done .label, #step-delivery.done .label, #step-payment.done .label {
 	color: #404040;
 }
@@ -84,6 +92,7 @@ Checkout Progress > Steps > Done Step Label
 /******************************************************
 Checkout Progress > Seperators
 *******************************************************/
+
 .sep {
 	width: 100%;
 	border: 1.5px solid #c6c6c6;
@@ -96,120 +105,117 @@ Checkout Progress > Seperators
 Checkout Logged out
 *******************************************************
 *******************************************************/
-
 /******************************************************
 Checkout Logged Out > Tabs
 *******************************************************/
-.woocommerce #getled-logged-out-user .ui-tabs-nav {
-	padding: 0;
-	display: flex;
+
+.woocommerce {
+	#getled-logged-out-user .ui-tabs-nav {
+		padding: 0;
+		display: flex;
+		padding: 0;
+		.ui-state-default {
+			width: 100%;
+			text-align: center;
+			font-size: 14px;
+			font-weight: 500;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			padding: 10px 0;
+			border-bottom: 2px solid #cacaca;
+			a {
+				outline: 0;
+			}
+		}
+		.ui-tabs-active {
+			border: 2px solid #cacaca;
+			border-bottom: 0px solid #cacaca;
+		}
+	}
+	#new, #login {
+		max-width: 400px;
+		margin: auto;
+		text-align: center;
+		padding-top: 20px;
+		padding-bottom: 30px;
+	}
+	#getled-logged-out-user {
+		h4 {
+			font-size: 20px;
+			margin-top: 10px;
+		}
+		.lost_password {
+			text-align: center;
+		}
+		.button {
+			color: white;
+			font-size: 16px;
+			padding: 18px 0;
+			font-weight: 400;
+			background-color: #2db464;
+			border-radius: 2px;
+			width: 100%;
+			display: block;
+			margin-top: 0;
+		}
+		.woocommerce-form__label-for-checkbox {
+			display: none;
+		}
+		.lost_password {
+			margin-bottom: 0;
+			font-size: 16px;
+			letter-spacing: 1px;
+		}
+	}
 }
 
 /******************************************************
 Checkout Logged Out > Tabs
 *******************************************************/
-.woocommerce #getled-logged-out-user .ui-tabs-nav {
-	padding: 0;
-}
 
 /******************************************************
 Checkout Logged Out > Tabs > Default
 *******************************************************/
-.woocommerce #getled-logged-out-user .ui-tabs-nav .ui-state-default {
-	width: 100%;
-	text-align: center;
-	font-size: 14px;
-	font-weight: 500;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	padding: 10px 0;
-	border-bottom: 2px solid #cacaca;
-}
-
-.woocommerce #getled-logged-out-user .ui-tabs-nav .ui-state-default a {
-	outline: 0;
-}
 
 /******************************************************
 Checkout Logged Out > Tabs > Active
 *******************************************************/
-.woocommerce #getled-logged-out-user .ui-tabs-nav .ui-tabs-active {
-	border: 2px solid #cacaca;
-	border-bottom: 0px solid #cacaca;
-}
 
 /******************************************************
 Checkout Logged Out > Tabs Content
 *******************************************************/
-.woocommerce #new, .woocommerce #login {
-	max-width: 400px;
-	margin: auto;
-	text-align: center;
-	padding-top: 20px;
-	padding-bottom: 30px;
-}
 
 /******************************************************
 Checkout Logged Out > Form Heading
 *******************************************************/
-.woocommerce #getled-logged-out-user h4 {
-	font-size: 20px;
-	margin-top: 10px;
-}
 
 /******************************************************
 Checkout Logged Out > Button
 *******************************************************/
-.woocommerce #getled-logged-out-user .button {
-	color: white;
-	font-size: 16px;
-	padding: 18px 0;
-	font-weight: 400;
-	background-color: #2db464;
-	border-radius: 2px;
-	width: 100%;
-	display: block;
-	margin-top: 0;
-}
 
 /******************************************************
 Checkout Logged Out > Hide "Remember Me"
 *******************************************************/
-.woocommerce #getled-logged-out-user .woocommerce-form__label-for-checkbox {
-	display: none;
-}
 
 /******************************************************
 Checkout Logged Out > Lost Password Link
 *******************************************************/
-.woocommerce #getled-logged-out-user .lost_password {
-	margin-bottom: 0;
-	font-size: 16px;
-	letter-spacing: 1px;
-}
 
 /******************************************************
 Labels On Fields
 *******************************************************/
+
 .getled .form-row {
 	position: relative;
 	padding: 0 !important;
 	margin: 16px 0 !important;
-
-	[type='text'],
-	[type='tel'],
-	[type='email'],
-	[type='password'],
-	[type='number'],
-	[type='date'],
-	textarea {
+	[type='text'], [type='tel'], [type='email'], [type='password'], [type='number'], [type='date'], textarea {
 		width: 100%;
 		border: 2px solid #d5d5d5;
 		height: 50px;
 		padding: 10px 20px;
 		font-size: 16px;
 	}
-
 	label {
 		text-align: left;
 		position: absolute;
@@ -228,51 +234,53 @@ Labels On Fields
 		transform: translateY(-50%);
 		transition: transform .25s, top .35s;
 	}
-
 	&.filled-focussed label {
 		min-width: 0;
 		top: 0;
-		transform: translateY(-44%) scale(.88);
+		transform: translateY(-44%) scale(0.88);
 		cursor: text;
+	}
+	.woocommerce-form__label-for-checkbox {
+		position: static;
 	}
 }
 
 /******************************************************
 Labels On Checkmark Fields
 *******************************************************/
-.getled .form-row .woocommerce-form__label-for-checkbox {
-	position: static;
-}
 
 /* Hide Required Asterisk */
-.woocommerce .required {
-	display: none;
+
+.woocommerce {
+	.required {
+		display: none;
+	}
+	textarea {
+		border: 2px solid #d5d5d5;
+		height: 150px;
+		padding: 20px;
+		font-size: 16px;
+	}
+	.woocommerce-input-wrapper .select2-selection {
+		border: 2px solid #d5d5d5;
+		height: 50px;
+		padding: 10px;
+		font-size: 16px;
+	}
 }
 
 /******************************************************
 Text Fields & Text Area
 *******************************************************/
 
-.woocommerce textarea {
-	border: 2px solid #d5d5d5;
-	height: 150px;
-	padding: 20px;
-	font-size: 16px;
-}
-
 /******************************************************
 Drop Down Select Fields
 *******************************************************/
-.woocommerce .woocommerce-input-wrapper .select2-selection {
-	border: 2px solid #d5d5d5;
-	height: 50px;
-	padding: 10px;
-	font-size: 16px;
-}
 
 /******************************************************
 Drop Down Select Fields > Options Border
 *******************************************************/
+
 .select2-dropdown--below {
 	border: 2px solid #d5d5d5;
 }
@@ -280,73 +288,90 @@ Drop Down Select Fields > Options Border
 /******************************************************
 Cart Item Flex
 *******************************************************/
-.checkout-aside .cart_item {
-	display: flex;
-	flex-flow: row;
-}
 
-/******************************************************
-Product Image
-*******************************************************/
-.checkout-aside .cart_item .product-thumbnail {
-	width: 100px;
-	margin: 0 20px 15px 0;
-}
-
-/******************************************************
-Product Info > Title, Variations & Quantity
-*******************************************************/
-/* Product Title */
-.checkout-aside .product-info .product-name a {
-	color: #868686;
-	font-size: 14px;
-	letter-spacing: 1px;
-}
-
-/* Product Variation */
-.checkout-aside .product-info .product-attributes div {
-	color: #868686;
-	font-size: 14px;
-	letter-spacing: 1px;
-	text-transform: capitalize;
-}
-
-/* Product Variation Attr Name */
-.checkout-aside .product-info .product-attributes .product-attr-name {
-	float: left;
-}
-
-/* Product Variation Attr Name AFTER ELEMENT */
-.checkout-aside .product-info .product-attributes .product-attr-name::after {
-	content: ":";
-	padding: 5px;
-}
-
-/* Product Quantity */
-.checkout-aside .product-info .item-quantity {
-	color: #868686;
-	font-size: 14px;
-	letter-spacing: 1px;
-	text-transform: capitalize;
-}
-
-/* Product Quantity Amount */
-.checkout-aside .product-info .item-quantity .amount {
-	font-weight: 600;
-}
-
-/******************************************************
-Product Image
-*******************************************************/
-.checkout-aside .cart-subtotal {
-	color: #868686;
-	font-size: 16px;
-	letter-spacing: 1px;
-	margin-top: 10px;
-	padding-top: 20px;
-	border-top: 2px solid #efefef;
-}
-
-.checkout-aside .cart-subtotal span.cart-subtotal-value {
-	float: right;
+.checkout-aside {
+	h3 {
+		margin: -14px -14px 5px;
+		padding: 0 14px;
+		text-align: center;
+		small {
+			opacity: .7;
+			font-weight: 300;
+			font-size: 70%;
+			vertical-align: top;
+			padding-top: .7em;
+			display: inline-block;
+			line-height: 1.15;
+		}
+		.edit-bag {
+			float: right;
+			border-bottom: 1px solid;
+		}
+	}
+	.cart_item {
+		display: flex;
+		flex-flow: row;
+		border-top: 2px solid #efefef;
+		margin: 0 -20px;
+		flex: 0 0 100%;
+		padding: 11px 20px;
+		.product-thumbnail {
+			flex: 0 0 100px;
+			margin: 0 20px 0 0;
+			img {
+				display: block;
+			}
+		}
+	}
+	.product-info {
+		.product-name a {
+			color: #868686;
+			font-size: 14px;
+			letter-spacing: 1px;
+		}
+		.product-attributes {
+			div {
+				color: #868686;
+				font-size: 14px;
+				letter-spacing: 1px;
+				text-transform: capitalize;
+			}
+			.product-attr-name {
+				float: left;
+				&::after {
+					content: ":";
+					padding: 5px;
+				}
+			}
+		}
+		.item-quantity {
+			color: #868686;
+			font-size: 14px;
+			letter-spacing: 1px;
+			text-transform: capitalize;
+			.amount {
+				font-weight: 600;
+			}
+		}
+	}
+	.cart-subtotal, .cart_totals, .order-total {
+		color: #868686;
+		font-size: 16px;
+		letter-spacing: 1px;
+		margin: 16px -20px 0;
+		padding: 16px 20px 0;
+		border-top: 2px solid #efefef;
+	}
+	.cart-subtotal .amount, .cart_totals .amount, .order-total .amount {
+		float: right;
+		font-weight: 400;
+	}
+	#secure-checkout-label {
+		color: #239451;
+		font-size: 14px;
+		font-weight: 300;
+		letter-spacing: 1px;
+		text-align: center;
+		margin: 29px 0 -50px;
+	}
 }
