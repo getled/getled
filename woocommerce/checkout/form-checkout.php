@@ -95,7 +95,23 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 	<div class="checkout-aside col l3">
-		<h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3>
+		<h3 id="order_review_heading">
+			<?php _e( 'Bag', 'getled' ); ?>
+			<small>
+				<?php
+				echo sprintf (
+					_n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ),
+					WC()->cart->get_cart_contents_count()
+				);
+				?>
+			</small>
+
+			<small class="edit-bag">
+				<a href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'Edit bag', 'getled' ); ?>">
+					<?php _ex( 'Edit', 'edit bag', 'getled' ) ?>
+				</a>
+			</small>
+		</h3>
 		<?php
 		WC()->cart->getled_editable = false;
 		wc_get_template( 'cart/getled-cart-items.php' );
@@ -105,8 +121,11 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			<span class="cart-subtotal-value"><?php wc_cart_totals_subtotal_html(); ?></span>
 		</div>
 		<?php
-		wc_get_template( 'cart/cart-totals.php' );
+		wc_get_template( 'checkout/checkout-totals.php' );
 		?>
+		<div id="secure-checkout-label">
+			<i class="fa fa-lock"></i> <?php _e( 'Secure checkout', 'getled' ) ?>
+		</div>
 	</div>
 
 
