@@ -3,10 +3,10 @@ Cart Form
 *******************************************************/
 
 .woocommerce-cart-form .cart-contents, .woocommerce .checkout-main {
+	background: #fff;
 	border: 2px solid #efefef;
 	border-radius: 3px;
 	padding: 20px;
-	width: 65%;
 }
 
 /******************************************************
@@ -64,7 +64,7 @@ Cart Item Flex
 				margin-bottom: 10px;
 			}
 		}
-		.product-remove a {
+		.remove-product a {
 			color: #575757 !important;
 			font-size: 14px;
 			font-weight: 500;
@@ -84,11 +84,11 @@ Cart Item Flex
 		display: none;
 	}
 	.cart-sidebar, .checkout-aside {
+		background: #fff;
 		border: 2px solid #efefef;
 		border-radius: 3px;
 		padding: 20px;
 		margin-left: 20px;
-		width: calc(35% - 20px);
 	}
 }
 
@@ -96,14 +96,7 @@ Cart Item Flex
 Cart Subtotal Sidebar
 *******************************************************/
 
-.cart-sidebar {
-	.cart-subtotal span {
-		font-size: 20px;
-		letter-spacing: 0.5px;
-	}
-	span.cart-subtotal-value {
-		float: right;
-	}
+.woocommerce {
 	.woocommerce-coupon-form {
 		text-align: center;
 		label {
@@ -142,6 +135,17 @@ Cart Subtotal Sidebar
 				}
 			}
 		}
+	}
+}
+
+.cart-sidebar {
+	.cart-subtotal span {
+		font-size: 20px;
+		letter-spacing: 0.5px;
+	}
+	span.cart-subtotal-value,
+	.amount {
+		float: right;
 	}
 
 	.cart_totals {
@@ -187,25 +191,28 @@ Cart Subtotal Sidebar
 		}
 
 		.wc-proceed-to-checkout a {
-			background: #363636;
-			color: #d5d5d5;
+			text-transform: uppercase;
 			font-size: 20px;
 			font-weight: 400;
 			letter-spacing: 1px;
 			margin: 0;
-			&:hover {
-				background: #434343;
-				color: #ebebeb;
-			}
 		}
 	}
 }
 
-/***************************************************
-****************************************************
-            MOBILE STYLES
-****************************************************
-****************************************************/
+/* Tablet styles */
+
+@media only screen and (max-width: 993px) {
+
+	.woocommerce {
+		.cart-sidebar, .checkout-aside {
+			margin: 20px 0 0;
+		}
+	}
+
+}
+
+/* MOBILE STYLES */
 @media only screen and (max-width: 600px) {
 	/******************************************************
 	Cart Form

@@ -30,18 +30,20 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 	return;
 }
 
+$getled_show_checkout_form = is_user_logged_in() || ! empty( $_POST['billing_email'] );
+
 ?>
 
-<?php if ( is_user_logged_in() ) {
+<?php if ( $getled_show_checkout_form ) {
+	echo
+		'<form name="checkout" method="post" class="checkout woocommerce-checkout checkout-main col l8 s12" enctype="multipart/form-data"' .
+		'action="' . esc_url( wc_get_checkout_url() ) . '">';
+} else {
+	echo '<div class="checkout-main col l8 s12">';
+}
 	?>
-	<form name="checkout" method="post" class="checkout woocommerce-checkout" enctype="multipart/form-data"
-	action="<?php echo esc_url( wc_get_checkout_url() ); ?>">
-	<?php
-} ?>
-
-	<div class="checkout-main col l9">
 		<?php
-		if ( ! is_user_logged_in() && empty( $_POST['billing_email'] ) ) {
+		if ( ! $getled_show_checkout_form ) {
 			wc_get_template( 'checkout/logged-out-user.php' );
 		} elseif ( $checkout->get_checkout_fields() ) {
 			?>
@@ -52,9 +54,12 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 				do_action( 'woocommerce_checkout_billing' );
 				do_action( 'woocommerce_checkout_shipping' );
 				?>
-				<button type="button" class="button" id="payment-button"><?php _e( 'Payment', 'getled' ) ?></button>
 			</div>
 			<div id="payment">
+				<h3 id="secure-payment-label">
+					<?php _e( 'Secure payment', 'getled' ) ?> <i class="fa fa-lock"></i>
+				</h3>
+				<h4><?php _e( 'Choose payment method', 'getled' ) ?></h4>
 				<?php woocommerce_checkout_payment(); ?>
 			</div>
 			<script>
@@ -66,8 +71,9 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 						$stepPay = $( '#step-payment' );
 					$pay.hide();
 					$( '#payment-button' ).click( function() {
-						$( '#customer_details' ).hide();
+						$( '#customer_details, #payment-button' ).hide();
 						$pay.show();
+						$( '#getled-checkout-step' ).html( '<span class="step-number">3</span> payment' );
 						$stepPay.attr( 'class', $stepDel.attr( 'class' ) );
 						$stepDel.attr( 'class', $stepBag.attr( 'class' ) );
 					} );
@@ -91,50 +97,67 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 			<?php
 		} ?>
-	</div>
+
+
+		<?php if ( $getled_show_checkout_form ) {
+			echo '</form>';
+		} else {
+			echo '</div>';
+		} ?>
 
 	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
-	<div class="checkout-aside col l3">
-		<h3 id="order_review_heading">
-			<?php _e( 'Bag', 'getled' ); ?>
-			<small>
-				<?php
-				echo sprintf (
-					_n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ),
-					WC()->cart->get_cart_contents_count()
-				);
-				?>
-			</small>
+	<div class="col l4 s12">
+		<div class="checkout-aside">
+			<h3 id="order_review_heading">
+				<?php _e( 'Bag', 'getled' ); ?>
+				<small>
+					<?php
+					echo sprintf (
+						_n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ),
+						WC()->cart->get_cart_contents_count()
+					);
+					?>
+				</small>
 
-			<small class="edit-bag">
-				<a href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'Edit bag', 'getled' ); ?>">
-					<?php _ex( 'Edit', 'edit bag', 'getled' ) ?>
-				</a>
-			</small>
-		</h3>
-		<?php
-		WC()->cart->getled_editable = false;
-		wc_get_template( 'cart/getled-cart-items.php' );
-		?>
-		<div class="cart-subtotal">
-			<span><?php _e( 'Subtotal', 'woocommerce' ); ?> </span>
-			<span class="cart-subtotal-value"><?php wc_cart_totals_subtotal_html(); ?></span>
-		</div>
-		<?php
-		wc_get_template( 'checkout/checkout-totals.php' );
-		?>
-		<div id="secure-checkout-label">
-			<i class="fa fa-lock"></i> <?php _e( 'Secure checkout', 'getled' ) ?>
+				<small class="edit-bag">
+					<a href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'Edit bag', 'getled' ); ?>">
+						<?php _ex( 'Edit', 'edit bag', 'getled' ) ?>
+					</a>
+				</small>
+			</h3>
+			<?php
+			WC()->cart->getled_editable = false;
+			wc_get_template( 'cart/getled-cart-items.php' );
+			?>
+
+			<?php if ( wc_coupons_enabled() ) { ?>
+				<form class="woocommerce-coupon-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+					<div class="coupon-field">
+						<input type="text" name="coupon_code" class="input-text" id="coupon_code" value=""
+									 placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>"/>
+						<input type="submit" class="button" name="apply_coupon"
+									 value="<?php esc_attr_e( 'Use', 'woocommerce' ); ?>"/>
+					</div>
+					<?php do_action( 'woocommerce_cart_coupon' ); ?>
+				</form>
+			<?php } ?>
+
+			<div class="cart-subtotal">
+				<span><?php _e( 'Subtotal', 'woocommerce' ); ?> </span>
+				<span class="cart-subtotal-value"><?php wc_cart_totals_subtotal_html(); ?></span>
+			</div>
+			<?php
+			wc_get_template( 'checkout/checkout-totals.php' );
+			?>
+			<button type="button" class="button" id="payment-button"><?php _e( 'Payment', 'getled' ) ?></button>
+
+			<div id="secure-checkout-label">
+				<i class="fa fa-lock"></i> <?php _e( 'Secure checkout', 'getled' ) ?>
+			</div>
 		</div>
 	</div>
 
 
 	<?php do_action( 'woocommerce_checkout_after_order_review' ); ?>
-
-<?php if ( is_user_logged_in() ) {
-?>
-</form>
-	<?php
-			} ?>
 
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
