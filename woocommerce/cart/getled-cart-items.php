@@ -78,7 +78,7 @@ foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 					echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item );
 					?></div>
 
-				<div class="product-remove">
+				<div class="remove-product">
 					<?php
 					// @codingStandardsIgnoreLine
 					echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(

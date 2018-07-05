@@ -4,6 +4,7 @@
  *
  * Each tab is an array containing title, callback and priority.
  * @see woocommerce_default_product_tabs()
+ * @version 3.4.0
  */
 $accordions = apply_filters( 'woocommerce_product_tabs', array() );
 

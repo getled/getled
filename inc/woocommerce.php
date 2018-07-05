@@ -45,6 +45,7 @@ class Getled_WooCommerce {
 		add_action( 'woocommerce_before_cart', array( $this, 'checkout_progress' ) );
 		add_action( 'woocommerce_before_checkout_form', array( $this, 'checkout_progress' ) );
 		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_login_form' );
+		remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 
 		// Shop
 		remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
@@ -63,6 +64,7 @@ class Getled_WooCommerce {
 		// Product filters
 		add_filter( 'getled_mobile_accordion', [ $this, 'getled_mobile_accordion' ] );
 		add_action( 'woocommerce_product_query', [ $this, 'apply_filters_on_query' ] );
+		add_action( 'woocommerce_shop_loop_item_title', [ $this, 'color_variations_indicator' ], 7 );
 	}
 
 	// region Shop filter rendering methods
@@ -300,6 +302,20 @@ class Getled_WooCommerce {
 		return $sections;
 	}
 
+	public function color_variations_indicator() {
+		/** @var WC_Product $product */
+		global $product;
+		if ( $product && $product->is_type( 'variable' ) ) {
+			$vars = $product->get_variation_attributes(); // get all attributes by variations
+
+			if ( ! empty( $vars['pa_color'] ) || ! empty( $vars['pa_colour'] ) ) {
+				?>
+				<div class='color-variations-indicator'></div>
+				<?php
+			}
+		}
+	}
+
 	private function filters_applied() {
 		return
 			isset( $_GET['min_price'] ) || isset( $_GET['orderby'] ) ||
@@ -321,6 +337,22 @@ class Getled_WooCommerce {
 		wc_get_template( 'getled-checkout-progress.php' );
 	}
 	// endregion Cart/Checkout
+
+	public static function coupon_html( $coupon ) {
+		$discount_amount_html = '';
+
+		$amount               = WC()->cart->get_coupon_discount_amount( $coupon->get_code(), WC()->cart->display_cart_ex_tax );
+		$discount_amount_html = wc_price( $amount );
+
+		if ( $coupon->get_free_shipping() && empty( $amount ) ) {
+			$discount_amount_html = __( 'Free shipping coupon', 'woocommerce' );
+		}
+
+		$discount_amount_html = apply_filters( 'woocommerce_coupon_discount_amount_html', $discount_amount_html, $coupon );
+		$coupon_html          = $discount_amount_html . ' <a href="' . esc_url( add_query_arg( 'remove_coupon', rawurlencode( $coupon->get_code() ), defined( 'WOOCOMMERCE_CHECKOUT' ) ? wc_get_checkout_url() : wc_get_cart_url() ) ) . '" class="woocommerce-remove-coupon" data-coupon="' . esc_attr( $coupon->get_code() ) . '">' . __( 'Remove', 'woocommerce' ) . '</a>';
+
+		echo wp_kses( apply_filters( 'woocommerce_cart_totals_coupon_html', $coupon_html, $coupon, $discount_amount_html ), array_replace_recursive( wp_kses_allowed_html( 'post' ), array( 'a' => array( 'data-coupon' => true ) ) ) );
+	}
 }
 
 Getled_WooCommerce::instance();

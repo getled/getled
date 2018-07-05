@@ -61,6 +61,34 @@
 	display: none;
 }
 
+.color-variations-indicator {
+	right: 1em;
+	&, &:before, &:after {
+		content: '';
+		position: absolute;
+		font-size: 12px;
+		width: 1em;
+		height: 1em;
+		border-radius: 50%;
+		background: #f0a702;
+		margin-left: calc(.5em - 1px);
+		border: 1px solid white;
+		display: block;
+	}
+
+	&:before, &:after {
+		margin-top: -1px;
+	}
+
+	&:before {
+		background: #5eacc6;
+	}
+
+	&:after {
+		margin-left: calc(1em - 1px);
+		background: #c66973;
+	}
+}
 @media (max-width: 768px) {
 	.woocommerce.archive ul.products li.product {
 		.woocommerce-loop-product__title, .button {

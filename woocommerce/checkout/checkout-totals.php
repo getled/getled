@@ -31,6 +31,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<?php do_action( 'woocommerce_cart_totals_after_shipping' ); ?>
 
+
+			<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
+				<div class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
+					<span><?php wc_cart_totals_coupon_label( $coupon ); ?></span>
+					<span class="cart-coupon-value"><?php Getled_WooCommerce::coupon_html( $coupon ) ?></span>
+				</div>
+			<?php endforeach; ?>
+
 		<?php elseif ( WC()->cart->needs_shipping() && 'yes' === get_option( 'woocommerce_enable_shipping_calc' ) ) : ?>
 
 			<div class="shipping">

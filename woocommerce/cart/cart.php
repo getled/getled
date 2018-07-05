@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 3.3.0
+ * @version 3.4.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -24,10 +24,10 @@ wc_print_notices();
 
 do_action( 'woocommerce_before_cart' ); ?>
 
-<form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+<form class="woocommerce-cart-form col l8 s12" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 	<?php do_action( 'woocommerce_before_cart_table' ); ?>
 
-	<div class="cart-contents col l9">
+	<div class="cart-contents">
 		<?php
 		do_action( 'woocommerce_before_cart_contents' );
 		WC()->cart->getled_editable = true;
@@ -51,46 +51,47 @@ do_action( 'woocommerce_before_cart' ); ?>
 	<?php wp_nonce_field( 'woocommerce-cart' ); ?>
 </form>
 
-<div class="cart-sidebar col l3">
+<div class="col l4 s12">
+	<div class="cart-sidebar">
 
-	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
-	<div class="cart-subtotal">
-		<span><?php _e( 'Subtotal', 'woocommerce' ); ?> </span>
-		<span class="cart-subtotal-value"><?php wc_cart_totals_subtotal_html(); ?></span>
-	</div>
-
-	<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
-		<div class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
-			<span><?php wc_cart_totals_coupon_label( $coupon ); ?></span>
-			<span class="cart-coupon-value"><?php wc_cart_totals_coupon_html( $coupon ); ?></span>
+		<?php do_action( 'woocommerce_before_cart_totals' ); ?>
+		<div class="cart-subtotal">
+			<span><?php _e( 'Subtotal', 'woocommerce' ); ?> </span>
+			<span class="cart-subtotal-value"><?php wc_cart_totals_subtotal_html(); ?></span>
 		</div>
-	<?php endforeach; ?>
 
-	<?php if ( wc_coupons_enabled() ) { ?>
-		<form class="woocommerce-coupon-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
-			<label for="coupon_code"><?php esc_html_e( 'Coupon code', 'woocommerce' ); ?></label>
-
-			<div class="coupon-field">
-				<input type="text" name="coupon_code" class="input-text" id="coupon_code" value=""
-							 placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>"/>
-				<input type="submit" class="button" name="apply_coupon"
-							 value="<?php esc_attr_e( 'Use', 'woocommerce' ); ?>"/>
+		<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
+			<div class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
+				<span><?php wc_cart_totals_coupon_label( $coupon ); ?></span>
+				<span class="cart-coupon-value"><?php Getled_WooCommerce::coupon_html( $coupon ) ?></span>
 			</div>
-			<?php do_action( 'woocommerce_cart_coupon' ); ?>
-		</form>
-	<?php } ?>
+		<?php endforeach; ?>
 
-	<?php do_action( 'woocommerce_cart_actions' ); ?>
-	<?php wp_nonce_field( 'woocommerce-cart' ); ?>
+		<?php if ( wc_coupons_enabled() ) { ?>
+			<form class="woocommerce-coupon-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+				<label for="coupon_code"><?php esc_html_e( 'Coupon code', 'woocommerce' ); ?></label>
 
-	<?php
-	/**
-	 * Cart collaterals hook.
-	 *
-	 * @hooked woocommerce_cart_totals - 10
-	 */
-	do_action( 'woocommerce_cart_collaterals' );
-	?>
+				<div class="coupon-field">
+					<input type="text" name="coupon_code" class="input-text" id="coupon_code" value=""
+								 placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>"/>
+					<input type="submit" class="button" name="apply_coupon"
+								 value="<?php esc_attr_e( 'Use', 'woocommerce' ); ?>"/>
+				</div>
+				<?php do_action( 'woocommerce_cart_coupon' ); ?>
+			</form>
+		<?php } ?>
+
+		<?php do_action( 'woocommerce_cart_actions' ); ?>
+		<?php wp_nonce_field( 'woocommerce-cart' ); ?>
+
+		<?php
+		/**
+		 * Cart collaterals hook.
+		 *
+		 * @hooked woocommerce_cart_totals - 10
+		 */
+		do_action( 'woocommerce_cart_collaterals' );
+		?>
+	</div>
 </div>
-
 <?php do_action( 'woocommerce_after_cart' ); ?>

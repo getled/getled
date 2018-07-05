@@ -2,12 +2,36 @@
 Checkout Progress
 *******************************************************/
 
+body {
+	background: #fafafa;
+}
+
+#getled-checkout-step {
+	margin-bottom: 0;
+	background: #fff3f1;
+	padding: 16px 20px;
+	.step-number {
+		font-size: 14px;
+		background: #444;
+		color: #fff;
+		font-weight: 500;
+		border: 3px solid #444;
+		border-radius: 100%;
+		width: 50px;
+		height: 50px;
+		line-height: 3em;
+		text-align: center;
+		margin: auto;
+		display: inline-block;
+		vertical-align: 7px;
+	}
+}
+
 #getled-checkout-progress {
 	display: flex;
 	justify-content: space-between;
 	margin: 0 20%;
 	padding: 40px 0;
-	background-color: #ffffff;
 }
 
 /******************************************************
@@ -168,42 +192,6 @@ Checkout Logged Out > Tabs
 		}
 	}
 }
-
-/******************************************************
-Checkout Logged Out > Tabs
-*******************************************************/
-
-/******************************************************
-Checkout Logged Out > Tabs > Default
-*******************************************************/
-
-/******************************************************
-Checkout Logged Out > Tabs > Active
-*******************************************************/
-
-/******************************************************
-Checkout Logged Out > Tabs Content
-*******************************************************/
-
-/******************************************************
-Checkout Logged Out > Form Heading
-*******************************************************/
-
-/******************************************************
-Checkout Logged Out > Button
-*******************************************************/
-
-/******************************************************
-Checkout Logged Out > Hide "Remember Me"
-*******************************************************/
-
-/******************************************************
-Checkout Logged Out > Lost Password Link
-*******************************************************/
-
-/******************************************************
-Labels On Fields
-*******************************************************/
 
 .getled .form-row {
 	position: relative;
@@ -374,4 +362,16 @@ Cart Item Flex
 		text-align: center;
 		margin: 29px 0 -50px;
 	}
+}
+
+a#woo_pp_ec_button {
+	background: none;
+}
+
+button#payment-button {
+	display: block;
+	width: 100%;
+	font-weight: 400;
+	margin-top: 1em;
+	padding: 1em;
 }

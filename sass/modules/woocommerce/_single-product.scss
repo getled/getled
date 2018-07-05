@@ -238,7 +238,8 @@ Roboto Include
 				font-weight: 500;
 				border-radius: 0;
 				padding: 10px;
-				width: 50px;
+				min-width: 50px;
+				width: auto;
 				height: 50px;
 				opacity: 1;
 				border: 0;
