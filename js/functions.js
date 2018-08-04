@@ -136,11 +136,15 @@ jQuery( function ( $ ) {
 		} );
 
 	if ( $('body.single-product') ) {
-		$( '.tawcvs-swatches' ).each( function() {
-			var $t = $( this );
-			if ( ! $t.find( '.swatch.selected' ).length ) {
-				$t.children( '.swatch:first-child' ).click();
-			}
-		} );
+
+		setTimeout( function() {
+			$( '.tawcvs-swatches' ).each( function() {
+				var $t = $( this );
+				if ( ! $t.find( '.swatch.selected' ).length ) {
+					$t.children( '.swatch:first-child' ).click();
+				}
+			} );
+		}, 500 );
+
 	}
 } );
