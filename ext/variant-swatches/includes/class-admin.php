@@ -306,7 +306,7 @@ class TA_WC_Variation_Swatches_Admin {
 
 		<script type="text/template" id="tmpl-tawcvs-input-color">
 
-			<label><?php esc_html_e( 'Color', 'wcvs' ) ?></label><br>
+			<label><?php esc_html_e( 'Colour', 'wcvs' ) ?></label><br>
 			<input type="text" class="tawcvs-input tawcvs-input-color" name="swatch">
 
 		</script>

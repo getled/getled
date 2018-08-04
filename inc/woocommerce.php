@@ -5,6 +5,17 @@ class Getled_WooCommerce {
 	/** @var self Instance */
 	private static $_instance;
 
+	/** @var string Color attribute */
+	private static $color_attr;
+
+	public static function color_attr() {
+		if ( ! self::$color_attr ) {
+			self::$color_attr = taxonomy_exists( 'pa_colour' ) ? 'pa_colour' : 'pa_color';
+		}
+
+		return self::$color_attr;
+	}
+
 	/**
 	 * Whether or not it's a product archive
 	 * @return bool Whether or not it's a product archive
@@ -258,14 +269,15 @@ class Getled_WooCommerce {
 	 */
 	public function apply_filters_on_query( $qry ) {
 		if ( $qry->is_main_query() ) {
-			if ( ! empty( $_GET['pa_color'] ) ) {
+			$color_tax = Getled_WooCommerce::color_attr();
+			if ( ! empty( $_GET[ $color_tax ] ) ) {
 				$tax_query = $qry->get( 'tax_query' );
 
 				if ( is_array( $tax_query ) ) {
 					$tax_query[] = [
-						'taxonomy' => 'pa_color',
+						'taxonomy' => $color_tax,
 						'field'    => 'term_id',
-						'terms'    => [ $_GET['pa_color'] ],
+						'terms'    => [ $_GET[ $color_tax ] ],
 					];
 				}
 				$qry->set( 'tax_query', $tax_query );
@@ -305,10 +317,12 @@ class Getled_WooCommerce {
 	public function color_variations_indicator() {
 		/** @var WC_Product $product */
 		global $product;
-		if ( $product && $product->is_type( 'variable' ) ) {
-			$vars = $product->get_variation_attributes(); // get all attributes by variations
+		if ( $product ) {
+			$color_tax = Getled_WooCommerce::color_attr();
 
-			if ( ! empty( $vars['pa_color'] ) || ! empty( $vars['pa_colour'] ) ) {
+			$vars = get_the_terms( $product->get_id(), $color_tax ); // get all attributes by variations
+
+			if ( $vars && 1 < count( $vars ) ) {
 				?>
 				<div class='color-variations-indicator'></div>
 				<?php
@@ -319,7 +333,7 @@ class Getled_WooCommerce {
 	private function filters_applied() {
 		return
 			isset( $_GET['min_price'] ) || isset( $_GET['orderby'] ) ||
-			isset( $_GET['max_price'] ) || isset( $_GET['pa_color'] );
+			isset( $_GET['max_price'] ) || isset( $_GET[ Getled_WooCommerce::color_attr() ] );
 	}
 	// endregion Product archives / Terms
 

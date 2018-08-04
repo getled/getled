@@ -247,7 +247,7 @@ function getled_scripts() {
 
 	if ( Getled_WooCommerce::product_archive() ) {
 		add_action( 'woocommerce_before_shop_loop', function () { echo '<div class="scroll-wrap">'; }, 7 );
-		add_action( 'woocommerce_after_shop_loop', function () { echo '</div>'; }, 7 );
+		add_action( 'woocommerce_after_shop_loop', function () { echo '</div>'; }, 25 );
 		wp_enqueue_script( 'jscroll', get_template_directory_uri() . '/js/jscroll.min.js', array( 'jquery' ) );
 		$getled_settings['infiniteScroll'] = 1;
 	}

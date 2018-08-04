@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/"
 
 #: woocommerce-variation-swatches.php:57 includes/class-admin.php:303
-msgid "Color"
+msgid "Colour"
 msgstr ""
 
 #: woocommerce-variation-swatches.php:58 includes/class-admin.php:310
