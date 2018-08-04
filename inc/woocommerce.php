@@ -270,14 +270,15 @@ class Getled_WooCommerce {
 	public function apply_filters_on_query( $qry ) {
 		if ( $qry->is_main_query() ) {
 			$color_tax = Getled_WooCommerce::color_attr();
-			if ( ! empty( $_GET[ $color_tax ] ) ) {
+			$color_param = str_replace( 'pa_', '', $color_tax );
+			if ( ! empty( $_GET[ $color_param ] ) ) {
 				$tax_query = $qry->get( 'tax_query' );
 
 				if ( is_array( $tax_query ) ) {
 					$tax_query[] = [
 						'taxonomy' => $color_tax,
-						'field'    => 'term_id',
-						'terms'    => [ $_GET[ $color_tax ] ],
+						'field'    => 'slug',
+						'terms'    => [ $_GET[ $color_param ] ],
 					];
 				}
 				$qry->set( 'tax_query', $tax_query );

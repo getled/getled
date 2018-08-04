@@ -53,7 +53,7 @@
 	Getled_WooCommerce::filter_item( __( 'Any color', 'getled' ), get_permalink( wc_get_page_id( 'shop' ) ) );
 	foreach ( $terms as $term ) {
 		/** @var WP_Term $term */
-		Getled_WooCommerce::filter_item( $term->name, $color_tax, $term->term_id );
+		Getled_WooCommerce::filter_item( $term->name, str_replace( 'pa_', '', $color_tax ), $term->slug );
 	}
 	echo '</ul>';
 
