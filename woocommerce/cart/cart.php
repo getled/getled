@@ -69,14 +69,17 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 		<?php if ( wc_coupons_enabled() ) { ?>
 			<form class="woocommerce-coupon-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
-				<label for="coupon_code"><?php esc_html_e( 'Coupon code', 'woocommerce' ); ?></label>
+				<h5><?php esc_html_e( 'Coupon code', 'woocommerce' ); ?></h5>
 
-				<div class="coupon-field">
-					<input type="text" name="coupon_code" class="input-text" id="coupon_code" value=""
-								 placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>"/>
-					<input type="submit" class="button" name="apply_coupon"
-								 value="<?php esc_attr_e( 'Use', 'woocommerce' ); ?>"/>
-				</div>
+				<p class="form-row">
+					<label for="coupon_code" class=""><?php esc_html_e( 'Coupon code', 'woocommerce' ); ?></label>
+					<span class="woocommerce-input-wrapper">
+						<input type="text" name="coupon_code" class="input-text" id="coupon_code">
+					</span>
+				</p>
+				<input type="submit" class="button" name="apply_coupon"
+							 value="<?php esc_html_e( 'Use', 'woocommerce' ); ?>"/>
+
 				<?php do_action( 'woocommerce_cart_coupon' ); ?>
 			</form>
 		<?php } ?>

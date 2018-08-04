@@ -5,8 +5,7 @@
 }
 
 .woocommerce .checkout-main #payment .payment_box:before,
-#wc-stripe-cc-form label,
-.woocommerce .checkout-main .woocommerce-terms-and-conditions-wrapper {
+#wc-stripe-cc-form label {
 	display: none;
 }
 
@@ -22,7 +21,6 @@
 		border: none;
 	}
 	.place-order button {
-		background: #36a74c;
 		font-size: 18px;
 		padding: 15px 0;
 		display: inline-block;
@@ -52,16 +50,27 @@
 	}
 	li.wc_payment_method {
 		margin-bottom: 1em;
-	}
-	label {
-		display: block;
-		background: #f5f5f5;
-		line-height: 50px;
-		padding: 0 16px;
-		margin-top: 1.6em;
-	}
-	input:checked + label {
-		background: #ddd;
+		label {
+			display: block;
+			background: #f5f5f5;
+			line-height: 50px;
+			padding: 0 16px;
+			margin-top: 1.6em;
+		}
+		input:checked + label {
+			background: #ddd;
+		}
+		img {
+			margin: 5px;
+			&.stripe-icon {
+				float: none !important;
+				display: inline-block;
+				vertical-align: -3px;
+				&:first-of-type {
+					margin-left: .5em !important;
+				}
+			}
+		}
 	}
 	div.payment_box {
 		border: 1px solid #ddd;
@@ -74,4 +83,8 @@
 	.form-row.place-order {
 		margin: 2em 0 0 !important;
 	}
+}
+
+#add_payment_method #payment div.payment_box::before, .woocommerce-cart #payment div.payment_box::before, .woocommerce-checkout #payment div.payment_box::before {
+	display: none;
 }

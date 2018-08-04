@@ -134,4 +134,13 @@ jQuery( function ( $ ) {
 				$p.addClass( 'filled-focussed filled' ); // Add
 			}
 		} );
+
+	if ( $('body.single-product') ) {
+		$( '.tawcvs-swatches' ).each( function() {
+			var $t = $( this );
+			if ( ! $t.find( '.swatch.selected' ).length ) {
+				$t.children( '.swatch:first-child' ).click();
+			}
+		} );
+	}
 } );

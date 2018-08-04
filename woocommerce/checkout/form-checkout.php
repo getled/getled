@@ -132,12 +132,6 @@ $getled_show_checkout_form = is_user_logged_in() || ! empty( $_POST['billing_ema
 
 			<?php if ( wc_coupons_enabled() ) { ?>
 				<form class="woocommerce-coupon-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
-					<div class="coupon-field">
-						<input type="text" name="coupon_code" class="input-text" id="coupon_code" value=""
-									 placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>"/>
-						<input type="submit" class="button" name="apply_coupon"
-									 value="<?php esc_attr_e( 'Use', 'woocommerce' ); ?>"/>
-					</div>
 					<?php do_action( 'woocommerce_cart_coupon' ); ?>
 				</form>
 			<?php } ?>

@@ -39,8 +39,11 @@
 	// endregion Product categories filter
 
 	// region Product categories filter
+
+	$color_tax = Getled_WooCommerce::color_attr();
+
 	$terms = get_terms( array(
-		'taxonomy' => 'pa_color',
+		'taxonomy' => $color_tax,
 		'hide_empty' => false,
 		'update_term_meta_cache' => false,
 	) );
@@ -50,11 +53,11 @@
 	Getled_WooCommerce::filter_item( __( 'Any color', 'getled' ), get_permalink( wc_get_page_id( 'shop' ) ) );
 	foreach ( $terms as $term ) {
 		/** @var WP_Term $term */
-		Getled_WooCommerce::filter_item( $term->name, 'pa_color', $term->term_id );
+		Getled_WooCommerce::filter_item( $term->name, $color_tax, $term->term_id );
 	}
 	echo '</ul>';
 
-	Getled_WooCommerce::filter( 'Color', 'categories', ob_get_clean() );
+	Getled_WooCommerce::filter( 'Colour', 'categories', ob_get_clean() );
 	// endregion Product categories filter
 
 

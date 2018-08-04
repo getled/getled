@@ -99,6 +99,11 @@ Cart Subtotal Sidebar
 .woocommerce {
 	.woocommerce-coupon-form {
 		text-align: center;
+		margin-bottom:16px;
+		h5 {
+			margin: 25px 0 16px;
+			font-size: 20px;
+		}
 		label {
 			font-size: 14px;
 			margin-bottom: 20px;
@@ -106,34 +111,32 @@ Cart Subtotal Sidebar
 			text-transform: capitalize;
 			display: inline-block;
 		}
-		.coupon-field {
-			width: 200px;
-			margin: 0 auto 50px;
-			text-align: center;
-			display: flex;
-			input {
-				&[type=text] {
-					border: 2px solid #e1e1e1;
-					border-radius: 3px 0 0 3px;
-					width: 150px;
-					height: 35px;
-					font-size: 14px;
-					padding: 0 5px;
-				}
-				&[type=submit] {
-					border-width: 2px 2px 2px 0;
-					border-style: solid;
-					border-color: #e1e1e1;
-					border-radius: 0 3px 3px 0;
-					background: #fff;
-					height: 35px;
-					color: #868686;
-					font-size: 14px;
-					font-weight: 500;
-					letter-spacing: 1px;
-					padding: 0 10px;
-				}
+		.form-row {
+				 width: 79%;
+				 float: left;
+				 margin: 0 !important;
+			 }
+		input {
+			border-radius: 0;
+			font-size: 16px;
+			font-weight: 400;
+			letter-spacing: 1px;
+			line-height: 26px;
+			box-sizing: border-box;
+			height: auto;
+			background: #fff;
+			border: 2px solid #ccc;
+			&.button {
+				float: right;
+				width: 21%;
+				border-left: none;
+				margin-bottom:16px;
 			}
+		}
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
 		}
 	}
 }
