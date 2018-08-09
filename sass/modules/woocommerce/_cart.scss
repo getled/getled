@@ -26,9 +26,10 @@ Cart Item Flex
 		}
 	}
 	.product-info {
+		font-size: 16px;
 		.product-name a {
 			color: #868686;
-			font-size: 16px;
+			font-size: inherit;
 			letter-spacing: 1px;
 		}
 		.product-attributes div {
@@ -221,7 +222,6 @@ Cart Subtotal Sidebar
 	Cart Form
 	*******************************************************/
 	.woocommerce-cart-form .cart-contents {
-		border: 0px;
 		border-radius: 3px;
 		padding: 5px;
 		width: 100%;

@@ -322,17 +322,17 @@ function getled_customize_register( $wp_customize ) {
 	);
 
 	$color_controls[] = array(
-		'slug'     => 'product_category_description_bg',
-		'default'  => '#ffe7f4',
-		'section'  => 'getled_woocommerce',
-		'label'    => __( 'Product category description background', 'getledcustomizer' ),
+		'slug'    => 'product_category_description_bg',
+		'default' => '#ffe7f4',
+		'section' => 'getled_woocommerce',
+		'label'   => __( 'Product category description background', 'getledcustomizer' ),
 	);
 
 	$color_controls[] = array(
-		'slug'     => 'product_category_description_color',
-		'default'  => '#322',
-		'section'  => 'getled_woocommerce',
-		'label'    => __( 'Product category description font color', 'getledcustomizer' ),
+		'slug'    => 'product_category_description_color',
+		'default' => '#322',
+		'section' => 'getled_woocommerce',
+		'label'   => __( 'Product category description font color', 'getledcustomizer' ),
 	);
 
 	$color_controls[] = array(
@@ -535,12 +535,160 @@ function getled_top_three_promo() {
 add_action( 'getled_under_header', 'getled_top_three_promo' );
 
 /* customier option */
-add_action( 'customize_register', 'my_theme_options' );
+add_action( 'customize_register', 'getled_customizer_controls' );
+
+/**
+ * @param WP_Customize_Manager $man
+ */
+function getled_button_customizer_controls( $man ) {
+	$man->add_section(
+		'getled_buttons',
+		array(
+			'title'       => __( 'Buttons', 'getled' ),
+			'priority'    => 100,
+			'capability'  => 'edit_theme_options',
+			'description' => __( 'Customize buttons\' appearance.', 'getled' ),
+		)
+	);
+
+	$man->add_setting( 'getled_button_color', [ 'default' => '#04aa5b' ] );
+	$man->add_control( new WP_Customize_Color_Control(
+		$man,
+		'getled_button_color',
+		array(
+			'label'    => __( 'Primary Button Color', 'getled' ),
+			'section'  => 'getled_buttons',
+			'settings' => 'getled_button_color',
+			'priority' => 10,
+		)
+	) );
+
+	$man->add_setting( 'getled_button_text_color', [ 'default' => '#fff' ] );
+	$man->add_control( new WP_Customize_Color_Control(
+		$man,
+		'getled_button_text_color',
+		array(
+			'label'    => __( 'Primary Button Text Color', 'getled' ),
+			'section'  => 'getled_buttons',
+			'settings' => 'getled_button_text_color',
+			'priority' => 10,
+		)
+	) );
+
+	$man->add_setting( 'getled_button_hover_color', [ 'default' => '#03a050' ] );
+	$man->add_control( new WP_Customize_Color_Control(
+		$man,
+		'getled_button_hover_color',
+		array(
+			'label'    => __( 'Primary Button Hover Color', 'getled' ),
+			'section'  => 'getled_buttons',
+			'settings' => 'getled_button_hover_color',
+			'priority' => 10,
+		)
+	) );
+
+	$man->add_setting( 'getled_button_hover_text_color', [ 'default' => '#fff' ] );
+	$man->add_control( new WP_Customize_Color_Control(
+		$man,
+		'getled_button_hover_text_color',
+		array(
+			'label'    => __( 'Primary Button Hover Text Color', 'getled' ),
+			'section'  => 'getled_buttons',
+			'settings' => 'getled_button_hover_text_color',
+			'priority' => 10,
+		)
+	) );
+
+
+	$man->add_setting( 'getled_button_secondary_color', [ 'default' => '#444' ] );
+	$man->add_control( new WP_Customize_Color_Control(
+		$man,
+		'getled_button_secondary_color',
+		array(
+			'label'    => __( 'Secondary Button Color', 'getled' ),
+			'section'  => 'getled_buttons',
+			'settings' => 'getled_button_secondary_color',
+			'priority' => 10,
+		)
+	) );
+
+	$man->add_setting( 'getled_button_secondary_text_color', [ 'default' => '#fff' ] );
+	$man->add_control( new WP_Customize_Color_Control(
+		$man,
+		'getled_button_secondary_text_color',
+		array(
+			'label'    => __( 'Secondary Button Text Color', 'getled' ),
+			'section'  => 'getled_buttons',
+			'settings' => 'getled_button_secondary_text_color',
+			'priority' => 10,
+		)
+	) );
+
+	$man->add_setting( 'getled_button_secondary_hover_color', [ 'default' => '#212121' ] );
+	$man->add_control( new WP_Customize_Color_Control(
+		$man,
+		'getled_button_secondary_hover_color',
+		array(
+			'label'    => __( 'Secondary Button Hover Color', 'getled' ),
+			'section'  => 'getled_buttons',
+			'settings' => 'getled_button_secondary_hover_color',
+			'priority' => 10,
+		)
+	) );
+
+	$man->add_setting( 'getled_button_secondary_hover_text_color', [ 'default' => '#fff' ] );
+	$man->add_control( new WP_Customize_Color_Control(
+		$man,
+		'getled_button_secondary_hover_text_color',
+		array(
+			'label'    => __( 'Secondary Button Hover Text Color', 'getled' ),
+			'section'  => 'getled_buttons',
+			'settings' => 'getled_button_secondary_hover_text_color',
+			'priority' => 10,
+		)
+	) );
+
+	$man->add_setting( 'getled_button_lr_padding', [ 'default' => 16 ] );
+	$man->add_control(
+		'getled_button_lr_padding',
+		[
+			'label'    => __( 'Button left/right padding', 'getled' ),
+			'section'  => 'getled_buttons',
+			'settings' => 'getled_button_lr_padding',
+			'type'     => 'number',
+		]
+	);
+
+	$man->add_setting( 'getled_button_tb_padding', [ 'default' => 11 ] );
+	$man->add_control(
+		'getled_button_tb_padding',
+		[
+			'label'    => __( 'Button top/bottom padding', 'getled' ),
+			'section'  => 'getled_buttons',
+			'settings' => 'getled_button_tb_padding',
+			'type'     => 'number',
+		]
+	);
+
+	$man->add_setting( 'getled_button_rounded_corners', [ 'default' => 2 ] );
+	$man->add_control(
+		'getled_button_rounded_corners',
+		[
+			'label'    => __( 'Button rounded corners', 'getled' ),
+			'section'  => 'getled_buttons',
+			'settings' => 'getled_button_rounded_corners',
+			'type'     => 'number',
+		]
+	);
+}
 
 /**
  * @param WP_Customize_Manager $wp_customize
  */
-function my_theme_options( $wp_customize ) {
+function getled_customizer_controls( $wp_customize ) {
+
+	getled_button_customizer_controls( $wp_customize );
+
 	$wp_customize->add_section(
 		'getled_menu_options',
 		array(
@@ -702,21 +850,59 @@ function my_dynamic_css() {
 		@media screen and (max-width: 600px) {
 			/* for responsive menu */
 			#primary-menu, #primary-menu ul {
-				background: <?php echo get_theme_mod('getled_menu_bg_color'); ?>;
+				background: <?php echo get_theme_mod( 'getled_menu_bg_color' ); ?>;
 			}
 		}
 
+		.getled .button,
+		.getled a.button,
+		.getled #respond input#submit {
+			padding: <?php echo get_theme_mod( 'getled_button_tb_padding', 11 ); ?>px <?php echo get_theme_mod( 'getled_button_lr_padding', 16 ); ?>px;
+			border-radius: <?php echo get_theme_mod( 'getled_button_rounded_corners', 2 ); ?>px;
+			background-color: <?php echo get_theme_mod( 'getled_button_color', '#04aa5b' ); ?>;
+			color: <?php echo get_theme_mod( 'getled_button_text_color', '#fff' ); ?>;
+			font: 300 18px "Oswald","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
+			letter-spacing: 1px;
+		}
+
+		.getled input:checked ~ span.getled-push-btn {
+			color: <?php echo get_theme_mod( 'getled_button_color', '#04aa5b' ); ?>;
+		}
+
+		.getled .button:hover,
+		.getled a.button:hover,
+		.getled #respond input#submit:hover {
+			background-color: <?php echo get_theme_mod( 'getled_button_hover_color', '#03a050' ); ?>;
+			color: <?php echo get_theme_mod( 'getled_button_hover_text_color', '#fff' ); ?>;
+		}
+
+		.getled #respond input#submit.alt,
+		.getled a.button.alt,
+		.getled button.button.alt,
+		.getled input.button.alt {
+			background-color: <?php echo get_theme_mod( 'getled_button_secondary_color', '#444' ); ?>;
+			color: <?php echo get_theme_mod( 'getled_button_secondary_text_color', '#fff' ); ?>;
+		}
+		.getled #respond input#submit.alt:hover,
+		.getled a.button.alt:hover,
+		.getled button.button.alt:hover,
+		.getled input.button.alt:hover {
+			background-color: <?php echo get_theme_mod( 'getled_button_secondary_hover_color', '#212121' ); ?>;
+			color: <?php echo get_theme_mod( 'getled_button_secondary_hover_text_color', '#fff' ); ?>;
+		}
+
 		#primary-menu, #primary-menu a {
-			color: <?php echo get_theme_mod('getled_menu_color') ?>;
+			color: <?php echo get_theme_mod( 'getled_menu_color' ) ?>;
 		}
 
 		#primary-menu, #primary-menu > ul {
-			background: <?php echo get_theme_mod('getled_menu_bg_color'); ?>;
+			background: <?php echo get_theme_mod( 'getled_menu_bg_color' ); ?>;
 		}
 
 		#primary-menu li:hover {
-			background: <?php echo get_theme_mod('getled_menu_bg_color_hover'); ?>
+			background: <?php echo get_theme_mod( 'getled_menu_bg_color_hover' ); ?>
 		}
+
 		<?php getled_custom_colors(); ?>
 	</style>
 	<?php
@@ -744,7 +930,7 @@ function getled_custom_colors() {
 
 	//add classes
 
-	$prod_cat_desc_bg = get_option( 'product_category_description_bg', '#ffe7f4' );
+	$prod_cat_desc_bg    = get_option( 'product_category_description_bg', '#ffe7f4' );
 	$prod_cat_desc_color = get_option( 'product_category_description_color', '#322' );
 	?>
 	.topthree .first { background-color: <?php echo $colortop_bg1; ?> }

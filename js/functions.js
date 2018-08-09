@@ -119,6 +119,14 @@ jQuery( function ( $ ) {
 			$t.closest( '.form-row' ).addClass( 'filled-focussed filled' );
 		}
 	} );
+
+	$( 'input[type="checkbox"], input[type="radio"]' ).not( '.getled-push-btn' ).each( function () {
+		var $t = $( this );
+		if ( ! $t.closest( 'label' ).length ) {
+			$t.wrap( '<label></label>' )
+		}
+		$t.addClass( 'getled-push-btn' ).after( '<span class="getled-push-btn"></span>' )
+	} );
 	$b
 		.on( 'focus', 'input, select, textarea', function () {
 			console.log( this );

@@ -27,6 +27,11 @@ do_action( 'woocommerce_before_cart' ); ?>
 <form class="woocommerce-cart-form col l8 s12" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 	<?php do_action( 'woocommerce_before_cart_table' ); ?>
 
+	<h2 id="getled-checkout-step">
+		<span class="step-number"><?php _e( 1, 'getled' ) ?></span>
+		<?php echo __( 'Your bag', 'getled' ) ?>
+	</h2>
+
 	<div class="cart-contents">
 		<?php
 		do_action( 'woocommerce_before_cart_contents' );
