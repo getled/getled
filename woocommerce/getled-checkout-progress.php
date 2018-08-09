@@ -36,10 +36,6 @@ $current_attrs = $html_attributes[ Getled_WooCommerce::$checkout_progress ];
 
 ?>
 
-<h2 id="getled-checkout-step">
-	<span class="step-number"><?php _e( Getled_WooCommerce::$checkout_progress, 'getled' ) ?></span>
-	<?php echo $current_attrs['label'] ?>
-</h2>
 <div id="getled-checkout-progress">
 	<div id="step-bag" <?php echo $current_attrs[1]  ?>>
 		<div class="step-number"><?php _e( '1', 'getled' ) ?></div>

@@ -110,7 +110,7 @@
 	.widget_shopping_cart_content .product_list_widget li .remove.remove_from_cart_button {
 		float: right;
 		&::before {
-			color: #999;
+			color: inherit;
 			font-size: 20px;
 		}
 	}
@@ -141,26 +141,19 @@
 }
 
 /* Cart Buttons */
-
 .site-header-cart .widget_shopping_cart .widget_shopping_cart_content .buttons {
 	padding: 10px;
 	padding-top: 0px;
 	a:first-child {
 		width: calc(50% - 5px);
 		float: left;
-		border-radius: 2px;
 	}
 	.checkout {
 		float: left;
 		width: calc(50% - 5px);
 		margin-left: 10px;
-		border-radius: 2px;
 	}
 }
-
-/* View Cart Button */
-
-/* Checkout Button */
 
 /* Cart Width */
 
@@ -371,17 +364,15 @@
 
 .site-header-cart .widget_shopping_cart .widget_shopping_cart_content .buttons {
 	padding: 10px;
-	padding-top: 0px;
+	padding-top: 0;
 	margin: 0;
 	font-family: "Source Sans Pro",HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
 	font-size: 14px;
 	a:first-child {
 		width: calc(50% - 5px);
 		float: left;
-		border-radius: 2px;
 		margin: 0;
 		text-align: center;
-		font-weight: 500;
 		line-height: 1.8em;
 		&:hover {
 			border: 0;
@@ -391,9 +382,7 @@
 		float: left;
 		width: calc(50% - 5px);
 		margin: 0 0 0 10px;
-		border-radius: 2px;
 		text-align: center;
-		font-weight: 500;
 		line-height: 1.8em;
 		color: #ffffff;
 		background: #333333;
