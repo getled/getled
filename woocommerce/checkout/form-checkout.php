@@ -76,6 +76,7 @@ $getled_show_checkout_form = is_user_logged_in() || ! empty( $_POST['billing_ema
 					$stepPay = $( '#step-payment' );
 				$pay.hide();
 				$( '#payment-button' ).click( function () {
+					window.scrollTo(0, 0);
 					$( '#customer_details, #payment-button' ).hide();
 					$pay.show();
 					$( '#getled-checkout-step' ).html( '<span class="step-number">3</span> payment' );

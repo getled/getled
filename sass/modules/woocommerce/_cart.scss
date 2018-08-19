@@ -72,6 +72,7 @@ Cart Item Flex
 			text-transform: uppercase;
 			letter-spacing: 1px;
 			display: inline-block;
+			padding-left: 1em;
 			width: auto;
 			&:hover {
 				background: white;
@@ -98,7 +99,7 @@ Cart Subtotal Sidebar
 *******************************************************/
 
 .woocommerce {
-	.woocommerce-coupon-form {
+	.woocopayment-buttonmmerce-coupon-form {
 		text-align: center;
 		margin-bottom:16px;
 		h5 {
@@ -113,10 +114,11 @@ Cart Subtotal Sidebar
 			display: inline-block;
 		}
 		.form-row {
-				 width: 79%;
-				 float: left;
-				 margin: 0 !important;
-			 }
+			width: 79%;
+			float: left;
+			margin: 0 !important;
+			height: 50px;
+		}
 		input {
 			border-radius: 0;
 			font-size: 16px;
@@ -132,6 +134,7 @@ Cart Subtotal Sidebar
 				width: 21%;
 				border-left: none;
 				margin-bottom:16px;
+				height: 50px;
 			}
 		}
 		&:after {
@@ -245,16 +248,15 @@ Cart Subtotal Sidebar
 				display: flex;
 				flex-flow: wrap;
 				margin-left: auto;
-				margin-bottom: -55px;
+				margin-bottom: -65px;
 				width: 50%;
 				position: relative;
-				bottom: 70px;
+				bottom: 80px;
 				text-align: left;
 			}
 		}
 		.product-actions .product-subtotal {
 			width: 100%;
-			margin-bottom: 0;
 		}
 	}
 	/******************************************************

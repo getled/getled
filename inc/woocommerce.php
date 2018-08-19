@@ -142,7 +142,7 @@ class Getled_WooCommerce {
 				 data-count="<?php echo array_sum( $cart->get_cart_item_quantities() ) ?>"></div>
 		<?php
 		if ( ! $cart->is_empty() ) {
-			if ( 2 < count( $cart->cart_contents ) ) {
+			if ( 1 < count( $cart->cart_contents ) ) {
 				add_action( 'woocommerce_mini_cart_contents', function () {
 					echo '<i class="fa fa-caret-down scroll"></i>';
 				}, 99 );

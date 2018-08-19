@@ -113,35 +113,39 @@ jQuery( function ( $ ) {
 	} )
 	// endregion Product filters
 
-	$( 'input, select, textarea' ).each( function () {
-		var $t = $( this );
-		if ( $t.val() ) {
-			$t.closest( '.form-row' ).addClass( 'filled-focussed filled' );
-		}
-	} );
-
-	$( 'input[type="checkbox"], input[type="radio"]' ).not( '.getled-push-btn' ).each( function () {
-		var $t = $( this );
-		if ( ! $t.closest( 'label' ).length ) {
-			$t.wrap( '<label></label>' )
-		}
-		$t.addClass( 'getled-push-btn' ).after( '<span class="getled-push-btn"></span>' )
-	} );
-	$b
-		.on( 'focus', 'input, select, textarea', function () {
-			console.log( this );
-			$( this ).closest( '.form-row' ).addClass( 'filled-focussed focussed' );
-		} )
-		.on( 'blur', 'input, select, textarea', function () {
-			console.log( this );
-			var
-            	$t = $( this ),
-            	$p = $t.closest( '.form-row' );
-			$p.removeClass( 'filled-focussed focussed' ); // Remove focus classes
+	function prettyinputs() {
+		$( 'input, select, textarea' ).each( function () {
+			var $t = $( this );
 			if ( $t.val() ) {
-				$p.addClass( 'filled-focussed filled' ); // Add
+				$t.closest( '.form-row' ).addClass( 'filled-focussed filled' );
 			}
 		} );
+		$b
+			.on( 'focus', 'input, select, textarea', function () {
+				$( this ).closest( '.form-row' ).addClass( 'filled-focussed focussed' );
+			} )
+			.on( 'blur', 'input, select, textarea', function () {
+				var
+					$t = $( this ),
+					$p = $t.closest( '.form-row' );
+				$p.removeClass( 'filled-focussed focussed' ); // Remove focus classes
+				if ( $t.val() ) {
+					$p.addClass( 'filled-focussed filled' ); // Add
+				}
+			} );
+
+		$( 'input[type="checkbox"], input[type="radio"]' ).not( '.getled-push-btn' ).each( function () {
+			var $t = $( this );
+			if ( ! $t.closest( 'label' ).length ) {
+				$t.wrap( '<label></label>' )
+			}
+			$t.addClass( 'getled-push-btn' ).after( '<span class="getled-push-btn"></span>' )
+		} );
+	}
+
+	prettyinputs();
+
+	$b.bind("DOMSubtreeModified", prettyinputs );
 
 	if ( $('body.single-product') ) {
 
