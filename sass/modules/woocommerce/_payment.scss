@@ -48,7 +48,7 @@
 		margin-bottom: 1em;
 		position: relative;
 		margin-top: 1.6em !important;
-		label {
+		> label {
 			display: block;
 			background: #f5f5f5;
 			line-height: 50px;
@@ -79,6 +79,17 @@
 	.form-row.place-order {
 		margin: 2em 0 0 !important;
 	}
+}
+
+.getled .form-row input[type="checkbox"] + label {
+	width: auto;
+	position: static;
+	vertical-align: middle;
+	padding: 0;
+}
+
+#add_payment_method #payment ul.payment_methods li input, .woocommerce-cart #payment ul.payment_methods li input, .woocommerce-checkout #payment ul.payment_methods li input {
+	margin: 0;
 }
 
 #add_payment_method #payment div.payment_box::before, .woocommerce-cart #payment div.payment_box::before, .woocommerce-checkout #payment div.payment_box::before {
