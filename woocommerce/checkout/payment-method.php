@@ -23,10 +23,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 <li class="wc_payment_method payment_method_<?php echo $gateway->id; ?>">
 	<label for="payment_method_<?php echo $gateway->id; ?>">
 
-		<input id="payment_method_<?php echo $gateway->id; ?>" class="input-radio getled-push-btn" name="payment_method"
+		<input id="payment_method_<?php echo $gateway->id; ?>" class="input-radio" name="payment_method"
 					 type="radio" value="<?php echo esc_attr( $gateway->id ); ?>" <?php checked( $gateway->chosen, true ); ?>
 					 data-order_button_text="<?php echo esc_attr( $gateway->order_button_text ); ?>" />
-		<span class="getled-push-btn"></span>
+<!--		<span class="getled-push-btn"></span>-->
 		<?php echo $gateway->get_title(); ?> <?php echo $gateway->get_icon(); ?>
 	</label>
 	<?php if ( $gateway->has_fields() || $gateway->get_description() ) : ?>

@@ -854,9 +854,11 @@ function my_dynamic_css() {
 			}
 		}
 
-		.getled .button,
-		.getled a.button,
-		.getled #respond input#submit {
+		body.getled .woocommerce #respond input#submit,
+		body.getled .woocommerce .button,
+		body.getled .button,
+		body.getled .button.disabled,
+		body.getled #respond input#submit {
 			padding: <?php echo get_theme_mod( 'getled_button_tb_padding', 11 ); ?>px <?php echo get_theme_mod( 'getled_button_lr_padding', 16 ); ?>px;
 			border-radius: <?php echo get_theme_mod( 'getled_button_rounded_corners', 2 ); ?>px;
 			background-color: <?php echo get_theme_mod( 'getled_button_color', '#04aa5b' ); ?>;
@@ -865,28 +867,33 @@ function my_dynamic_css() {
 			letter-spacing: 1px;
 		}
 
-		.getled input:checked ~ span.getled-push-btn {
+		body.getled input:checked ~ span.getled-push-btn {
 			color: <?php echo get_theme_mod( 'getled_button_color', '#04aa5b' ); ?>;
 		}
 
-		.getled .button:hover,
-		.getled a.button:hover,
-		.getled #respond input#submit:hover {
+		body.getled .button.disabled:hover,
+		body.getled .button:hover,
+		body.getled #respond input#submit:hover {
 			background-color: <?php echo get_theme_mod( 'getled_button_hover_color', '#03a050' ); ?>;
 			color: <?php echo get_theme_mod( 'getled_button_hover_text_color', '#fff' ); ?>;
 		}
 
-		.getled #respond input#submit.alt,
-		.getled a.button.alt,
-		.getled button.button.alt,
-		.getled input.button.alt {
+		body.getled #respond input#submit.alt,
+		body.getled .button.alt.disabled,
+		body.getled .button.alt {
 			background-color: <?php echo get_theme_mod( 'getled_button_secondary_color', '#444' ); ?>;
 			color: <?php echo get_theme_mod( 'getled_button_secondary_text_color', '#fff' ); ?>;
 		}
-		.getled #respond input#submit.alt:hover,
-		.getled a.button.alt:hover,
-		.getled button.button.alt:hover,
-		.getled input.button.alt:hover {
+
+		body.getled .button.disabled,
+		body.getled .button.alt.disabled {
+			opacity: .7;
+		}
+
+
+		body.getled #respond input#submit.alt:hover,
+		body.getled .button.alt.disabled:hover,
+		body.getled .button.alt:hover {
 			background-color: <?php echo get_theme_mod( 'getled_button_secondary_hover_color', '#212121' ); ?>;
 			color: <?php echo get_theme_mod( 'getled_button_secondary_hover_text_color', '#fff' ); ?>;
 		}

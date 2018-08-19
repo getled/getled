@@ -202,6 +202,7 @@ Roboto Include
 			}
 		}
 		form.cart tr td.value .tawcvs-swatches {
+			padding: 0;
 			.swatch-color {
 				margin: 0 15px;
 				width: 40px;
@@ -243,7 +244,7 @@ Roboto Include
 				height: 50px;
 				opacity: 1;
 				border: 0;
-				margin: 0 10px;
+				margin: 5px 10px;
 				&.selected {
 					box-shadow: 0 0 0;
 					border: 0;
