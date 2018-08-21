@@ -231,8 +231,16 @@ Checkout Content
 		transform: translateY(-44%) scale(0.88);
 		cursor: text;
 	}
-	.woocommerce-form__label-for-checkbox {
+
+	.woocommerce-form__label-for-checkbox,
+	&.getled-push-button-form-row label {
 		position: static;
+		display: inline-block !important;
+		padding: 0;
+		margin: 0;
+		vertical-align: middle;
+		height: auto;
+		line-height: 25px !important;
 	}
 }
 
