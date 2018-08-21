@@ -113,39 +113,61 @@ jQuery( function ( $ ) {
 	} )
 	// endregion Product filters
 
-	function prettyinputs() {
-		$( 'input, select, textarea' ).each( function () {
-			var $t = $( this );
-			if ( $t.val() ) {
-				$t.closest( '.form-row' ).addClass( 'filled-focussed filled' );
-			}
-		} );
-		$b
-			.on( 'focus', 'input, select, textarea', function () {
-				$( this ).closest( '.form-row' ).addClass( 'filled-focussed focussed' );
-			} )
-			.on( 'blur', 'input, select, textarea', function () {
-				var
-					$t = $( this ),
-					$p = $t.closest( '.form-row' );
-				$p.removeClass( 'filled-focussed focussed' ); // Remove focus classes
-				if ( $t.val() ) {
-					$p.addClass( 'filled-focussed filled' ); // Add
-				}
-			} );
+	// region Pretty inputs
 
-		$( 'input[type="checkbox"], input[type="radio"]' ).not( '.getled-push-btn' ).each( function () {
+	$b.on( 'focus', 'input, select, textarea', function () {
+		$( this ).closest( '.form-row' ).addClass( 'filled-focussed focussed' );
+	} );
+
+	$b.on( 'blur', 'input, select, textarea', function () {
+		var
+			$t = $( this ),
+			$p = $t.closest( '.form-row' );
+		$p.removeClass( 'filled-focussed focussed' ); // Remove focus classes
+		if ( $t.val() ) {
+			$p.addClass( 'filled-focussed filled' ); // Add
+		}
+	} );
+
+	function prettyinputs() {
+		$( 'input[type="checkbox"], input[type="radio"]' ).each( function () {
 			var $t = $( this );
+
+			if ( $t.hasClass( 'getled-push-btn' ) ) {
+				return;
+			}
+
+			$t.addClass( 'getled-push-btn' );
+
+			$t.closest( '.form-row' ).addClass( 'getled-push-button-form-row' );
+
 			if ( ! $t.closest( 'label' ).length ) {
 				$t.wrap( '<label></label>' )
 			}
-			$t.addClass( 'getled-push-btn' ).after( '<span class="getled-push-btn"></span>' )
+			$t.after( '<span class="getled-push-btn"></span>' )
+		} );
+
+		$( 'input, select, textarea' ).each( function () {
+			var $t = $( this );
+
+			if ( $t.hasClass( 'getled-push-btn' ) ) {
+				return;
+			}
+
+			if ( $t.closest( '.form-row' ).length ) {
+				$t.addClass( 'getled-fancy-input' );
+				if ( $t.val() ) {
+					$t.closest( '.form-row' ).addClass( 'filled-focussed filled' );
+				}
+			}
 		} );
 	}
 
 	prettyinputs();
 
 	$b.bind("DOMSubtreeModified", prettyinputs );
+
+	// endregion Pretty inputs
 
 	if ( $('body.single-product') ) {
 

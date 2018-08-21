@@ -81,13 +81,6 @@
 	}
 }
 
-.getled .form-row input[type="checkbox"] + label {
-	width: auto;
-	position: static;
-	vertical-align: middle;
-	padding: 0;
-}
-
 #add_payment_method #payment ul.payment_methods li input, .woocommerce-cart #payment ul.payment_methods li input, .woocommerce-checkout #payment ul.payment_methods li input {
 	margin: 0;
 }
