@@ -15,7 +15,7 @@
 	font-size: 16px;
 }
 
-.woocommerce #payment {
+.woocommerce #payment_details {
 	ul.wc_payment_methods {
 		padding: 0;
 		border: none;
@@ -42,7 +42,7 @@
 		letter-spacing: 1px;
 		text-transform: uppercase;
 		opacity: .7;
-		margin: 1em 0 0;
+		margin: 0;
 	}
 	li.wc_payment_method {
 		margin-bottom: 1em;

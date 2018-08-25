@@ -60,17 +60,14 @@ $getled_show_checkout_form = is_user_logged_in() || ! empty( $_POST['billing_ema
 			do_action( 'woocommerce_checkout_shipping' );
 			?>
 		</div>
-		<div id="payment">
-			<h3 id="secure-payment-label">
-				<?php _e( 'Secure payment', 'getled' ) ?> <i class="fa fa-lock"></i>
-			</h3>
+		<div id="payment_details">
 			<h4><?php _e( 'Choose payment method', 'getled' ) ?></h4>
 			<?php woocommerce_checkout_payment(); ?>
 		</div>
 		<script>
 			jQuery( function ( $ ) {
 				var
-					$pay = $( '#payment' ),
+					$pay = $( '#payment_details' ),
 					$stepBag = $( '#step-bag' ),
 					$stepDel = $( '#step-delivery' ),
 					$stepPay = $( '#step-payment' );
@@ -79,7 +76,7 @@ $getled_show_checkout_form = is_user_logged_in() || ! empty( $_POST['billing_ema
 					window.scrollTo(0, 0);
 					$( '#customer_details, #payment-button' ).hide();
 					$pay.show();
-					$( '#getled-checkout-step' ).html( '<span class="step-number">3</span> payment' );
+					$( '#getled-checkout-step' ).html( '<span class="step-number">3</span> <?php _ex( 'Secure payment', 'checkout heading', 'getled' ) ?> <i class="fa fa-lock"></i>' );
 					$stepPay.attr( 'class', $stepDel.attr( 'class' ) );
 					$stepDel.attr( 'class', $stepBag.attr( 'class' ) );
 				} );
