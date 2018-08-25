@@ -61,8 +61,8 @@ Cart Item Flex
 				font-size: 16px;
 				letter-spacing: 1px;
 				border: 0;
-				width: 40px;
-				margin-bottom: 10px;
+				width: 50px;
+				margin: 0 1em 0 0;
 			}
 		}
 		.remove-product a {
@@ -72,7 +72,6 @@ Cart Item Flex
 			text-transform: uppercase;
 			letter-spacing: 1px;
 			display: inline-block;
-			padding-left: 1em;
 			width: auto;
 			&:hover {
 				background: white;
