@@ -320,8 +320,14 @@ class Getled_WooCommerce {
 		global $product;
 		if ( $product ) {
 			$color_tax = Getled_WooCommerce::color_attr();
+			$prod_id = $product->get_id();
 
-			$vars = get_the_terms( $product->get_id(), $color_tax ); // get all attributes by variations
+			if(  'WC_Product_Variation' === get_class( $product ) ) {
+				/** @var WC_Product_Variation $product */
+				$prod_id = $product->get_parent_id();
+			}
+
+			$vars = get_the_terms( $prod_id, $color_tax ); // get all attributes by variations
 
 			if ( $vars && 1 < count( $vars ) ) {
 				?>

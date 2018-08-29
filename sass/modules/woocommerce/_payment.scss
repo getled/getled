@@ -48,7 +48,8 @@
 		margin-bottom: 1em;
 		position: relative;
 		margin-top: 1.6em !important;
-		> label {
+		> label,
+		&.payment_method_stripe label[for=payment_method_stripe] {
 			display: block;
 			background: #f5f5f5;
 			line-height: 50px;

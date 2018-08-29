@@ -9,6 +9,14 @@ Cart Form
 	padding: 20px;
 }
 
+.woocommerce-checkout, .woocommerce-cart {
+	h1.entry-title {
+		display: none;
+	}
+	.entry-content {
+		margin: 0;
+	}
+}
 /******************************************************
 Cart Item Flex
 *******************************************************/

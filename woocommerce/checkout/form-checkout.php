@@ -146,7 +146,7 @@ $getled_show_checkout_form = is_user_logged_in() || ! empty( $_POST['billing_ema
 		<?php
 		wc_get_template( 'checkout/checkout-totals.php' );
 		?>
-		<button type="button" class="button" id="payment-button"><?php _e( 'Payment', 'getled' ) ?></button>
+		<button type="button" class="button alt" id="payment-button"><?php _e( 'Payment', 'getled' ) ?></button>
 
 		<div id="secure-checkout-label">
 			<i class="fa fa-lock"></i> <?php _e( 'Secure checkout', 'getled' ) ?>
