@@ -177,3 +177,10 @@ function getled_header_cart() {
 		<?php
 	}
 }
+
+/**
+ * Output the proceed to checkout button.
+ */
+function woocommerce_widget_shopping_cart_proceed_to_checkout() {
+	echo '<a href="' . esc_url( wc_get_checkout_url() ) . '" class="button alt checkout wc-forward">' . esc_html__( 'Checkout', 'woocommerce' ) . '</a>';
+}
