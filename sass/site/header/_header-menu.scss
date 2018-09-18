@@ -56,12 +56,14 @@ ul.sub-menu.active {
 .menu-item a {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-}
-
-.menu-item a img {
-	max-height: 50px;
-	width: auto;
+	img {
+		max-height: 50px;
+		width: auto;
+		margin-left: auto;
+	}
+	.fa {
+		margin-right: .25em;
+	}
 }
 
 #masthead {

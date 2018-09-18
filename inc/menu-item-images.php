@@ -4,6 +4,7 @@ class Getled_Menu_Item_Images {
 
 	/** @var self Instance */
 	private static $_instance;
+	private $ico = '';
 
 	/**
 	 * Returns instance of current calss
@@ -36,9 +37,21 @@ class Getled_Menu_Item_Images {
 	 */
 	public function icon_class( $classes, $item ) {
 
-		return $classes;
+		$temp = array();
+		$this->ico = null;
 
+		foreach ( $classes as $class ) {
+			if ( strpos( $class, 'fa-' ) === false ) {
+				$temp[] = $class;
+			} else {
+				$temp[] = 'menu-item-icon';
+				$this->ico = $class;
+			}
+		}
+
+		return $temp;
 	}
+
 
 	/**
 	 * @param $html
@@ -48,10 +61,16 @@ class Getled_Menu_Item_Images {
 	 * @return string
 	 */
 	public function add_img( $html, $i, $depth ) {
+
+		$icon = $image = '';
 		if ( $i->image ) {
-			$html = str_replace( '</a>', "<img src='{$i->image}'></a>", $html );
+			$image = "<img src='{$i->image}'>";
 		}
-		return $html;
+
+		if ( $this->ico ) {
+			$icon = "<i class='fa {$this->ico}'></i>";
+		}
+		return "<a href='{$i->url}'>$icon <span>{$i->title}</span> $image</a>";
 	}
 
 
@@ -62,6 +81,14 @@ class Getled_Menu_Item_Images {
 
 			wp_enqueue_script( 'getled-admin-menu', get_template_directory_uri() . '/js/menu-item-images.js', array( 'jquery' ) );
 			wp_enqueue_style( 'getled-admin-menu', get_template_directory_uri() . '/js/menu-item-images.css', array() );
+			wp_enqueue_script( 'getled-fa-picker', get_template_directory_uri() . '/js/fa-picker.js', array( 'jquery' ) );
+			wp_enqueue_style( 'getled-fa-picker', get_template_directory_uri() . '/js/fa-picker.css', array() );
+			wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
+
+			wp_localize_script( 'getled-fa-picker', 'shrameeFAPickerL10n', [
+				'cancel' => __( 'Cancel', 'getled' ),
+				'accept' => __( 'Accept', 'getled' ),
+			] );
 
 		}
 	}
