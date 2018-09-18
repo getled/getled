@@ -13,15 +13,11 @@ function custom_nav_update($menu_id, $menu_item_db_id, $args ) {
         $custom_value = $_REQUEST['menu-item-medialk'][$menu_item_db_id];
         update_post_meta( $menu_item_db_id, '_menu_item_medialk', $custom_value );
     }
-}
 
-/*
- * Adds value of new field to $item object that will be passed to Walker_Nav_Menu_Edit_Custom
- */
-add_filter( 'wp_setup_nav_menu_item','lkonmedia_nav_item' );
-function lkonmedia_nav_item($menu_item) {
-    $menu_item->lkonmedia = get_post_meta( $menu_item->ID, '_menu_item_lkonmedia', true );
-    return $menu_item;
+    if ( is_array($_REQUEST['menu-item-image']) ) {
+        $custom_value = $_REQUEST['menu-item-image'][$menu_item_db_id];
+        update_post_meta( $menu_item_db_id, '_menu_item_image', $custom_value );
+    }
 }
 
 add_filter( 'wp_edit_nav_menu_walker', 'custom_nav_edit_walker',10,2 );
@@ -35,8 +31,10 @@ function custom_nav_edit_walker($walker,$menu_id) {
  */
 add_filter( 'wp_setup_nav_menu_item','medialk_nav_item' );
 function medialk_nav_item($menu_item) {
-    $menu_item->medialk = get_post_meta( $menu_item->ID, '_menu_item_medialk', true );
-    return $menu_item;
+	$menu_item->lkonmedia = get_post_meta( $menu_item->ID, '_menu_item_lkonmedia', true );
+	$menu_item->medialk   = get_post_meta( $menu_item->ID, '_menu_item_medialk', true );
+	$menu_item->image     = get_post_meta( $menu_item->ID, '_menu_item_image', true );
+	return $menu_item;
 }
 
 add_filter( 'wp_edit_nav_menu_walker', 'medialk_nav_edit_walker',10,2 );
@@ -219,7 +217,18 @@ function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
              * This is the added field
              */
             ?>
-            <p class="field-medialk description description-wide">
+					<p class="field-image description description-wide">
+						<label for="edit-menu-item-image-<?php echo $item_id; ?>">
+							<?php _e( 'Image' ); ?><br/>
+							<img class="menu-item-img" alt="Preview image">
+							<input type="hidden" id="edit-menu-item-image-<?php echo $item_id; ?>"
+										 class="widefat code edit-menu-item-image" name="menu-item-image[<?php echo $item_id; ?>]"
+										 value="<?php echo esc_attr( $item->image ); ?>"/>
+							<button class="getled-select-image">Select Image</button>
+						</label>
+					</p>
+
+					<p class="field-medialk description description-wide">
                 <label for="edit-menu-item-medialk-<?php echo $item_id; ?>">
                     <?php _e( 'Media Link' ); ?><br />
                     <input type="text" id="edit-menu-item-medialk-<?php echo $item_id; ?>" class="widefat code edit-menu-item-medialk" name="menu-item-medialk[<?php echo $item_id; ?>]" value="<?php echo esc_attr( $item->medialk ); ?>" />
