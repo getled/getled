@@ -1,0 +1,36 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+Created on : 07-Jul-2017, 19:34:21
+Author     : Ashley Martin
+*/
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.clearfix {
+	display: block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+img.menu-item-img {
+	width: 50px;
+	display: none;
+	&[src*='http'] {
+		display: inline-block;
+	}
+}
+
+img.menu-item-img, .getled-select-image {
+	vertical-align: middle;
+}

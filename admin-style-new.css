@@ -1,23 +1,2 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 07-Jul-2017, 19:34:21
-    Author     : Ashley Martin
-*/
-
-.clearfix:after {
-  visibility: hidden;
-  display: block;
-  font-size: 0;
-  content: " ";
-  clear: both;
-  height: 0;
-}
-.clearfix { display: inline-block; }
-/* start commented backslash hack \*/
-* html .clearfix { height: 1%; }
-.clearfix { display: block; }
-/* close commented backslash hack */
+.clearfix:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0}.clearfix{display:block}* html .clearfix{height:1%}img.menu-item-img{width:50px;display:none}img.menu-item-img[src*='http']{display:inline-block}img.menu-item-img,.getled-select-image{vertical-align:middle}
+/*# sourceMappingURL=admin-style-new.css.map */

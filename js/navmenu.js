@@ -71,7 +71,6 @@ jQuery.fn.menuThum = function() {
     return this.each(function() {
     	var medialk = '';
     	medialk = jQuery(this).find("a").attr("medialk");
-		mediaonlk = jQuery(this).find("a").attr("lkonmedia");    	
     	if(typeof medialk !== typeof undefined && medialk !== false){
     		if(typeof mediaonlk !== typeof undefined && mediaonlk !== false){ }else{ mediaonlk = '';}
     		jQuery(this).find("ul.sub-menu:first").append( "<li class='menuthum'><a target='_blank' href='"+ mediaonlk +"'><img style='max-width:308px' src='"+medialk+"'/></a></li>" );

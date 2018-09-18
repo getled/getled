@@ -22,7 +22,6 @@ ul.sub-menu.active {
 	transform: translateX(-100%);
 	transition: -webkit-transform 0.6s cubic-bezier(0.7, 0, 0.3, 1) 0s;
 	transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1) 0s;
-	transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1) 0s, -webkit-transform 0.6s cubic-bezier(0.7, 0, 0.3, 1) 0s;
 	width: 100%;
 	z-index: 170;
 }
@@ -52,6 +51,17 @@ ul.sub-menu.active {
 	color: #000000;
 	line-height: 30px;
 	padding-left: 10px;
+}
+
+.menu-item a {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.menu-item a img {
+	max-height: 50px;
+	width: auto;
 }
 
 #masthead {

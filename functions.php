@@ -306,6 +306,11 @@ require get_template_directory() . '/inc/getledmenu.php';
  */
 require get_template_directory() . '/inc/woocommerce.php';
 
+/*
+ * WooCommerce customizations file
+ */
+require get_template_directory() . '/inc/menu-item-images.php';
+
 
 // getled hooks 
 // getled_under_header 
