@@ -11,8 +11,6 @@ jQuery( function ( $ ) {
 		$( this ).siblings( 'img' ).attr( 'src', this.value )
 	} );
 
-	$body.find( 'input[name*="menu-item-image"]' ).change();
-
 	$body.on( 'click', '.getled-select-image', function ( event ) {
 		event.preventDefault();
 

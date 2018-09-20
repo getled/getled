@@ -220,7 +220,7 @@ function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
 					<p class="field-image description description-wide">
 						<label for="edit-menu-item-image-<?php echo $item_id; ?>">
 							<?php _e( 'Image' ); ?><br/>
-							<img class="menu-item-img" alt="Preview image">
+							<img src="<?php echo esc_attr( $item->image ); ?>" class="menu-item-img" alt="Preview image">
 							<input type="hidden" id="edit-menu-item-image-<?php echo $item_id; ?>"
 										 class="widefat code edit-menu-item-image" name="menu-item-image[<?php echo $item_id; ?>]"
 										 value="<?php echo esc_attr( $item->image ); ?>"/>
