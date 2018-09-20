@@ -57,9 +57,9 @@ ul.sub-menu.active {
 	display: flex;
 	align-items: center;
 	img {
-		max-height: 50px;
+		max-height: 100px;
 		width: auto;
-		margin-left: auto;
+		margin: 5px 5px 5px auto;
 	}
 	.fa {
 		margin-right: .25em;

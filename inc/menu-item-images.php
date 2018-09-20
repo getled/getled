@@ -68,7 +68,7 @@ class Getled_Menu_Item_Images {
 		}
 
 		if ( $this->ico ) {
-			$icon = "<i class='fa {$this->ico}'></i>";
+			$icon = "<i class='fa fa-fw {$this->ico}'></i>";
 		}
 		return "<a href='{$i->url}'>$icon <span>{$i->title}</span> $image</a>";
 	}
