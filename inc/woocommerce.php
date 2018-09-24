@@ -377,3 +377,9 @@ class Getled_WooCommerce {
 }
 
 Getled_WooCommerce::instance();
+
+//// Remove add to cart button on Category pages.
+function remove_loop_button(){
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+}
+add_action('init','remove_loop_button');

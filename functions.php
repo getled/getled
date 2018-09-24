@@ -187,6 +187,16 @@ function getled_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+        
+        register_sidebar( array(
+		'name'          => esc_html__( 'Top search', 'getled' ),
+		'id'            => 'topsearch',
+		'description'   => esc_html__( 'Add woocommerce search here.', 'getled' ),
+		'before_widget' => '',
+		'after_widget'  => '',
+		'before_title'  => '',
+		'after_title'   => '',
+	) );
 
 
 	register_sidebar( array(
@@ -302,18 +312,44 @@ require get_template_directory() . '/inc/jetpack.php';
 require get_template_directory() . '/inc/getledmenu.php';
 
 /*
- * WooCommerce customizations file
+ * Menu item images
  */
-require get_template_directory() . '/inc/woocommerce.php';
+require get_template_directory() . '/inc/menu-item-images.php';
 
 /*
  * WooCommerce customizations file
  */
-require get_template_directory() . '/inc/menu-item-images.php';
+require get_template_directory() . '/inc/woocommerce.php';
 
 
 // getled hooks 
 // getled_under_header 
 
 
+add_filter( 'get_product_search_form' , 'woo_custom_product_searchform' );
 
+/**
+ * woo_custom_product_searchform
+ *
+ * @access      public
+ * @since       1.0 
+ * @return      void
+*/
+function woo_custom_product_searchform() { 
+	?>
+            <div id="site-header-search">
+                <?php echo
+                '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/'  ) ) . '">
+
+			<label> 
+                        
+                           <span class="screen-reader-text" for="s">' . __( 'Search for:', 'woocommerce' ) . '</span>
+                            <input type="text" class="search-field" value="' . get_search_query() . '" name="s" id="s" placeholder="' . __( 'Search', 'woocommerce' ) . '" />
+                            <input type="hidden" name="post_type" value="product" />
+                        </label>
+                      <button class="search-submit"><i class="fa fa-search"></i></button>
+		
+                </form>'; ?>
+            </div>
+	<?php
+}

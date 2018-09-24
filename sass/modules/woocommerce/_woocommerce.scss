@@ -4,6 +4,7 @@
 	flex: 0 0 180px;
 	padding: 2px 0 7px;
 	margin-right: 1em;
+        width:36px;
 	.widget_shopping_cart {
 		position: absolute;
 		background: #fff;
@@ -385,4 +386,57 @@
 		text-align: center;
 		line-height: 1.8em;
 	}
+}
+
+/* Woocommerce alert messages */
+
+.woocommerce-message {
+    background: none;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.25);
+    font-size: 0.8em;
+    margin:0em;
+    border-top:0;
+   
+    ::before {
+       
+    color: #2cbe4e;
+}
+    }
+
+.woocommerce-error::before, .woocommerce-info::before, .woocommerce-message::before { 
+    top:2em;
+    font-family: fontawesome;
+    content: '\f00c';
+}
+
+.woocommerce .woocommerce-error .button, .woocommerce .woocommerce-info .button, .woocommerce .woocommerce-message .button, .woocommerce-page .woocommerce-error .button, .woocommerce-page .woocommerce-info .button, .woocommerce-page .woocommerce-message .button {
+    color: #fff;
+    padding: 0.6em;
+    margin: 0.5em 0 1em 1em;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    font-weight: 400;
+    background: #2cbe4e;
+}
+
+@media screen and (min-width: $query__small) {
+   
+    .woocommerce-message {
+   
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    text-align: center; 
+    padding: 0.7em 2em 0.5em 3.5em;
+    line-height: 3.1em;
+    }
+   
+   .woocommerce-error::before, .woocommerce-info::before, .woocommerce-message::before {
+    top: 0.6em;
+    } 
+}
+
+@media screen and (min-width: 601px) {
+    #site-header-cart { 
+    padding: 2px 0 20px;
+}
+
 }

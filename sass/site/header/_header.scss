@@ -1,6 +1,5 @@
 .site-header {
-	display: flex;
-	padding-top: 15px;
+	padding-top: 10px;
 	margin-top: 0;
 
 	@media screen and (min-width: $query__small) {
@@ -18,12 +17,10 @@
 }
 
 .site-branding {
-	flex: 1;
+    
 	margin: auto;
 	text-align: center;
-
-	@media screen and (min-width: $query__small) {
-	}
+        padding-top: 0.3em;
 }
 
 .site-title {
@@ -51,6 +48,14 @@
 		width: 100vw;
 	}
 }
+
+.ma {
+            margin:auto;
+        }
+        
+        .npad {
+            margin-bottom: 0px;
+        }
 
 @media screen and (max-width: $query__small) and (max-width: $query__medium) {
 
@@ -105,7 +110,7 @@
 
 @media screen and (max-width: $query__small) and (max-width: $query__medium) {
 
-	#site-header-search,
+	
 	#site-header-cart li:first-of-type .amount {
 		display: none;
 	}
@@ -114,16 +119,18 @@
 		width: auto;
 	}
 
-	.site-branding {
-		text-align: left;
-		padding: 0 4em 0 1.2em;
-	}
-
+	
 	#site-header-cart {
 		position: absolute;
-		right: -.3em;
+		float: right;
 		top: 0;
 	}
+        
+        #site-header-search form.search-form label .search-field {
+
+                 width: 100% !important;
+
+} 
 
 }
 
@@ -135,4 +142,69 @@
 /* Remove Paypal button from cart */
 .widget_shopping_cart_content #woo_pp_ec_button {
 	display: none;
+}
+
+@media screen and (max-width: $query__small) { 
+
+    .searchbox {
+        order:4;
+        margin-top: 0.5em;
+    }
+    
+    
+.widget_shopping_cart {
+    margin: 1em 1.1em;
+    
+}
+
+.displaymenu {
+    margin-left:0.4em;
+}
+    }
+/* No greater than 1530px, no less than 600px */
+@media screen and (min-width:$query__small) and  (max-width:$size__max-width)  {
+ .searchbox {
+        order:4;
+}
+#site-header-search form.search-form label .search-field {
+
+                 width: 100% !important;
+}
+
+#site-header-cart li:first-of-type .amount {
+		display: none;
+	}
+
+}
+
+@media screen and (min-width:993px) {
+    
+    .searchbox {
+            order:3;
+            margin: auto;
+    }
+    
+     .baor {
+        order:4;
+        
+    }
+    
+    #site-header-search form.search-form label .search-field {
+
+                 width: 100% !important;
+}
+}
+
+@media screen and (min-width: $size__max-width) and (max-width:1529px) {
+
+#site-header-cart li:first-of-type .amount {
+		display: none;
+	}
+        
+}
+
+@media screen and(min-width:1530px){
+    #site-header-cart {
+      width:106px !important;
+    }
 }
