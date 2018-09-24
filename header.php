@@ -13,7 +13,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
@@ -21,17 +21,26 @@
 
 <body <?php body_class(); ?> >
 <i class="boddycover"></i>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'getled' ); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
-		<div class="displaymenu">
+<div id="page" class="site">
+
+ <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'getled' ); ?></a>
+     <header id="masthead" class="site-header" role="banner">    
+      <div class="row npad">
+        
+          <div class="col s4 m3 l3 ma">
+              
+              <div class="displaymenu">
 			<button class="toggle-gmenu"><i
 					class="<?php echo get_theme_mod( 'getled_menu_title_iconclass_setting' ); ?>"></i><?php echo get_theme_mod( 'getled_menu_title_setting' ); ?>
 			</button>
 		</div>
-		<div class="site-branding">
-			<?php the_custom_logo() ?>
+          
+          </div>
+          
+          <div class="site-branding col s5 m6 l6">
+           
+              <?php the_custom_logo() ?>
 			<div class="site-branding-text">
 				<?php
 				if ( is_front_page() && is_home() ) : ?>
@@ -49,12 +58,23 @@
 					<?php
 				endif; ?>
 			</div>
-		</div><!-- .site-branding -->
-
-		<?php getled_header_search(); ?>
-		<?php getled_header_cart(); ?>
-
-	</header><!-- #masthead -->
+           
+           
+           </div>
+          <div class="searchbox col s12 m12 l2">
+              
+              <?php get_sidebar('woosearch');?> 
+              
+          </div>
+          <div class="col s3 m3 l1 ma baor  ">
+              <?php getled_header_cart(); ?>
+          </div>
+            
+            
+        
+        </div>
+         
+     </header>
 
 	<nav id="getled-navigation" class="main-navigation" role="navigation">
 		<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>

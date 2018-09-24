@@ -11,16 +11,16 @@
 	}
 
 	.getled-filter-content, .label {
-		padding: .5em .7em;
+		padding: .4em .5em;
 		display: block;
 		text-decoration: none;
 	}
 
 	.label {
-		line-height: 30px;
+		line-height: 20px;
 		&:after {
-			font: normal normal normal 14px/30px FontAwesome;
-			font-size: inherit;
+			font: normal normal normal 1em/1em FontAwesome;
+			font-size: 1em;
 			text-rendering: auto;
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
