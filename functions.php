@@ -312,6 +312,11 @@ require get_template_directory() . '/inc/jetpack.php';
 require get_template_directory() . '/inc/getledmenu.php';
 
 /*
+ * Menu item images
+ */
+require get_template_directory() . '/inc/menu-item-images.php';
+
+/*
  * WooCommerce customizations file
  */
 require get_template_directory() . '/inc/woocommerce.php';
@@ -331,10 +336,10 @@ add_filter( 'get_product_search_form' , 'woo_custom_product_searchform' );
  * @return      void
 */
 function woo_custom_product_searchform() { 
-            ?>
+	?>
             <div id="site-header-search">
                 <?php echo
-	'<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/'  ) ) . '">
+                '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/'  ) ) . '">
 
 			<label> 
                         
@@ -347,7 +352,4 @@ function woo_custom_product_searchform() {
                 </form>'; ?>
             </div>
 	<?php
-        
-	return $form;
-	
 }
