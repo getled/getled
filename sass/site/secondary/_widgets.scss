@@ -43,7 +43,7 @@
 	font-family: $font__sans;
         
         h2 {
-            font-size:1.2em;
+            font-size:1em;
         }
 
 	ul,
@@ -54,7 +54,7 @@
 
 		li {
 			display: block;
-			line-height: 2em;
+			line-height: 1em;
 
 			ul,
 			ol {
@@ -69,12 +69,15 @@
 	}
 
 	a {
-		font-weight: 400;
+		font-weight: 300;
+		font-size: 0.813em;
 		text-decoration: none;
 
 		&:hover,
 		&:focus {
-			border-bottom: 1px solid $color__border-button;
+
+		text-decoration: underline !important;
+			
 		}
 	}
 
@@ -121,14 +124,13 @@
 
 	a {
 		display: block;
-		padding: 1em 0;
 		text-decoration: none;
-		border-bottom: 1px dashed hsl(0, 0%, 50%);
+		
 
 		&:hover,
 		&:focus {
 			text-decoration: none;
-			border-bottom: 1px dashed hsl(0, 0%, 50%);
+			
 		}
 	}
 
@@ -295,7 +297,7 @@
    
 
 	@media screen and (min-width: $query__small) {
-		padding: 2em 1em;
+		padding: 2em 10rem;
 	}
 
 	.widget {
