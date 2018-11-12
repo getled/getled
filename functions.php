@@ -213,7 +213,7 @@ function getled_widgets_init() {
 		'name'          => esc_html__( 'Footer Widgets', 'getled' ),
 		'id'            => 'footer-1',
 		'description'   => esc_html__( 'Add footer widgets here.', 'getled' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'before_widget' => '<section id="%1$s" class="widget %2$s col s12 m6 l4">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
@@ -323,6 +323,25 @@ require get_template_directory() . '/inc/woocommerce.php';
 
 
 // getled hooks 
+
+// Hook that adds getled final footer
+
+function custom_footer_action () {
+
+	do_action ('my_footer');
+
+	}
+
+	function custom_footer_text () { 
+		
+		echo 'Theme by <a href="https://getled.co.uk/" rel="designer">getled</a> <span class="sep"> | </span> <span class="removeplugin"> Remove this with getled remove footer plugin</span>'; 
+	}
+
+	add_action ('my_footer' , 'custom_footer_text');
+
+	//remove_action ( 'my_footer' , 'custom_footer_text');
+	
+
 // getled_under_header 
 
 

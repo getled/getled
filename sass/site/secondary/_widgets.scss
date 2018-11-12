@@ -241,7 +241,11 @@
 	font-size: 80%;
 	line-height: 1.3em;
 
-	tr, td {border:0!important; padding: 1em 0 0 0 !important;}
+	tr, td {border:0!important; padding: 1em 0 0 0 !important; text-align:left;}
+
+	td:last-child {
+		text-align:right;
+	}
 }
 
 
@@ -271,8 +275,8 @@
                 }
         
         .widget {
-		flex: 1;
-		margin: 0 1em 0em;
+	
+		margin: 0em;
 		
 
 		.original-title {
@@ -295,17 +299,18 @@
 	margin: 0em;
 	padding: 1em 0;
 	background-color: $color__footer-widget;
-	text-align:center;
+	text-align:left;
    
 
 	@media screen and (min-width: $query__small) {
-		padding: 2em 10rem;
+		padding: 2em 3rem;
 	}
 
 	.widget {
-		flex: 1;
-		margin: 0 1em 2em;
-		padding-top: 1em;
+		
+		
+		padding: 0 3%;
+    	text-align: left;
 
 		.original-title {
 			color: $color__footer-widget-text;
@@ -327,31 +332,15 @@
 		color: $color__footer-widget-text;
 	}
 
-	@media screen and (min-width: $query__medium) {
-		/* Use flex to create a responsive layout */
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-around;
-
-		/* If only one widget is displayed, make it full width. */
-		.widget:only-of-type {
-			width: 100%;
-		}
-
-		/* If 2 or 3 widgets are displayed, make the second one twice as wide. */
-		.widget:nth-last-child(n+2):nth-last-child(-n+3):first-child ~ .widget:nth-child(2) {
-			flex: 2;
-		}
-
-		/* If 4 or more widgets are displayed, show three across when available. */
-		.widget:nth-last-child(n+4),
-		.widget:nth-last-child(n+4) ~ .widget {
-			width: 30%;
-			flex: 1 1 30%;
-		}
-	}
 
 }
 
+ @media screen and (min-width: $query__medium) {
+
+.footer-widgets .widget {
+ 	padding: 0 10%;
+ 	}
+
+}
 
 
