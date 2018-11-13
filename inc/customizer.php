@@ -380,6 +380,96 @@ function getled_customize_register( $wp_customize ) {
 
 	}
 
+	// Section -  For Design Settings ---> Colors - Will control, Category background colors and footer background colors
+
+	$wp_customize->add_section( 'colors', array(
+		'title' => __( 'Colors', 'getled' ),
+		'panel'  => 'design_settings',
+		
+
+	));
+
+	// Woocommerce Product Category Background color
+
+	$bgcolor_controls[] = array(
+		'slug'     => 'cat_bg_color',
+		'default'  => '#FFE2E6',
+		'label'    => __( 'Product Category Description  - Background Color', 'getled' ),
+		'priority' => 10
+	);
+
+	$bgcolor_controls[] = array(
+		'slug'     => 'cat_colortext',
+		'default'  => '#322',
+		'label'    => __( 'Product Category Description  - Text Color', 'getled' ),
+		'priority' => 15
+	);
+
+	// Footer Top Background Color
+
+	$bgcolor_controls[] = array(
+		'slug'     => 'footer_bg_color1',
+		'default'  => '#FFE2E6',
+		'label'    => __( 'Footer Area Top  - Background Color', 'getled' ),
+		'priority' => 20
+	);
+
+	// Footer Top Text Color
+
+	$bgcolor_controls[] = array(
+		'slug'     => 'footer_text_color1',
+		'default'  => '#555',
+		'label'    => __( 'Footer Area Top  - Text Color', 'getled' ),
+		'priority' => 25
+	);
+
+	// Footer Bottom Background Color
+
+	$bgcolor_controls[] = array(
+		'slug'     => 'footer_bg_color2',
+		'default'  => '#FFE2E6',
+		'label'    => __( 'Footer Area Bottom  - Background Color', 'getled' ),
+		'priority' => 30
+	);
+
+    // Footer Bottom Text Color
+
+	$bgcolor_controls[] = array(
+		'slug'     => 'footer_text_color2',
+		'default'  => '#555',
+		'label'    => __( 'Footer Area Bottom  - Text Color', 'getled' ),
+		'priority' => 35
+	);
+
+	// for each loop for the three bg colors above
+
+	foreach ( $bgcolor_controls as $bgcolor_control ) {
+
+		// settings
+
+		$wp_customize->add_setting(
+			$bgcolor_control['slug'], array(
+				'default' => $bgcolor_control['default'],
+				'type'    => 'option'
+			)
+		);
+
+		//controls
+		
+		$wp_customize->add_control( new WP_Customize_Color_Control( 
+			$wp_customize, 
+			$bgcolor_control ['slug'], 
+			array (
+				'label' => $bgcolor_control ['label'],
+				'section' => 'colors',
+				'settings' => $bgcolor_control ['slug']
+				)
+			));
+	}
+
+	// END of code for Design Settings ---> Colors - Will control, Category background colors and footer background colors
+
+
 	// Create custom panels
 	$wp_customize->add_panel( 'general_settings', array(
 		'priority'       => 10,
@@ -401,10 +491,10 @@ function getled_customize_register( $wp_customize ) {
 	$wp_customize->get_section( 'background_image' )->panel    = 'design_settings';
 	$wp_customize->get_section( 'background_image' )->priority = 1000;
 	$wp_customize->get_section( 'colors' )->panel              = 'design_settings';
-
-
 }
 
+
+	
 add_action( 'customize_register', 'getled_customize_register' );
 
 /**
@@ -536,6 +626,61 @@ add_action( 'getled_under_header', 'getled_top_three_promo' );
 
 /* customier option */
 add_action( 'customize_register', 'getled_customizer_controls' );
+
+
+// Function to output style Design Settings ---> Colors - Will control, Category background colors and footer background colors
+
+function getled_bgcolor_css() {
+	
+	// Woocommerce Product Category Background color and Footer Background colors 
+	// Define Colors
+
+	$color_bgcat = get_option('cat_bg_color');
+	$color_cattext = get_option('cat_colortext');
+	$color_bgfooter1 = get_option('footer_bg_color1');
+	$color_bgfooter2 = get_option('footer_bg_color2');
+	$color_bgfootertext1 = get_option('footer_text_color1');
+	$color_bgfootertext2 = get_option('footer_text_color2');
+	// Add classes for Product Category Background color and Footer Background colors 
+
+	?>
+
+	<style>
+
+	/*woocommerce category description background color*/
+		header.woocommerce-products-header {
+			background-color: <?php echo $color_bgcat; ?>!important;
+			color: <?php echo $color_cattext; ?>!important;
+		}
+
+	/*footer top background and Text color*/
+		.footer-email {
+			background-color: <?php echo $color_bgfooter1; ?>;
+		}
+
+		.footer-email .widget, .footer-email .widget-title, .footer-email .widget a, .footer-email .widget_calendar thead, .footer-email .rss-date, .footer-email .widget_rss cite {
+    		color: <?php echo $color_bgfootertext1; ?>;
+		}
+
+	/*footer top background color*/
+		.footer-widgets {
+			background-color: <?php echo $color_bgfooter2; ?>;
+		}
+
+	/*footer bottom background color*/
+	.footer-widgets .widget, .footer-widgets .widget-title, .footer-widgets .widget a, .footer-widgets .widget_calendar thead, .footer-widgets .rss-date, .footer-widgets .widget_rss cite {
+
+			color: <?php echo $color_bgfootertext2; ?>!important;
+		}
+
+	</style>
+
+
+<?php }
+ 
+ add_action( 'wp_head', 'getled_bgcolor_css' );
+
+//END function Design Settings ---> Colors - Will control, Category background colors and footer background colors
 
 /**
  * @param WP_Customize_Manager $man
