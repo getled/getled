@@ -343,4 +343,18 @@
 
 }
 
+/* footer links and branding */
 
+.site-info {
+
+	text-align: center;
+	font-size: 0.8em;
+	display: block !important;
+	color:#000;
+	background-color: $color__footer-widget;
+
+	}
+
+.removeplugin {
+	color: green;
+}
