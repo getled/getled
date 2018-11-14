@@ -75,8 +75,8 @@ if ( ! function_exists( 'getled_setup' ) ) :
 
 		// Add theme support for custom Logo
 		add_theme_support( 'custom-logo', array(
-			'width'      => 50,
-			'height'     => 50,
+			'width'      => 462,
+			'height'     => 86,
 			'flex-width' => true,
 		) );
 

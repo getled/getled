@@ -20,7 +20,19 @@
     
 	margin: auto;
 	text-align: center;
-        padding-top: 0.3em;
+    padding-top: 0.3em;
+}
+
+img.custom-logo {
+	max-width: 231px;
+}
+
+@media screen and (max-width: $query__small) {
+	
+img.custom-logo {
+	max-width: 160px;
+}
+
 }
 
 .site-title {
