@@ -107,3 +107,13 @@
 	}
 } 
 
+.woocommerce ul.order_details li {
+    padding:1em;
+    border-right:0!important;
+}
+
+li.woocommerce-order-overview__total.total > strong > span {
+    padding-top: 2em !important;
+}
+
+
