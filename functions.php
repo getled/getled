@@ -222,6 +222,52 @@ function getled_widgets_init() {
 
 add_action( 'widgets_init', 'getled_widgets_init' );
 
+//** Internet Explorer Menu Fix. 
+
+add_action('wp_head', 'fix_menu_ie');
+
+function fix_menu_ie(){
+?>
+<style>
+/**
+* CSS hot fix
+*/
+
+/*normal state*/
+#primary-menu .sub-menu,
+#primary-menu .sub-menu .sub-menu {
+transform: translateX(-100%) !important;
+}
+
+/*Hover state*/
+#primary-menu li:hover > .sub-menu,
+#primary-menu li.active > .sub-menu {
+-webkit-transform: translateX(100%) !important;
+transform: translateX(100%) !important;
+}
+
+#primary-menu li > .sub-menu:hover > li:hover > .sub-menu,
+#primary-menu li > .sub-menu.active > li.active > .sub-menu {
+-webkit-transform: translateX(200%) !important;
+transform: translateX(200%) !important;
+}
+
+</style>
+<?php
+}
+
+
+add_action('wp_footer', 'custom_js_fix_menu');
+function custom_js_fix_menu(){
+?>
+<script type="text/javascript">
+jQuery(".toggle-gmenu").click(function(){
+jQuery('ul.menu li, ul.sub-menu').each(function(){jQuery(this).removeClass('active');});
+});
+</script>
+<?php
+}
+
 /**
  * Enqueue scripts and styles.
  */
