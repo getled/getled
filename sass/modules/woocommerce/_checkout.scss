@@ -353,13 +353,16 @@ dl.variation {
 		}
 	}
 
-	.cart-subtotal, .cart_totals, .order-total {
+	.cart-subtotal, .cart_totals, .order-total, .woocommerce-coupon-form {
 		color: #868686;
 		font-size: 16px;
 		letter-spacing: 1px;
 		margin: 16px -20px 0;
 		padding: 16px 20px 0;
 		border-top: 2px solid #efefef;
+	}
+	.woocommerce-coupon-form h5 {
+		margin-top: 0 !important;
 	}
 	.cart-subtotal .amount, .cart_totals .amount, .order-total .amount {
 		float: right;

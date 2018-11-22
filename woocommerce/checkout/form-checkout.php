@@ -133,16 +133,29 @@ $getled_show_checkout_form = is_user_logged_in() || ! empty( $_POST['billing_ema
 		wc_get_template( 'cart/getled-cart-items.php' );
 		?>
 
-		<?php if ( wc_coupons_enabled() ) { ?>
-			<form class="woocommerce-coupon-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
-				<?php do_action( 'woocommerce_cart_coupon' ); ?>
-			</form>
-		<?php } ?>
 
 		<div class="cart-subtotal">
 			<span><?php _e( 'Subtotal', 'woocommerce' ); ?> </span>
 			<span class="cart-subtotal-value"><?php wc_cart_totals_subtotal_html(); ?></span>
 		</div>
+
+		<?php if ( wc_coupons_enabled() ) { ?>
+			<form class="woocommerce-coupon-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+				<h5><?php esc_html_e( 'Coupon code', 'woocommerce' ); ?></h5>
+
+				<p class="form-row">
+					<label for="coupon_code" class=""><?php esc_html_e( 'Coupon code', 'woocommerce' ); ?></label>
+					<span class="woocommerce-input-wrapper">
+						<input type="text" name="coupon_code" class="input-text" id="coupon_code">
+					</span>
+				</p>
+				<input type="submit" class="button" name="apply_coupon"
+							 value="<?php esc_html_e( 'Use', 'woocommerce' ); ?>"/>
+
+				<?php do_action( 'woocommerce_cart_coupon' ); ?>
+			</form>
+		<?php } ?>
+
 		<?php
 		wc_get_template( 'checkout/checkout-totals.php' );
 		?>
