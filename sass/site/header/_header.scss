@@ -1,3 +1,6 @@
+@import "header-menu";
+@import "header-search";
+
 .site-header {
 	padding-top: 10px;
 	margin-top: 0;
@@ -10,14 +13,7 @@
 	}
 }
 
-.displaymenu {
-	width: 250px;
-	margin: auto;
-	margin-left: 1em;
-}
-
-.site-branding {
-    
+.site-branding {    
 	margin: auto;
 	text-align: center;
     padding-top: 0.3em;
@@ -219,4 +215,190 @@ img.custom-logo {
     #site-header-cart {
       width:106px !important;
     }
+}
+
+
+
+// css code
+.site-header{
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .header-section{
+        width: 100%;
+        .row{
+            margin-bottom: 0;
+        }
+    }
+
+    .displaymenu{
+        width: auto;
+        margin-left: 15px;
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+        .toggle-gmenu{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .site-branding{
+        padding-top: 0;
+        display: flex;
+        .site-branding-text{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .header-right-icons{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-right: 15px;
+        padding: 0 15px;
+        align-content: center;
+        .myaccount{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            a{
+                width: 30px;
+                height: 30px;
+                i{
+                    font-size: 26px;
+                }
+            }
+            img{
+                width: 100%;
+            }
+        }
+        .cart{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            #site-header-cart{
+                padding: 2px 0 7px;
+                margin-right: 0;
+                ul{
+                    li{
+                       &.count{
+                            bottom: 3px;
+                       } 
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// responsive css
+@media screen and (min-width: 1531px){
+    .site-header{
+        .header-right-icons{
+            margin-right: 0;
+            .cart{
+                #site-header-cart{
+                    margin-left: 0;
+                }
+            }            
+            .myaccount{
+                justify-content: flex-start;
+            }
+            #site-header-search{
+                justify-content: flex-start;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1530px){
+    .site-header{
+        .header-right-icons{
+            margin-right: 0;
+            .cart{
+                #site-header-cart{
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px){
+    .site-header{
+        .header-right-icons{
+            margin-right: 0;
+            .cart{
+                #site-header-cart{
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+    .site-header{
+        .header-right-icons{
+            margin-right: 0;
+            .cart{
+                #site-header-cart{
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+    #getled-navigation{
+        z-index: 111;
+        a{
+            &.close{
+                img{
+                    height: 1.2em !important;
+                    vertical-align: top !important;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .site-header{
+        .header-right-icons{
+            margin-right: 0;
+            padding: 0;
+            .cart{
+                #site-header-cart{
+                    margin-left: 0;
+                }
+            }
+        }
+        .site-title{
+            font-size: 24px;
+        }
+        .displaymenu{
+            margin-left: 0;
+        }
+    }
+    #getled-navigation{
+        z-index: 111;
+        a{
+            &.close{
+                img{
+                    height: 1.2em !important;
+                    vertical-align: top !important;
+                }
+            }
+        }
+    }
+
+    
 }

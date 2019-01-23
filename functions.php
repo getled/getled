@@ -268,14 +268,19 @@ jQuery('ul.menu li, ul.sub-menu').each(function(){jQuery(this).removeClass('acti
 <?php
 }
 
+
+
 /**
  * Enqueue scripts and styles.
  */
 function getled_scripts() {
+	
 	// Enqueue Google Fonts Oswald: 200 Extra light, 300 light, 400 Normal and 700 bold
 	wp_enqueue_style( 'getled-fonts', getled_fonts_url() );
 
 	wp_enqueue_style( 'getled-style', get_stylesheet_uri() );
+	
+	wp_enqueue_script( 'jscustom', get_template_directory_uri() . '/js/custom.js', array( 'jquery' ) );
 
 	wp_enqueue_script( 'getled-navmenu', get_template_directory_uri() . '/js/navmenu.js', array( 'jquery' ), time(), true );
 
@@ -418,3 +423,8 @@ function woo_custom_product_searchform() {
             </div>
 	<?php
 }
+
+ /**
+ * Custom product search widget
+ */
+require get_template_directory() . '/inc/custom_search.php';
