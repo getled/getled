@@ -49,7 +49,7 @@ if ( ! function_exists( 'getled_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'getled' ),
-			//'menu-2' => esc_html__( 'Secondary', 'getled' ),
+			'menu-2' => esc_html__( 'Secondary', 'getled' ),
 		) );
 
 		/*
@@ -424,7 +424,22 @@ function woo_custom_product_searchform() {
 	<?php
 }
 
- /**
- * Custom product search widget
- */
+/**
+* Custom product search widget
+*/
 require get_template_directory() . '/inc/custom_search.php';
+/**
+* Middle menu area customization
+*/
+function middle_menu_area()
+{
+	global $current_user;
+	wp_get_current_user();
+	echo "<div id='middle-menu'>";
+	if ( is_user_logged_in() ) {
+		echo "Hi " . $current_user->user_login . " |  <a href='".wp_logout_url()."'>Sign Out</a>";
+	} else {
+		echo "<a href='#'>Sign In</a>  | <a href='#'>Join</a>";
+	}
+	echo "</div>";
+}

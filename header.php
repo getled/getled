@@ -94,7 +94,13 @@
     </header>
 
 	<nav id="getled-navigation" class="main-navigation" role="navigation">
-		<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
+		<div class="main-navigation-menus">
+			<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
+			<?php if (get_theme_mod( 'getled_middle_menu_enable' )){
+				middle_menu_area();
+			} ?>
+			<?php wp_nav_menu( array( 'theme_location' => 'menu-2', 'menu_id' => 'secondary-menu' ) ); ?>
+		</div>
 	</nav><!-- #site-navigation -->
 
 

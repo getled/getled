@@ -829,6 +829,41 @@ function getled_button_customizer_controls( $man ) {
 }
 
 /**
+ * Code for range slider
+ */
+ if( class_exists( 'WP_Customize_Control' ) ) {
+	class WP_Customize_Range extends WP_Customize_Control {
+		public $type = 'range';
+
+        public function __construct( $manager, $id, $args = array() ) {
+            parent::__construct( $manager, $id, $args );
+            $defaults = array(
+                'min' => 20,
+                'max' => 500,
+                'step' => 1
+            );
+            $args = wp_parse_args( $args, $defaults );
+
+            $this->min = $args['min'];
+            $this->max = $args['max'];
+            $this->step = $args['step'];
+        }
+
+		public function render_content() {
+		?>
+		<label>
+			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+			<input class='range-slider' min="<?php echo $this->min ?>" max="<?php echo $this->max ?>" step="<?php echo $this->step ?>" type='range' <?php $this->link(); ?> value="<?php echo esc_attr( $this->value() ); ?>" oninput="jQuery(this).next('input').val( jQuery(this).val() )">
+            <input onKeyUp="jQuery(this).prev('input').val( jQuery(this).val() )" type='text' value='<?php echo esc_attr( $this->value() ); ?>'>
+
+</label>
+
+<?php
+       }
+    }
+}
+
+/**
  * @param WP_Customize_Manager $wp_customize
  */
 function getled_customizer_controls( $wp_customize ) {
@@ -926,22 +961,214 @@ function getled_customizer_controls( $wp_customize ) {
 			'settings' => 'getled_menu_title_iconclass_setting',
 			'type'     => 'text',
 		) );
-		
-	//code to set menu icon size		
-	$wp_customize->add_setting( 'getled_menu_icon_size',
+	//code for primary menu link hover color and font size
+	$wp_customize->add_setting( 'getled_primary_menu_link_font_size',
 		array(
 			'default' => '20'
 		)
 	);
-
-	$wp_customize->add_control(
-		'getled_menu_icon_size',
+    $wp_customize->add_setting( 'getled_menu_link_color_hover',
 		array(
-			'label'    => __( 'Menu Icon Size ', 'getled' ),
+			'default' => 'f1f1f1'
+		)
+	);
+	$wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'getled_primary_menu_link_font_size', array(
+	'label'    => __( 'Menu Link Font Size ', 'getled' ),
+    'min' => 10,
+    'max' => 100,
+    'step' => 10,
+    'setting'=> 'getled_primary_menu_link_font_size',
+	'section' => 'getled_menu_options',
+	) ) );
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'getled_menu_link_color_hover',
+		array(
+			'label'    => __( 'Menu Link Color on Hover', 'getled' ),
 			'section'  => 'getled_menu_options',
-			'settings' => 'getled_menu_icon_size',
-			'type'     => 'number',
+			'settings' => 'getled_menu_link_color_hover',
+			'priority' => 10,
+		)
+	) );
+	//secondary menu settings
+	$wp_customize->add_section(
+		'getled_secondary_menu_options',
+		array(
+			'title'       => __( 'Secondary Menu Settings', 'getled' ),
+			'priority'    => 100,
+			'capability'  => 'edit_theme_options',
+			'description' => __( 'Change secondary menu options here.', 'getled' ),
+		)
+	);
+    $wp_customize->add_setting( 'getled_secondary_menu_link_font_size',
+		array(
+			'default' => '20'
+		)
+	);
+	$wp_customize->add_setting( 'getled_secondary_menu_link_color',
+		array(
+			'default' => '000000'
+		)
+	);
+
+	$wp_customize->add_setting( 'getled_secondary_menu_bg_color',
+		array(
+			'default' => 'f1f1f1'
+		)
+	);
+
+	$wp_customize->add_setting( 'getled_secondary_menu_link_color_hover',
+		array(
+			'default' => 'f1f1f1'
+		)
+	);
+	$wp_customize->add_setting( 'getled_secondary_menu_bg_color_hover',
+		array(
+			'default' => 'f1f1f1'
+		)
+	);
+	$wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'getled_secondary_menu_link_font_size',
+		array(
+			'label'    => __( 'Menu Link Font Size ', 'getled' ),
+			'min' => 10,
+			'max' => 100,
+			'step' => 10,
+			'setting'=> 'getled_secondary_menu_link_font_size',
+			'section' => 'getled_secondary_menu_options',
+		)
+	) );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'getled_secondary_menu_link_color',
+		array(
+			'label'    => __( 'Menu Link Color', 'getled' ),
+			'section'  => 'getled_secondary_menu_options',
+			'settings' => 'getled_secondary_menu_link_color',
+			'priority' => 10,
+		)
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'getled_secondary_menu_bg_color',
+		array(
+			'label'    => __( 'Secondary Menu Background Color', 'getled' ),
+			'section'  => 'getled_secondary_menu_options',
+			'settings' => 'getled_secondary_menu_bg_color',
+			'priority' => 10,
+		)
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'getled_secondary_menu_link_color_hover',
+		array(
+			'label'    => __( 'Menu link Color on Hover', 'getled' ),
+			'section'  => 'getled_secondary_menu_options',
+			'settings' => 'getled_secondary_menu_link_color_hover',
+			'priority' => 10,
+		)
+	) );
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'getled_secondary_menu_bg_color_hover',
+		array(
+			'label'    => __( 'Menu Background Color on Hover', 'getled' ),
+			'section'  => 'getled_secondary_menu_options',
+			'settings' => 'getled_secondary_menu_bg_color_hover',
+			'priority' => 10,
+		)
+	) );
+	//middle menu setting
+	$wp_customize->add_section(
+		'getled_middle_menu_options',
+		array(
+			'title'       => __( 'Middle Menu Settings', 'getled' ),
+			'priority'    => 100,
+			'capability'  => 'edit_theme_options',
+			'description' => __( 'Change middle menu options here.', 'getled' ),
+		)
+	);
+    $wp_customize->add_setting( 'getled_middle_menu_enable',
+		array(
+			'default' => ''
+		)
+	);
+	$wp_customize->add_setting( 'getled_middle_menu_link_color',
+		array(
+			'default' => '000000'
+		)
+	);
+
+	$wp_customize->add_setting( 'getled_middle_menu_bg_color',
+		array(
+			'default' => 'f1f1f1'
+		)
+	);
+
+	$wp_customize->add_setting( 'getled_middle_menu_link_color_hover',
+		array(
+			'default' => 'f1f1f1'
+		)
+	);
+	$wp_customize->add_control(
+		'getled_middle_menu_enable',
+		array(
+			'label'    => __( 'Enable Middle Menu', 'getled' ),
+			'section'  => 'getled_middle_menu_options',
+			'settings' => 'getled_middle_menu_enable',
+			'type'     => 'checkbox',
 		) );
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'getled_middle_menu_link_color',
+		array(
+			'label'    => __( 'Menu Text Color', 'getled' ),
+			'section'  => 'getled_middle_menu_options',
+			'settings' => 'getled_middle_menu_link_color',
+			'priority' => 10,
+		)
+	) );
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'getled_middle_menu_bg_color',
+		array(
+			'label'    => __( 'Menu Background Color', 'getled' ),
+			'section'  => 'getled_middle_menu_options',
+			'settings' => 'getled_middle_menu_bg_color',
+			'priority' => 10,
+		)
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'getled_middle_menu_link_color_hover',
+		array(
+			'label'    => __( 'Menu link Color on Hover', 'getled' ),
+			'section'  => 'getled_middle_menu_options',
+			'settings' => 'getled_middle_menu_link_color_hover',
+			'priority' => 10,
+		)
+	) );
+	//code to set menu icon size
+	$wp_customize->add_setting( 'getled_menu_icon_size' ,
+		array(
+			'default'     => 20,
+			'transport'   => 'refresh',
+		)
+	);
+
+	$wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'getled_menu_icon_size',
+		array(
+			'label'	=>  'Menu Icon Size',
+			'min' => 20,
+			'max' => 200,
+			'step' => 10,
+			'setting'=>'getled_menu_icon_size',
+			'section' => 'getled_menu_options',
+		)
+	) );
 	//code to set menu icon color	
 	$wp_customize->add_setting( 'getled_menu_icon_color',
 		array(
@@ -958,8 +1185,6 @@ function getled_customizer_controls( $wp_customize ) {
 			'settings' => 'getled_menu_icon_color',
 			) 
 		));
-		
-		
 	//code to set search icon color
 	$wp_customize->add_setting( 'getled_search_icon_color',
 		array(
@@ -1004,19 +1229,21 @@ function getled_customizer_controls( $wp_customize ) {
 			'priority' => 10,
 		)
 	) );
+    $wp_customize->add_setting( 'getled_header_height' , array(
+    'default'     => 100,
+    'transport'   => 'refresh',
+     ) );
 
-  
-	$wp_customize->add_setting( 'getled_header_height',array( 'default' => 150 ) );
-		
-	$wp_customize->add_control( 
-		'getled_header_height',
+	$wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'getled_header_height',
 		array(
-			'label'    => __( 'Header Height(In Px)', 'getled' ),
-			'section'  => 'getled_header_settings_option',
-			'settings' => 'getled_header_height',
-			'type'     => 'number',
+			'label'	=>  __( 'Header Height(In Px)', 'getled' ),
+			'min' => 100,
+			'max' => 500,
+			'step' => 10,
+			'setting'=>'getled_header_height',
+			'section' => 'getled_header_settings_option',
 		)
-	) ;
+	) );
    $wp_customize->add_setting( 'getled_header_bottom_border_color',
 		array(
 			'default' => 'f1f1f1'
@@ -1042,7 +1269,7 @@ function getled_customizer_controls( $wp_customize ) {
 			'settings' => 'getled_header_bottom_border_width',
 			'type'     => 'number',
 		)
-		);
+	);
 		
 	//my account section 
 	$wp_customize->add_section(
@@ -1065,7 +1292,7 @@ function getled_customizer_controls( $wp_customize ) {
 			'settings' => 'getled_my_account_icon_url',
 			'type'     => 'text',
 		)
-		);
+	);
 		
     $wp_customize->add_setting( 'getled_my_account_page_url');
 		
@@ -1077,10 +1304,8 @@ function getled_customizer_controls( $wp_customize ) {
 			'settings' => 'getled_my_account_page_url',
 			'type'     => 'text',
 		)
-		);
-		
+	);
 	// region WooCommerce settings
-
 	$wp_customize->add_section(
 		'getled_woocommerce',
 		array(
@@ -1135,9 +1360,7 @@ function getled_customizer_controls( $wp_customize ) {
 			'type'     => 'text',
 		)
 	);
- 
 	// endregion
-
 	// Sections, settings and controls will be added here
 }
 
@@ -1208,23 +1431,51 @@ function my_dynamic_css() {
 		#primary-menu li:hover {
 			background: <?php echo get_theme_mod( 'getled_menu_bg_color_hover' ); ?>
 		}
-         
-      .site-header {
-         background-color: <?php echo get_theme_mod( 'getled_header_bg_color' ); ?>;
-		 height: <?php echo get_theme_mod( 'getled_header_height','150'); ?>px;
-		 border-bottom-style: solid;
-         border-bottom-width: <?php echo get_theme_mod( 'getled_header_bottom_border_width','1'); ?>px;
-		 border-bottom-color: <?php echo get_theme_mod( 'getled_header_bottom_border_color'); ?>;
-		 
+		.site-header {
+			background-color: <?php echo get_theme_mod( 'getled_header_bg_color','#ffffff' ); ?>;
+			height: <?php echo get_theme_mod( 'getled_header_height','150'); ?>px;
+			border-bottom-style: solid;
+			border-bottom-width: <?php echo get_theme_mod( 'getled_header_bottom_border_width','1'); ?>px;
+			border-bottom-color: <?php echo get_theme_mod( 'getled_header_bottom_border_color'); ?>;
         }
-       .toggle-gmenu{
+		.toggle-gmenu {
 			border:none;
 			font-size:<?php echo get_theme_mod( 'getled_menu_icon_size'); ?>px !important;
 			cursor:pointer;
-		    color:<?php echo get_theme_mod( 'getled_menu_icon_color'); ?>; 
+			color:<?php echo get_theme_mod( 'getled_menu_icon_color'); ?>;
 		}
 		#site-header-search i{
 			color:<?php echo get_theme_mod( 'getled_search_icon_color'); ?>; 
+		}
+		#secondary-menu, #secondary-menu a {
+			color: <?php echo get_theme_mod( 'getled_secondary_menu_link_color' ) ?>;
+		}
+		#secondary-menu, #secondary-menu > ul {
+			background: <?php echo get_theme_mod( 'getled_secondary_menu_bg_color','#f1f1f1' ); ?>;
+		}
+		#secondary-menu li a:hover {
+			color: <?php echo get_theme_mod( 'getled_secondary_menu_link_color_hover' ); ?>
+		}
+		#secondary-menu li:hover {
+			background: <?php echo get_theme_mod( 'getled_secondary_menu_bg_color_hover' ); ?>
+		}
+		#secondary-menu li a {
+			font-size: <?php echo get_theme_mod( 'getled_secondary_menu_link_font_size' ); ?>px !important;
+		}
+		#primary-menu li a:hover {
+			color: <?php echo get_theme_mod( 'getled_menu_link_color_hover' ); ?>
+		}
+		#primary-menu li a {
+			font-size: <?php echo get_theme_mod( 'getled_primary_menu_link_font_size' ); ?>px !important;
+		}
+		#middle-menu {
+			background: <?php echo get_theme_mod( 'getled_middle_menu_bg_color' ); ?>
+		}
+		#middle-menu a {
+			color: <?php echo get_theme_mod( 'getled_middle_menu_link_color' ); ?>
+		}
+		#middle-menu a:hover {
+			color: <?php echo get_theme_mod( 'getled_middle_menu_link_color_hover' ); ?>
 		}
 		<?php getled_custom_colors(); ?>
 	</style>

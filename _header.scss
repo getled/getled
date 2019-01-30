@@ -363,7 +363,7 @@ img.custom-logo {
             &.close{
                 img{
                     height: 1.2em !important;
-                    vertical-align: middle !important;
+                    vertical-align: top !important;
                 }
             }
         }
@@ -411,7 +411,7 @@ img.custom-logo {
             &.close{
                 img{
                     height: 1.2em !important;
-                    vertical-align: middle !important;
+                    vertical-align: top !important;
                 }
             }
         }
@@ -432,5 +432,5 @@ img.custom-logo {
                 top: 2px;
             }
         }
-    }
+    }    
 }
