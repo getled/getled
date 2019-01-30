@@ -78,7 +78,7 @@ function custom_serach_box()
     });
 
     jQuery("#site-header-search").click(function(){
-       jQuery("custom_serach_box").show();
+        jQuery("custom_serach_box").show();
     });
 </script>
  <?php

@@ -1,6 +1,10 @@
 jQuery(function($){
   $(".toggle-gmenu").click(function(){
-    var menuHeight = $('#masthead').height();
+    if(document.getElementById("wpadminbar")){
+      var menuHeight = $('#masthead').height()+40;
+    } else {
+      var menuHeight = $('#masthead').height();
+    }
     $('#getled-navigation').css('margin-top', menuHeight);
   });
 });
