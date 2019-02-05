@@ -1,7 +1,7 @@
 jQuery(function($){
   $(".toggle-gmenu").click(function(){
     if(document.getElementById("wpadminbar")){
-      var menuHeight = $('#masthead').height()+40;
+      var menuHeight = $('#masthead').height()+30;
     } else {
       var menuHeight = $('#masthead').height();
     }

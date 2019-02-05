@@ -48,7 +48,7 @@ jQuery('ul#primary-menu li').click(function(event){
     event.stopPropagation();
 });
 
-jQuery("#getled-navigation .close").live("click", function(){
+jQuery("#getled-navigation .close, #getled-navigation .menu-close-icon").live("click", function(){
    jQuery(".toggle-gmenu").trigger("click");
 });
 jQuery(window).load(function(){

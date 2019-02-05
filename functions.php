@@ -228,7 +228,7 @@ add_action('wp_head', 'fix_menu_ie');
 
 function fix_menu_ie(){
 ?>
-<style>
+<!--<style>
 /**
 * CSS hot fix
 */
@@ -252,7 +252,7 @@ transform: translateX(100%) !important;
 transform: translateX(200%) !important;
 }
 
-</style>
+</style>-->
 <?php
 }
 
@@ -331,6 +331,10 @@ function getled_body_class( $classes ) {
 	$classes[] = 'getled';
 	return $classes;
 }
+/**
+* Custom product search widget
+*/
+require get_template_directory() . '/inc/custom_search.php';
 
 /**
  * Implement the Custom Header feature.
@@ -425,10 +429,6 @@ function woo_custom_product_searchform() {
 }
 
 /**
-* Custom product search widget
-*/
-require get_template_directory() . '/inc/custom_search.php';
-/**
 * Middle menu area customization
 */
 function middle_menu_area()
@@ -439,7 +439,7 @@ function middle_menu_area()
 	if ( is_user_logged_in() ) {
 		echo "Hi " . $current_user->user_login . " |  <a href='".wp_logout_url()."'>Sign Out</a>";
 	} else {
-		echo "<a href='#'>Sign In</a>  | <a href='#'>Join</a>";
+		echo "<a href='".get_theme_mod( 'getled_middle_menu_signin_link','#' )."'>Sign In</a>  | <a href='".get_theme_mod( 'getled_middle_menu_register_link','#' )."'>Join</a>";
 	}
 	echo "</div>";
 }

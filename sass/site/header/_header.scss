@@ -144,8 +144,30 @@ img.custom-logo {
 
 /* Remove black rectangle from cart in firefox */
 .site-header-cart .cart-contents .count {
-	width: 18px;
+    width: 18px;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-20%) !important;
+    left: auto !important;
+    bottom: 5px !important;
 }
+
+a.cart-contents .amount{
+    display: none;
+}
+
+.cart-contents{ 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    align-content: center; 
+} 
+
+// .site-header-cart .cart-contents .count{ 
+//     position: absolute; 
+//     top: 50%; 
+//     transform: translateY(-20%); 
+// }
 
 /* Remove Paypal button from cart */
 .widget_shopping_cart_content #woo_pp_ec_button {
@@ -249,7 +271,7 @@ img.custom-logo {
 
     .site-branding{
         padding-top: 0;
-        display: flex;
+        // display: flex;
         .site-branding-text{
             display: flex;
             align-items: center;
@@ -269,10 +291,13 @@ img.custom-logo {
             align-items: center;
             justify-content: center;
             a{
-                width: 30px;
-                height: 30px;
+                // width: 30px;
+                // height: 30px;
+                // display: flex;
+                // align-items: center;
+                // justify-content: center;
                 i{
-                    font-size: 26px;
+                    font-size: 30px;
                 }
             }
             img{
@@ -310,7 +335,7 @@ img.custom-logo {
                 }
             }            
             .myaccount{
-                justify-content: flex-start;
+                justify-content: center;
             }
             #site-header-search{
                 justify-content: flex-start;
@@ -371,17 +396,20 @@ img.custom-logo {
     .custom_serach_box {
         .search-field{
             width: 100%;
-            padding: 5px 64px;
+            padding: 12px 64px;
+            border-radius: 0;
+            border: 2px solid #eeeded;
         }
         .search-box{
             .search-box--icon{
                 i{
                     left: 25px;
+                    top: 17px;
                 }
             }
             .close-btn{
                 right: 25px;
-                top: 2px;
+                top: 10px;
             }
         }
     }
@@ -419,18 +447,19 @@ img.custom-logo {
     .custom_serach_box {
         .search-field{
             width: 100%;
-            padding: 5px 64px;
+            padding: 12px 64px;
         }
         .search-box{
             .search-box--icon{
                 i{
                     left: 25px;
+                    top: 17px;
                 }
             }
             .close-btn{
                 right: 25px;
-                top: 2px;
+                top: 10px;
             }
         }
-    }
+    }    
 }

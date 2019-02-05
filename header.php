@@ -43,25 +43,21 @@
 			
 				<div class="col s4 m5 l5 xl7 ma">
 					<div class="site-branding">          
-						<?php the_custom_logo() ?>
+						<?php if ( has_custom_logo() ){
+						    the_custom_logo();
+						    }else{ ?>
 							<div class="site-branding-text">
-								<?php
-								if ( is_front_page() && is_home() ) : ?>
-									<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"
-																						rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-								<?php else : ?>
-									<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"
-																					rel="home"><?php bloginfo( 'name' ); ?></a></p>
+								<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"
+																						rel="home"><?php bloginfo( 'name' ); ?></a>
 									<?php
-								endif;
-
-								$description = get_bloginfo( 'description', 'display' );
-								if ( $description || is_customize_preview() ) : ?>
+									$description = get_bloginfo( 'description', 'display' );
+								    if ( $description || is_customize_preview() ) : ?>
 									<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-									<?php
-								endif; ?>
-							</div>      
-					</div>    
+									<?php endif; ?>
+								</h1>
+							</div>
+							         <?php } ?>
+				    </div>
 				</div>
 				<div class="col s5 m3 l3 xl2 ma">
 					<div class="header-right-icons">
@@ -101,6 +97,7 @@
 			} ?>
 			<?php wp_nav_menu( array( 'theme_location' => 'menu-2', 'menu_id' => 'secondary-menu' ) ); ?>
 		</div>
+		<a class="menu-close-icon"><img src="<?php echo get_template_directory_uri()?>/images/close-white.png"></a>
 	</nav><!-- #site-navigation -->
 
 
