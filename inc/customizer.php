@@ -791,8 +791,8 @@ function getled_button_customizer_controls( $man ) {
         public function __construct( $manager, $id, $args = array() ) {
             parent::__construct( $manager, $id, $args );
             $defaults = array(
-                'min' => 20,
-                'max' => 500,
+                'min' => 30,
+                'max' => 50,
                 'step' => 1
             );
             $args = wp_parse_args( $args, $defaults );
@@ -808,7 +808,11 @@ function getled_button_customizer_controls( $man ) {
 		<label>
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 			<input class='range-slider' min="<?php echo $this->min ?>" max="<?php echo $this->max ?>" step="<?php echo $this->step ?>" type='range' <?php $this->link(); ?> value="<?php echo esc_attr( $this->value() ); ?>" oninput="jQuery(this).next('input').val( jQuery(this).val() )">
-            <input type="number" min="<?php echo $this->min ?>" max="<?php echo $this->max ?>" data-customize-setting-link="<?php echo $this->setting ?>" type='text' value='<?php echo esc_attr( $this->value() ); ?>'>
+			<?php if($this->setting == 'getled_top_icon_size'){?>
+            <input type="number" readonly min="<?php echo $this->min ?>" max="<?php echo $this->max ?>" data-customize-setting-link="<?php echo $this->setting ?>" type='text' value='<?php echo esc_attr( $this->value() ); ?>'>
+            <?php } else { ?>
+			<input type="number"  data-customize-setting-link="<?php echo $this->setting ?>" type='text' value='<?php echo esc_attr( $this->value() ); ?>'>
+	        <?php } ?>
       </label>
    <?php
        }
@@ -1225,7 +1229,7 @@ function getled_customizer_controls( $wp_customize ) {
 			'label'	=>  'Top Icon Size(PX)',
 			'min' => 30,
 			'max' => 60,
-			'step' => 5,
+			'step' => 1,
 			'setting'=>'getled_top_icon_size',
 			'section' => 'getled_my_account_icon',
 		)
