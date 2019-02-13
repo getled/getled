@@ -22,7 +22,11 @@
 
 	
 </div><!-- #page -->
-
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+	jQuery ('<a class="menu-close-icon"><img src="<?php echo get_template_directory_uri();?>/images/close-white.png"></a>').insertAfter(".menu-primary-menu-container" );
+});
+</script>
 <?php wp_footer(); ?>
 
 </body>

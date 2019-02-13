@@ -1,6 +1,6 @@
 #site-header-search {
 	position: relative;
-	margin: auto 1em;
+	margin: auto 0em;
 	.search-field {
 		border: none;
 		border-bottom: 1px solid;
@@ -51,7 +51,7 @@
 	justify-content: center;
 	i{
 		font-size: 30px;
-		width:36px;
+		/*width:36px;*/
 		cursor: pointer;
 	}
 }
@@ -68,7 +68,7 @@
     text-align:center;
     .search-field{
         width: 100%;
-        padding: 5px 121px;
+        padding: 12px 121px;
 	}
 	input[type="text"]{
 		font-size: 16px;
@@ -99,14 +99,14 @@
 			height: 20px;
 			text-align: center;
 			margin: 0 auto;
-			top: 8px;
+			top: 15px;
 		}
 	}
     .close-btn {
 		position: absolute;
     	right: 50px;
     	content: "";
-		top: 0;
+		top: 8px;
 		cursor: pointer;
 		&:hover{
 			color: #dd3333;

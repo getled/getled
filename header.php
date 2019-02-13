@@ -15,7 +15,6 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-
 	<?php wp_head(); ?>
 </head>
 
@@ -29,7 +28,7 @@
 		<div class="header-section">  
       		<!-- <div class="row npad"> -->
 			<div class="row">
-				<div class="col s3 m4 l4 xl3 ma">              
+				<div class="col s1 m1 l1 xl1 ma">
 					<div class="displaymenu">
 						<div class="toggle-gmenu">
 							<?php if(get_theme_mod( 'getled_menu_title_iconclass_setting' )){?>
@@ -41,7 +40,7 @@
 					</div>          
 				</div>
 			
-				<div class="col s4 m5 l5 xl7 ma">
+				<div class="col s6 m7 l8 xl9 ma">
 					<div class="site-branding">          
 						<?php if ( has_custom_logo() ){
 						    the_custom_logo();
@@ -59,12 +58,12 @@
 							         <?php } ?>
 				    </div>
 				</div>
-				<div class="col s5 m3 l3 xl2 ma">
+				<div class="col s5 m4 l3 xl2 ma">
 					<div class="header-right-icons">
-						<div class="custom-searchbox col s4 m4 l4 xl4">
+						<div class="custom-searchbox">
 							<?php get_sidebar('woosearch');?> 
 						</div>
-						<div class="myaccount col s4 m4 l4 xl3">
+						<div class="myaccount">
 							<?php 
 							    if(get_theme_mod( 'getled_my_account_page_url' )){
 							       $my_account_page_url= get_theme_mod( 'getled_my_account_page_url' );
@@ -80,7 +79,7 @@
 							<a href="<?php echo $my_account_page_url; ?>"><i class="fa fa-user-circle-o"></i></a>
 						<?php } ?>
 						</div>
-						<div class="cart col s4 m4 l4 xl5">
+						<div class="cart">
 							<?php getled_header_cart(); ?>
 						</div>
 					</div>
@@ -97,8 +96,7 @@
 			} ?>
 			<?php wp_nav_menu( array( 'theme_location' => 'menu-2', 'menu_id' => 'secondary-menu' ) ); ?>
 		</div>
-		<a class="menu-close-icon"><img src="<?php echo get_template_directory_uri()?>/images/close-white.png"></a>
-	</nav><!-- #site-navigation -->
+    </nav><!-- #site-navigation -->
 
 
 	<?php

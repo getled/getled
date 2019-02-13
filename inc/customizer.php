@@ -808,11 +808,9 @@ function getled_button_customizer_controls( $man ) {
 		<label>
 			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 			<input class='range-slider' min="<?php echo $this->min ?>" max="<?php echo $this->max ?>" step="<?php echo $this->step ?>" type='range' <?php $this->link(); ?> value="<?php echo esc_attr( $this->value() ); ?>" oninput="jQuery(this).next('input').val( jQuery(this).val() )">
-            <input onKeyUp="jQuery(this).prev('input').val( jQuery(this).val() )" data-customize-setting-link="<?php echo $this->setting ?>" type='text' value='<?php echo esc_attr( $this->value() ); ?>'>
-
-</label>
-
-<?php
+            <input type="number" min="<?php echo $this->min ?>" max="<?php echo $this->max ?>" data-customize-setting-link="<?php echo $this->setting ?>" type='text' value='<?php echo esc_attr( $this->value() ); ?>'>
+      </label>
+   <?php
        }
     }
 }
@@ -1117,7 +1115,8 @@ function getled_customizer_controls( $wp_customize ) {
     $wp_customize->add_section(
 		'getled_header_settings_option',
 		array(
-			'title'       => __( 'Header Settings', 'getled' ),
+			'title'    => __( 'Header Settings', 'getled' ),
+			'panel'    => 'general_settings',
 			'priority'    => 100,
 			'capability'  => 'edit_theme_options',
 			'description' => __( 'Change Header settings here.', 'getled' ),
@@ -1217,15 +1216,15 @@ function getled_customizer_controls( $wp_customize ) {
 	);
 	$wp_customize->add_setting( 'getled_top_icon_size' ,
 		array(
-			'default'     => 20,
+			'default'     => 30,
 			'transport'   => 'refresh',
 		)
 	);
     $wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'getled_top_icon_size',
 		array(
 			'label'	=>  'Top Icon Size(PX)',
-			'min' => 0,
-			'max' => 200,
+			'min' => 30,
+			'max' => 60,
 			'step' => 5,
 			'setting'=>'getled_top_icon_size',
 			'section' => 'getled_my_account_icon',
@@ -1266,7 +1265,7 @@ function getled_customizer_controls( $wp_customize ) {
 	$cart_controls[] = array(
 		'slug'     => 'cart_text_color',
 		'default'  => '#000000',
-		'label'    => __( 'Cart text color', 'getledcustomizer' ),
+		'label'    => __( 'Cart icon color', 'getledcustomizer' ),
 		'section'  => 'getled_my_account_icon',
 		'priority' => 120
 	);
@@ -1442,7 +1441,7 @@ function my_dynamic_css() {
         }
 		.toggle-gmenu {
 			border:none;
-			font-size:<?php echo get_theme_mod( 'getled_top_icon_size'); ?>px !important;
+			font-size:<?php echo get_theme_mod( 'getled_top_icon_size','30'); ?>px !important;
 			cursor:pointer;
 			color:<?php echo get_theme_mod( 'getled_menu_icon_color'); ?>;
 		}
@@ -1478,15 +1477,15 @@ function my_dynamic_css() {
 			color: <?php echo get_theme_mod( 'getled_middle_menu_link_color_hover' ); ?>
 		}
 		.myaccount a i {
-			font-size: <?php echo get_theme_mod( 'getled_top_icon_size' ); ?>px !important;
+			font-size: <?php echo get_theme_mod( 'getled_top_icon_size','30' ); ?>px !important;
 			color: <?php echo get_theme_mod( 'getled_my_account_icon_color' ); ?> !important;
 		}
-		.cart-contents, .site-header-cart .cart-contents:after { font-size: <?php echo get_theme_mod( 'getled_top_icon_size' ); ?>px !important; }
+		.cart-contents, .site-header-cart .cart-contents:after { font-size: <?php echo get_theme_mod( 'getled_top_icon_size','30' ); ?>px !important; }
 		.site-header .header-right-icons .myaccount img {
 			 max-width :none !important;
-			 width: <?php echo get_theme_mod( 'getled_top_icon_size' ); ?>px !important;
+			 width: <?php echo get_theme_mod( 'getled_top_icon_size','30' ); ?>px !important;
 		}
-		.custom-searchbox #site-header-search i {font-size: <?php echo get_theme_mod( 'getled_top_icon_size' ); ?>px !important;}
+		.custom-searchbox #site-header-search i {font-size: <?php echo get_theme_mod( 'getled_top_icon_size','30' ); ?>px !important;}
 	    <?php getled_custom_colors(); ?>
 	</style>
 	<?php

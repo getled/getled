@@ -23,7 +23,7 @@ ul.sub-menu.active {
 #getled-navigation {
 	height: 100vh;
 	left: 0;
-	// overflow-y: hidden;
+	//overflow-y: hidden;
 	position: fixed;
 	top: 0;
 	-webkit-transform: translateX(-100%);
@@ -145,37 +145,37 @@ ul.sub-menu.active {
 }
 
 #primary-menu li > .sub-menu {
-	// padding-top: 103px;
+	 //padding-top: 103px;
 }
 
 #primary-menu li.active > .sub-menu {
-	// height: 100%;
+	 height: 100%;
 	// width: 308px;
-	// width: 290px;
-	// padding-top: 0;
-	// margin: 0;
-	// -webkit-transform: translateX(0px);
-	// transform: translateX(0px);
-	// position: absolute;
-    // right: -290px;
-    // top: 0;
-    // height: auto;
+	 width: 290px;
+	 padding-top: 0;
+	 margin: 0;
+	-webkit-transform: translateX(0px);
+	transform: translateX(0px);
+	position: absolute;
+    right: -290px;
+    top: 0;
+    height: auto;
 
 }
 #primary-menu li.active > .sub-menu li:hover ul.sub-menu {
-    // position: absolute;
-	// left: 290px;
-    // top: 0;
+     position: absolute;
+	 left: 290px;
+     top: 0;
 }
 
 #primary-menu li:hover > .sub-menu, #primary-menu li.active > .sub-menu{
-	// -webkit-transform: translateX(0px) !important;
-	// transform: translateX(0px) !important;
+	 -webkit-transform: translateX(0px) !important;
+	 transform: translateX(0px) !important;
 }
 
-// #primary-menu li.menu-item-has-children {
-//     position: relative;
-// }
+ #primary-menu li.menu-item-has-children {
+  position: relative;
+ }
 
 // #primary-menu li.menu-item-has-children:before{
 // 	position: absolute;
@@ -226,9 +226,11 @@ body.active {
 
 .site-branding img{
 	max-width: 100%;
-	max-height: 100px;
-    height: 100%;
-    width: auto;
+	// max-height: 100px;
+    // height: 100%;
+	/*width: auto;
+    max-height: 96px;*/
+    height: auto;
 }
 
 nav .menu-headermenu-container,
@@ -240,17 +242,17 @@ nav .menu-headermenu-container,
 /* 3rd leval submenu */
 
 #primary-menu .sub-menu .sub-menu {
-	// -webkit-transform: translateX(0px) !important;
-	// transform: translateX(0px) !important;
+	 -webkit-transform: translateX(0px) !important;
+	 transform: translateX(0px) !important;
 }
 
 #primary-menu .sub-menu.active .sub-menu.active {
-	// -webkit-transform: translateX(308px) !important;
-	// transform: translateX(308px) !important;
+	 //-webkit-transform: translateX(308px) !important;
+	 //transform: translateX(308px) !important;
 }
 
 #primary-menu .sub-menu {
-	// overflow-x: hidden;
+	//overflow-x: hidden;
 	display: inline-table;
 	padding-left: 0;
 	margin-left: 0;
@@ -301,21 +303,21 @@ nav .menu-headermenu-container,
 	display: none;
 }
 
-// #secondary-menu li > .sub-menu {
-//     width: 290px;
-//     padding-top: 0;
-//     margin: 0;
-//     -webkit-transform: translateX(0px);
-//     transform: translateX(0px);
-//     position: absolute;
-//     right: -290px;
-//     top: 0;
-//     height: auto;
-// }
+ #secondary-menu li > .sub-menu {
+    width: 290px;
+     padding-top: 0;
+    margin: 0;
+    -webkit-transform: translateX(0px);
+     transform: translateX(0px);
+    position: absolute;
+     right: -290px;
+     top: 0;
+     height: auto;
+ }
 
-// #secondary-menu li:hover > .sub-menu li:hover .sub-menu li:hover .sub-menu{
-// 	display: block;
-// }
+ #secondary-menu li:hover > .sub-menu li:hover .sub-menu li:hover .sub-menu{
+ 	display: block;
+ }
 
 #primary-menu, #primary-menu ul {
     background: #f1f1f1;
@@ -367,7 +369,7 @@ ul#secondary-menu{
 	position: absolute;
     top: 20px;
 	// left: 26%;
-	right: 10px;
+	left:340px;
     z-index: 99999;
     cursor: pointer;
     font-size: 15px;
@@ -381,9 +383,9 @@ ul#secondary-menu{
 }
 
 #getled-navigation .menu-close-icon{
-	position: absolute;
+	position: fixed;
     top: 20px;
-    right: 10px;
+    left:340px;
     z-index: 99999;
     cursor: pointer;
     font-size: 15px;
@@ -395,11 +397,11 @@ ul#secondary-menu{
 }
 
 /* Start style code for getled menu */
-// @media screen and (min-width: 768px) and (max-width: 923px){
+/*// @media screen and (min-width: 768px) and (max-width: 923px){
 // 	#getled-navigation{
 // 		top: 0;
 // 	}
-// }
+// }*/
 
 @media screen and (min-width: 925px){
 	#primary-menu{
@@ -417,8 +419,10 @@ ul#secondary-menu{
 		display: block;
 	}
 	
-	#primary-menu li:hover > .sub-menu li:hover .sub-menu{
+	.main-navigation-menus #primary-menu li:hover > .sub-menu li:hover .sub-menu{
 		display: block;
+		position: relative;
+		left: 0;
 	}
 	
 	#primary-menu li:hover > .sub-menu li:hover .sub-menu .sub-menu{
@@ -428,7 +432,12 @@ ul#secondary-menu{
 	#primary-menu li:hover > .sub-menu li:hover .sub-menu li:hover .sub-menu{
 		display: block;
 	}
-
+	#primary-menu li.active > .sub-menu,#secondary-menu li > .sub-menu{
+		width: 100%;
+	}
+	.main-navigation-menus{
+		overflow-y:auto; 
+	}
 	#primary-menu{
 		width: 100%;
 	}
@@ -437,8 +446,8 @@ ul#secondary-menu{
 		padding: 0;
 		position: static;
 		z-index: 1;
-		// height: 100% !important;
-		// display: block;
+		/*// height: 100% !important;
+		// display: block;*/
 	}
 
 	#secondary-menu li > .sub-menu li:last-child {
@@ -452,7 +461,9 @@ ul#secondary-menu{
 	#middle-menu{
 		width: 100%;
 	}
-
+	/*#getled-navigation .menu-close-icon{
+		left:88%;
+	}*/
 	#primary-menu .sub-menu.active .sub-menu.active {
 		-webkit-transform: translateX(0) !important;
 		transform: translateX(0) !important;
@@ -484,10 +495,7 @@ ul#secondary-menu{
 		margin-left: 0;
 		// width: 100% !important;
 	}
-	#primary-menu li:first-child ul.sub-menu li:first-child {
-		left: -15px;
-	}
-
+	
 	#primary-menu ul.sub-menu {
 		text-indent: 15px;
 	}
@@ -519,7 +527,7 @@ ul#secondary-menu{
 
 }
 .main-navigation-menus{
-	overflow-y: auto;
+	/*overflow-y: auto;*/
 	&::-webkit-scrollbar{
 		width: 10px;
 		background-color: #ffffff;
@@ -552,6 +560,7 @@ ul#secondary-menu{
 	}
 	#getled-navigation .close {
 		top: 15px;
+		display: none;
 	}
 }
 
@@ -566,6 +575,10 @@ ul#secondary-menu{
 	#getled-navigation .close{
 		display: none;
 	}
+	#getled-navigation .menu-close-icon{
+		left:88%;
+	}
+	
 }
 
 
