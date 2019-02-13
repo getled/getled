@@ -66,6 +66,13 @@ ul.sub-menu.active {
 #getled-navigation.active {
 	-webkit-transform: translateX(0px);
 	transform: translateX(0px);
+	max-height: calc(100% - 125px);
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+nav#getled-navigation::-webkit-scrollbar { 
+    display: none; 
 }
 #primary-menu{
 	// overflow-y: auto;
