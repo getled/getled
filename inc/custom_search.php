@@ -58,7 +58,7 @@ class custom_search_widget extends WP_Widget
         $color = ( ! empty( $instance['color'] ) ) ? $instance['color'] : '#000000';
         echo $args['before_widget'];
         if (!empty($size)) {
-            echo __('<div id="site-header-search"><i class="fa fa-search" style="font-size:'.$size.'px;color:'.$color.';"></i></div>', 'getled_widget_domain');
+            echo __('<div id="site-header-search-custom"><i class="fa fa-search" style="font-size:'.$size.'px;color:'.$color.';"></i></div>', 'getled_widget_domain');
         }
         echo $args['after_widget'];
     }
@@ -117,7 +117,7 @@ function custom_serach_box()
 ?>
 <script type="text/javascript">
     jQuery(document).ready(function() {
-        jQuery('#site-header-search .fa').click(function(){
+        jQuery('#site-header-search-custom .fa').click(function(){
             jQuery('.custom_serach_box').fadeToggle();
         });
     });
@@ -126,7 +126,7 @@ function custom_serach_box()
        jQuery(".custom_serach_box").hide();
     });
 
-    jQuery("#site-header-search").click(function(){
+    jQuery("#site-header-search-custom").click(function(){
         jQuery("custom_serach_box").show();
     });
 </script>
