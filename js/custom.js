@@ -5,7 +5,7 @@ jQuery(function($){
     } else {
 	  var border=$('#masthead').css("border-bottom-width");
 	  var newborder = border.substr(0, border.length-2);
-	  if (screen.width >=400) {
+	  if (screen.width >=800) {
 	  var menuHeight = $('#masthead').height()+parseInt(newborder);
       } else {
 	  var menuHeight = $('#masthead').height()+parseInt(newborder)-20;
