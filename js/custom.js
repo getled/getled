@@ -3,9 +3,15 @@ jQuery(function($){
     if(document.getElementById("wpadminbar")){
       var menuHeight = $('#masthead').height()+30;
     } else {
-      var menuHeight = $('#masthead').height();
-    }
-    $('#getled-navigation').css('margin-top', menuHeight);
+	  var border=$('#masthead').css("border-bottom-width");
+	  var newborder = border.substr(0, border.length-2);
+	  if (screen.width >=400) {
+	  var menuHeight = $('#masthead').height()+parseInt(newborder);
+      } else {
+	  var menuHeight = $('#masthead').height()+parseInt(newborder)-20;
+	  }
+	 }
+     $('#getled-navigation').css('margin-top', menuHeight);
   });
 });
 function updateHeight(){
