@@ -28,7 +28,7 @@
 		<div class="header-section">  
       		<!-- <div class="row npad"> -->
 			<div class="row">
-				<div class="col s1 m1 l1 xl1 ma">
+				<div class="col s1 m1 l1 xl2 ma">
 					<div class="displaymenu">
 						<div class="toggle-gmenu">
 							<?php if(get_theme_mod( 'getled_menu_title_iconclass_setting' )){?>
@@ -40,7 +40,7 @@
 					</div>          
 				</div>
 			
-				<div class="col s6 m7 l8 xl9 ma">
+				<div class="col s6 m7 l8 xl8 ma">
 					<div class="site-branding">          
 						<?php if ( has_custom_logo() ){
 						    the_custom_logo();
