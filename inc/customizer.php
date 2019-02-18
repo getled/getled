@@ -1269,7 +1269,7 @@ function getled_customizer_controls( $wp_customize ) {
 	$cart_controls[] = array(
 		'slug'     => 'cart_text_color',
 		'default'  => '#000000',
-		'label'    => __( 'Cart icon color', 'getledcustomizer' ),
+		'label'    => __( 'Cart Icon Color', 'getledcustomizer' ),
 		'section'  => 'getled_my_account_icon',
 		'priority' => 120
 	);

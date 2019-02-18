@@ -268,7 +268,7 @@ blockquote {
   letter-spacing: 0.2em; }
   blockquote:before {
     position: absolute;
-    content: "ΓÇ£";
+    content: "“";
     left: -.3em;
     top: -0.01em;
     font-family: "Oswald", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
@@ -326,7 +326,7 @@ body {
 blockquote, q {
   quotes: "" ""; }
   blockquote:before, blockquote:after, q:before, q:after {
-    content: "ΓÇ£"; }
+    content: "“"; }
 
 hr {
   background-color: #ccc;
@@ -1293,7 +1293,10 @@ ul#secondary-menu {
     display: none; }
 
   #getled-navigation .menu-close-icon {
-    left: 88%; } }
+    left: 88%; }
+
+  .site-branding .site-branding-text p.site-description {
+    font-size: 14px; } }
 #site-header-search {
   position: relative;
   margin: auto 0em; }
@@ -1875,7 +1878,10 @@ ul#secondary-menu {
     display: none; }
 
   #getled-navigation .menu-close-icon {
-    left: 88%; } }
+    left: 88%; }
+
+  .site-branding .site-branding-text p.site-description {
+    font-size: 14px; } }
 /* Header search */
 #site-header-search {
   position: relative;
