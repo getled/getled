@@ -1073,7 +1073,7 @@ function getled_customizer_controls( $wp_customize ) {
 		$wp_customize,
 		'getled_middle_menu_link_color',
 		array(
-			'label'    => __( 'Menu Text Color', 'getled' ),
+			'label'    => __( 'Menu Link Color', 'getled' ),
 			'section'  => 'getled_middle_menu_options',
 			'settings' => 'getled_middle_menu_link_color',
 			'priority' => 10,
@@ -1186,13 +1186,13 @@ function getled_customizer_controls( $wp_customize ) {
 		
 	//my account section 
 	$wp_customize->add_section(
-		'getled_my_account_icon',
+		'getled_top_icon',
 		array(
 			'title'       => __( 'Top Icons', 'getled' ),
 			'panel'    => 'general_settings',
 			'priority'    => 100,
 			'capability'  => 'edit_theme_options',
-			'description' => __( 'My Account Icon Setting.', 'getled' ),
+			'description' => __( 'Top Icon Setting.', 'getled' ),
 		)
 	);
     $wp_customize->add_setting( 'getled_my_account_icon_url');
@@ -1201,7 +1201,7 @@ function getled_customizer_controls( $wp_customize ) {
 		'getled_my_account_icon_url',
 		array(
 			'label'    => __( 'My Account Icon Url', 'getled' ),
-			'section'  => 'getled_my_account_icon',
+			'section'  => 'getled_top_icon',
 			'settings' => 'getled_my_account_icon_url',
 			'type'     => 'text',
 		)
@@ -1213,7 +1213,7 @@ function getled_customizer_controls( $wp_customize ) {
 		'getled_my_account_page_url',
 		array(
 			'label'    => __( 'My Account Page Url', 'getled' ),
-			'section'  => 'getled_my_account_icon',
+			'section'  => 'getled_top_icon',
 			'settings' => 'getled_my_account_page_url',
 			'type'     => 'text',
 		)
@@ -1231,7 +1231,7 @@ function getled_customizer_controls( $wp_customize ) {
 			'max' => 60,
 			'step' => 1,
 			'setting'=>'getled_top_icon_size',
-			'section' => 'getled_my_account_icon',
+			'section' => 'getled_top_icon',
 		)
 	) );
 	$wp_customize->add_setting( 'getled_my_account_icon_color',
@@ -1244,11 +1244,27 @@ function getled_customizer_controls( $wp_customize ) {
 		'getled_my_account_icon_color',
 		array(
 			'label'    => __( 'My Account Icon Color', 'getled' ),
-			'section'  => 'getled_my_account_icon',
+			'section'  => 'getled_top_icon',
 			'settings' => 'getled_my_account_icon_color',
 			'priority' => 10,
 		)
 	) );
+	//code to set search icon color
+	$wp_customize->add_setting( 'getled_search_icon_color',
+		array(
+			'default' => '000000'
+		)
+	);
+
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'getled_search_icon_color',
+		array(
+			'label'    => __( 'Search Icon Color ', 'getled' ),
+			'section'  => 'getled_top_icon',
+			'settings' => 'getled_search_icon_color',
+			)
+		));
 	//code to set menu icon color
 	$wp_customize->add_setting( 'getled_menu_icon_color',
 		array(
@@ -1261,7 +1277,7 @@ function getled_customizer_controls( $wp_customize ) {
 		'getled_menu_icon_color',
 		array(
 			'label'    => __( 'Menu Icon Color ', 'getled' ),
-			'section'  => 'getled_my_account_icon',
+			'section'  => 'getled_top_icon',
 			'settings' => 'getled_menu_icon_color',
 			)
 		));
@@ -1270,7 +1286,7 @@ function getled_customizer_controls( $wp_customize ) {
 		'slug'     => 'cart_text_color',
 		'default'  => '#000000',
 		'label'    => __( 'Cart Icon Color', 'getledcustomizer' ),
-		'section'  => 'getled_my_account_icon',
+		'section'  => 'getled_top_icon',
 		'priority' => 120
 	);
 
@@ -1278,7 +1294,7 @@ function getled_customizer_controls( $wp_customize ) {
 		'slug'     => 'cart_dd_text_color',
 		'default'  => '#000000',
 		'label'    => __( 'Drop down text color', 'getledcustomizer' ),
-		'section'  => 'getled_my_account_icon',
+		'section'  => 'getled_top_icon',
 		'priority' => 120
 	);
 
@@ -1286,7 +1302,7 @@ function getled_customizer_controls( $wp_customize ) {
 		'slug'     => 'cart_dd_bg_color',
 		'default'  => '',
 		'label'    => __( 'Drop down background color', 'getledcustomizer' ),
-		'section'  => 'getled_my_account_icon',
+		'section'  => 'getled_top_icon',
 		'priority' => 180
 	);
 
@@ -1480,16 +1496,20 @@ function my_dynamic_css() {
 		#middle-menu a:hover {
 			color: <?php echo get_theme_mod( 'getled_middle_menu_link_color_hover' ); ?>
 		}
+		#middle-menu span { color: #000000; }
 		.myaccount a i {
 			font-size: <?php echo get_theme_mod( 'getled_top_icon_size','30' ); ?>px !important;
-			color: <?php echo get_theme_mod( 'getled_my_account_icon_color' ); ?> !important;
+			color: <?php echo get_theme_mod( 'getled_my_account_icon_color','#555555' ); ?> !important;
 		}
 		.cart-contents, .site-header-cart .cart-contents:after { font-size: <?php echo get_theme_mod( 'getled_top_icon_size','30' ); ?>px !important; }
 		.site-header .header-right-icons .myaccount img {
 			 max-width :none !important;
 			 width: <?php echo get_theme_mod( 'getled_top_icon_size','30' ); ?>px !important;
 		}
-		.custom-searchbox #site-header-search i {font-size: <?php echo get_theme_mod( 'getled_top_icon_size','30' ); ?>px !important;}
+		.custom-searchbox #site-header-search-custom i {
+			 font-size: <?php echo get_theme_mod( 'getled_top_icon_size','30' ); ?>px !important;
+			 color: <?php echo get_theme_mod( 'getled_search_icon_color' ); ?> !important;
+		}
 	    <?php getled_custom_colors(); ?>
 	</style>
 	<?php

@@ -437,7 +437,7 @@ function middle_menu_area()
 	wp_get_current_user();
 	echo "<div id='middle-menu'>";
 	if ( is_user_logged_in() ) {
-		echo "Hi " . $current_user->user_login . " |  <a href='".wp_logout_url()."'>Sign Out</a>";
+		echo "<span>Hi " . $current_user->user_login . " </span> &nbsp;  <a href='".wp_logout_url()."'>Sign Out</a>";
 	} else {
 		echo "<a href='".get_theme_mod( 'getled_middle_menu_signin_link','#' )."'>Sign In</a>  | <a href='".get_theme_mod( 'getled_middle_menu_register_link','#' )."'>Join</a>";
 	}

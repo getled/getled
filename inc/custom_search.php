@@ -54,40 +54,14 @@ class custom_search_widget extends WP_Widget
     
     public function widget($args, $instance)
     {
-        $size= ( ! empty( $instance['size'] ) ) ? $instance['size'] : '30';
-        $color = ( ! empty( $instance['color'] ) ) ? $instance['color'] : '#000000';
         echo $args['before_widget'];
-        if (!empty($size)) {
-            echo __('<div id="site-header-search-custom"><i class="fa fa-search" style="font-size:'.$size.'px;color:'.$color.';"></i></div>', 'getled_widget_domain');
-        }
+        echo __('<div id="site-header-search-custom"><i class="fa fa-search" ></i></div>', 'getled_widget_domain');
         echo $args['after_widget'];
     }
     
     public function form($instance)
-    {
-        if(isset($instance[ 'size' ])) {
-            $size = $instance[ 'size' ];
-        } else {
-            $size = __( '30', 'getled_widget_domain' );
-        }
-        if(isset($instance[ 'color' ])) {
-            $color = $instance[ 'color' ];
-        } else {
-            $color = __( '#000000', 'getled_widget_domain' );
-        }
-        ?>
-        <p>
-            <span><?php _e( 'Search Icon Size(px)'); ?></span>
-            <input class="search-icon-size" type="text" id="<?php echo $this->get_field_id( 'size' ); ?>" name="<?php echo $this->get_field_name( 'size' ); ?>" value="<?php echo esc_attr( $size ); ?>" /> 
-        </p>
-        <p>
-			<label for="<?php echo $this->get_field_id( 'color' ); ?>"><?php _e( 'Search Icon Color:' ); ?></label><br>
-			<input type="text" name="<?php echo $this->get_field_name( 'color' ); ?>" class="color-picker" id="<?php echo $this->get_field_id( 'color' ); ?>" value="<?php echo $color; ?>" />
-		</p>
-        <?php
+    {    
     }
-    
-    // Updating widget replacing old instances with new
     public function update($new_instance, $old_instance)
     {   $instance = $old_instance;
         $instance = $new_instance;

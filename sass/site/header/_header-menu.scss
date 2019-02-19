@@ -356,7 +356,9 @@ ul#secondary-menu{
 		}
 	}
 }
-
+#primary-menu li, #middle-menu, ul#secondary-menu li{
+	text-indent: 10px;
+}
 #secondary-menu, #secondary-menu ul {
     background: #f1f1f1;
 }
