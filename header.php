@@ -28,7 +28,7 @@
 		<div class="header-section">  
       		<!-- <div class="row npad"> -->
 			<div class="row">
-				<div class="col s1 m1 l1 xl2 ma">
+				<div class="col s1 m3 l3 xl2 ma">
 					<div class="displaymenu">
 						<div class="toggle-gmenu">
 							<?php if(get_theme_mod( 'getled_menu_title_iconclass_setting' )){?>
@@ -40,12 +40,10 @@
 					</div>          
 				</div>
 			
-				<div class="col s6 m7 l8 xl8 ma">
+				<div class="col s6 m6 l6 xl8 ma">
 					<div class="site-branding">          
-						<?php if ( has_custom_logo() ){
-						    the_custom_logo();
-						    }else{ ?>
-							<div class="site-branding-text">
+					     the_custom_logo();
+						  <div class="site-branding-text">
 								<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"
 																						rel="home"><?php bloginfo( 'name' ); ?></a>
 									<?php
@@ -55,10 +53,9 @@
 									<?php endif; ?>
 								</h1>
 							</div>
-							         <?php } ?>
 				    </div>
 				</div>
-				<div class="col s5 m4 l3 xl2 ma">
+				<div class="col s5 m3 l3 xl2 ma">
 					<div class="header-right-icons">
 						<div class="custom-searchbox">
 							<?php get_sidebar('woosearch');?> 

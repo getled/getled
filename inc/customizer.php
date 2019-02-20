@@ -1146,7 +1146,7 @@ function getled_customizer_controls( $wp_customize ) {
 		)
 	) );
     $wp_customize->add_setting( 'getled_header_height' , array(
-    'default'     => 100,
+    'default'     => 150,
     'transport'   => 'refresh',
      ) );
 	$wp_customize->add_control( new WP_Customize_Range( $wp_customize, 'getled_header_height',
