@@ -42,7 +42,7 @@
 			
 				<div class="col s6 m6 l6 xl8 ma">
 					<div class="site-branding">          
-					     the_custom_logo();
+					    <?php the_custom_logo(); ?>
 						  <div class="site-branding-text">
 								<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"
 																						rel="home"><?php bloginfo( 'name' ); ?></a>
