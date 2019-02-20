@@ -500,7 +500,9 @@ if ( ! function_exists( 'getled_header_style' ) ) :
 			.site-description {
 				color: #<?php echo esc_attr( $header_text_color ); ?>;
 			}
-
+            .site-description {
+				color: #<?php echo esc_attr( $header_text_color );?>! important ;
+			}
 			<?php endif; ?>
 		</style>
 		<?php
