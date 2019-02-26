@@ -17,6 +17,7 @@
 	margin: auto;
 	text-align: center;
     padding-top: 0.3em;
+    max-width:50%;
 }
 
 img.custom-logo {
@@ -465,8 +466,9 @@ a.cart-contents .amount{
         .main-navigation-menus{
             width: 88%;
         }
+        
     }
-    
+    .site-branding{max-width: 100%;}
     .site{
         .site-header{
             .header-right-icons{
