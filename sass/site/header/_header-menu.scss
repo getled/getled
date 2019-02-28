@@ -232,7 +232,7 @@ body.active {
 }
 
 .site-branding img{
-	max-width: 100%;
+	max-width: 50%;
 	// max-height: 100px;
     // height: 100%;
 	/*width: auto;
@@ -589,6 +589,9 @@ ul#secondary-menu{
 	}
 	.site-branding .site-branding-text p.site-description{
 		font-size: 14px;
+	}
+	.site-branding img{
+		max-width: 100%;
 	}
 	
 }
