@@ -1,10 +1,6 @@
 /* Header Menu */
 /* Start style code for getled menu */
-body.active {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;}
+
 #primary-menu, #primary-menu > ul {
 	padding-left: 0;
 }
@@ -605,7 +601,11 @@ ul#secondary-menu{
 	.site-branding img{
 		max-width: 100%;
 	}
-	
+	body.active {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;}
 }
 
 
