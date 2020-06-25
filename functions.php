@@ -49,7 +49,7 @@ if ( ! function_exists( 'getled_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'getled' ),
-			//'menu-2' => esc_html__( 'Secondary', 'getled' ),
+			'menu-2' => esc_html__( 'Secondary', 'getled' ),
 		) );
 
 		/*
@@ -228,7 +228,7 @@ add_action('wp_head', 'fix_menu_ie');
 
 function fix_menu_ie(){
 ?>
-<style>
+<!--<style>
 /**
 * CSS hot fix
 */
@@ -252,7 +252,7 @@ transform: translateX(100%) !important;
 transform: translateX(200%) !important;
 }
 
-</style>
+</style>-->
 <?php
 }
 
@@ -268,14 +268,19 @@ jQuery('ul.menu li, ul.sub-menu').each(function(){jQuery(this).removeClass('acti
 <?php
 }
 
+
+
 /**
  * Enqueue scripts and styles.
  */
 function getled_scripts() {
+	
 	// Enqueue Google Fonts Oswald: 200 Extra light, 300 light, 400 Normal and 700 bold
 	wp_enqueue_style( 'getled-fonts', getled_fonts_url() );
 
 	wp_enqueue_style( 'getled-style', get_stylesheet_uri() );
+	
+	wp_enqueue_script( 'jscustom', get_template_directory_uri() . '/js/custom.js', array( 'jquery' ) );
 
 	wp_enqueue_script( 'getled-navmenu', get_template_directory_uri() . '/js/navmenu.js', array( 'jquery' ), time(), true );
 
@@ -326,6 +331,10 @@ function getled_body_class( $classes ) {
 	$classes[] = 'getled';
 	return $classes;
 }
+/**
+* Custom product search widget
+*/
+require get_template_directory() . '/inc/custom_search.php';
 
 /**
  * Implement the Custom Header feature.
@@ -417,4 +426,20 @@ function woo_custom_product_searchform() {
                 </form>'; ?>
             </div>
 	<?php
+}
+
+/**
+* Middle menu area customization
+*/
+function middle_menu_area()
+{
+	global $current_user;
+	wp_get_current_user();
+	echo "<div id='middle-menu'>";
+	if ( is_user_logged_in() ) {
+		echo "<span>Hi " . $current_user->user_login . " </span> &nbsp;  <a href='".wp_logout_url()."'>Sign Out</a>";
+	} else {
+		echo "<a href='".get_theme_mod( 'getled_middle_menu_signin_link','#' )."'>Sign In</a>  | <a href='".get_theme_mod( 'getled_middle_menu_register_link','#' )."'>Join</a>";
+	}
+	echo "</div>";
 }
